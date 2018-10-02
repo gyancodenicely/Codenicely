@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'login/$',views.index),
     url(r'^loginUser/$',views.loginUser),
-    url(r'^registration',views.registration),
+    url(r'^registration/$',views.registration),
     url(r'^register_data_store/$',views.register_data_store),
+    url(r'^profile_update/$',views.profile_update),
 ]

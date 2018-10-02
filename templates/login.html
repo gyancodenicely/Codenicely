@@ -21,16 +21,13 @@
         overflow: hidden;
     }
 
-    .input-field input[type=date]:focus + label,
-    .input-field input[type=text]:focus + label,
-    .input-field input[type=email]:focus + label,
+    .input-field input[type=number]:focus + label,
     .input-field input[type=password]:focus + label {
       color: #e91e63;
     }
 
-    .input-field input[type=date]:focus,
-    .input-field input[type=text]:focus,
-    .input-field input[type=email]:focus,
+
+    .input-field input[type=number]:focus,
     .input-field input[type=password]:focus {
       border-bottom: 2px solid #e91e63;
       box-shadow: none;
@@ -47,27 +44,15 @@
        <!--Form validation -->
         <script>
             function formValidation() {
-                var email = document.forms['formData']['email']
+                var mobile = document.forms['formData']['mobile']
                 var pass1 = document.forms['formData']['password']
 
 
-                if(email.value == ""){
-                    window.alert("Please Enter a Valid Email");
-                    email.focus();
+                if(mobile.value == "") {
+                    window.alert("Please Enter a Valid mobile");
+                    mobile.focus();
                     return false;
                 }
-                if(email.value.indexOf("@",0)<0){
-                       window.alert("Please enter a valid e-mail address.");
-                        email.focus();
-                        return false;
-                    }
-
-                if (email.value.indexOf(".", 0) < 0)
-                    {
-                        window.alert("Please enter a valid e-mail address.");
-                        email.focus();
-                        return false;
-                    }
 
                 if(pass1.value == "" ){
                     window.alert("Please Enter a Password");
@@ -94,8 +79,8 @@
             <h5 class="indigo-text">Please, login into your account</h5>
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' />
-                <label for='email'>Enter your email</label>
+                <input class='validate' type='number' name='mobile' id='mobile' />
+                <label for='mobile'>Enter your Mobile</label>
               </div>
             </div>
 
@@ -111,6 +96,7 @@
             <center>
               <div class='row'>
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' style="border-radius: 5px">Login<img style=" padding-top: 15px;padding-left: 10px;" src="{% static 'image/login.png' %}" width="35px" height="35px"></button>
+                <a href="/registration/">New User Register Here...!</a>
               </div>
             </center>
           </form>

@@ -1,10 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <title>DashBoard</title>
+    <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
+    <style>
+        table{
+            margin-top: 50px;
+            border-collapse: collapse;
+
+        }
+        td.updatefont{
+            font-size: 20px;
+            font-weight: bold;
+            color: #9fcdff;
+            text-align: center;
+            background-color: #1e7e34;
+
+
+        }
+        td{
+            text-align: center;
+        }
+    </style>
 </head>
 <body bgcolor="#7fffd4">
+ <div class="container">
+     <div class="row">
+       <div class="col-md-3 offset-md-3">
+           <form action="/profile_update/" method="post">
 
+               {% for x in data %}
+           <table  width="500" align="center"  border="2" >
+               <tr>
+                   <td class="updatefont" colspan="2" >Update Profile</td>
+               </tr>
+               <tr>
+                   <td class="updatefont" colspan="2" >{{ x.mobile }}</td>
+               </tr>
+               <tr>
+                   <td>Name :</td>
+                   <td><input type="text" name="name" value="{{ x.name }}"></td>
+               </tr>
+               <tr>
+                   <td>Email :</td>
+                   <td><input type="email" name="email" value="{{ x.email }}"></td>
+               </tr>
+               <tr>
+
+                   <td><input type="hidden" name="mobile" value="{{ x.mobile }}"></td>
+               </tr>
+
+               <tr>
+                   <td>Password :</td>
+                    <td><input type="password" name="password" value="{{ x.password }}"></td>
+               </tr>
+               <tr>
+                   <td colspan="2"><button type="submit" class="btn btn-primary">Update</button></td>
+               </tr>
+           </table>
+               {% endfor %}
+           </form>
+       {{ status }}
+{#            {% if error %}#}
+{#              <p style="color: red;font-size: 25px;font-weight: bold">{{ status }}</p>#}
+{#                {% else %}#}
+{#                <p style="color: green;font-size: 25px;font-weight: bold">{{ status }}</p>#}
+{#          {% endif %}#}
+
+       </div>
+     </div>
+ </div>
 </body>
 </html>

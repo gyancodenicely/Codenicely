@@ -1,0 +1,250 @@
+<html>
+{% load staticfiles %}
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body {
+      background-image: url("{% static 'image/theme-9.jpg' %}");
+        background-size: cover;
+        overflow: hidden;
+    }
+
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=number]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=radio]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #e91e63;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=number]:focus,
+    .input-field input[type=radio]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="section"></div>
+  <main>
+    <center>
+{#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
+      <div class="section"></div>
+       <!--Form validation -->
+        <script>
+            function formValidation() {
+                var email = document.forms['formData']['email'];
+                var pass1 = document.forms['formData']['password'];
+                var pass2 = document.forms['formData']['password2'];
+                var name = document.forms['formData']['name'];
+                var mobile = document.forms['formData']['mobile'];
+                var gender = document.forms['formData']['gender'];
+
+
+               if(name.value == ""){
+                    window.alert("Please Enter Name ");
+                    name.focus();
+                    return false;
+                }
+                else if(name.value.length < 4 || name.value.length >20)
+                {
+                    window.alert("Name must be Enter atleast 4 character");
+                    name.focus();
+                    return false;
+                }
+                if(email.value == ""){
+                    window.alert("Please Enter a Valid Email");
+                    email.focus();
+                    return false;
+                }
+                if(email.value.indexOf("@",0)<0){
+                       window.alert("Please enter a valid e-mail address.");
+                        email.focus();
+                        return false;
+                    }
+
+                if (email.value.indexOf(".", 0) < 0)
+                    {
+                        window.alert("Please enter a valid e-mail address.");
+                        email.focus();
+                        return false;
+                    }
+                if(mobile.value==""){
+                    window.alert("Please Enter Mobile No.");
+                    mobile.focus();
+                    return false;
+                }
+                if(mobile.value.length != 10){
+                    window.alert("Enter Only 10 Digit Mobile No.");
+                    mobile.focus();
+                    return false;
+                }
+
+                <!-- Password Validation -->
+
+             /*   if(pass1.value == ""){
+                    window.alert("Enter Password");
+                    pass1.focus();
+                    return false;
+                }
+                else if(pass1.value.length < 8) {
+                    window.alert("Enter Password Atleast 8");
+                    pass1.focus();
+                    return false;
+                }
+
+
+
+
+                if(pass2.value == ""){
+                    window.alert("Re-Enter Password");
+                    pass1.focus();
+                    return false;
+                }
+
+                if(pass1.value != pass2.value){
+                    window.alert("Password Not Match again Enter..!");
+                    pass2.focus();
+                    return false;
+
+                }*/
+               var lower = /[a-z]/g;
+                var upper = /[A-Z]/g;
+                var digit = /[0-9]/g;
+                var special = /[@$,<>#:?_*&;]/g;
+                if(pass1.value == "") {
+                    window.alert("Enter a Password...!");
+                    pass1.focus();
+                    return false;
+                }
+
+              if(pass1.value != "" && pass1.value.length < 8){
+                  alert("Enter Password atleast 8 Character");
+                  pass1.focus();
+                  return false;
+                  }
+
+
+
+
+               if(pass2.value==""){
+                   window.alert("Re-Enter Password...!");
+                   pass2.focus();
+                   return false;
+               }
+               if(pass1.value != pass2.value){
+                   window.alert("Not Match Re-Enter Password...!");
+                   pass2.focus();
+                   return false;
+               }
+
+
+        return true;
+
+            }
+        </script>
+
+      <h5 class="indigo-text">Please, login into your account</h5>
+      <div class="section"></div>
+
+      <div class="container" style="opacity:0.7">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block;width: 600px; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12" method="post"  action="/register_data_store/" name="formData" onsubmit="return formValidation()">
+{#            {% csrf_token %}#}
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+           <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='text' name='name' id='name' />
+                <label for='name'>Enter your Name</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='email' name='email' id='email' />
+                <label for='email'>Enter your email</label>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='number' name='mobile' id='mobile' size="10" maxlength="10"  />
+                <label for='mobile'>Enter your Mobile Number</label>
+              </div>
+            </div>
+
+
+
+              <div class="row">
+                  <div class="input-field col s6">
+                      <input class='validate' type='radio' name='gender' id='male' value="male"   />Male
+                     <label for='male'></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <input class='validate' type='radio' name='gender' value="female" id='female'  />Female
+                     <label for='female'></label>
+
+
+
+                  </div>
+
+              </div>
+
+
+
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='password' name='password' id='password' />
+                <label for='password'>Enter your password</label>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='password' name='password2' id='password2' />
+                <label for='password'>Re-Enter password</label>
+            </div>
+            </div>
+
+
+            <br />
+            <center>
+              <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo ' style="border-radius: 10px;">Registration</button>
+              </div>
+            </center>
+              {{ status }}
+          </form>
+        </div>
+      </div>
+
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+
+</html>

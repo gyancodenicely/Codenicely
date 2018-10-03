@@ -61,14 +61,14 @@
                </tr>
            </table>
                {% endfor %}
-           </form>
-       {{ status }}
-{#            {% if error %}#}
-{#              <p style="color: red;font-size: 25px;font-weight: bold">{{ status }}</p>#}
-{#                {% else %}#}
-{#                <p style="color: green;font-size: 25px;font-weight: bold">{{ status }}</p>#}
-{#          {% endif %}#}
 
+{#       {{ status }}#}
+            {% if error %}
+              <p style="color: red;font-size: 25px;font-weight: bold">{{ status }}</p>
+                {% else %}
+                <p style="color: green;font-size: 25px;font-weight: bold">{{ status }}</p>
+          {% endif %}
+           </form>
        </div>
      </div>
  </div>

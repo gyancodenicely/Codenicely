@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^registration/$',views.registration),
     url(r'^register_data_store/$',views.register_data_store),
     url(r'^profile_update/$',views.profile_update),
+    url(r'^material/$',views.material),
 ]

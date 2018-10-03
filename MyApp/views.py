@@ -7,7 +7,9 @@ def index(request):
     return render(request,'login.html')
 
 def registration(request):
-    return render(request,'Registration.html')
+    reg = Registration.objects.all()
+
+    return render(request,'Registration.html',{'reg':reg})
 
 @csrf_exempt
 def loginUser(request):
@@ -48,4 +50,9 @@ def profile_update(request):
         return render(request,'dashboard.html',{'status':'Profile Update Successfully'})
     else:
         return render(request,'dashboard.html',context={'status':"Profile Not Update",'key':"error"})
+
+
+
+def material(request):
+    return render(request,'material.html')
 

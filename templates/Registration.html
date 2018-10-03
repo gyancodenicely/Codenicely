@@ -49,14 +49,23 @@
 {#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
       <div class="section"></div>
        <!--Form validation -->
+
         <script>
             function formValidation() {
                 var email = document.forms['formData']['email'];
+                 var demail = document.forms['formData']['demail'];
                 var pass1 = document.forms['formData']['password'];
                 var pass2 = document.forms['formData']['password2'];
                 var name = document.forms['formData']['name'];
                 var mobile = document.forms['formData']['mobile'];
-                var gender = document.forms['formData']['gender'];
+                var dublicate = document.forms['formData']['dublicate'];
+                var gender1 = document.getElementById("male").checked;
+                var gender2 = document.getElementById("female").checked;
+
+
+
+
+
 
 
                if(name.value == ""){
@@ -87,6 +96,11 @@
                         email.focus();
                         return false;
                     }
+                if(email.value == demail.value){
+                    window.alert("This Email Already Exist");
+                    email.focus();
+                    return false;
+                }
                 if(mobile.value==""){
                     window.alert("Please Enter Mobile No.");
                     mobile.focus();
@@ -95,6 +109,15 @@
                 if(mobile.value.length != 10){
                     window.alert("Enter Only 10 Digit Mobile No.");
                     mobile.focus();
+                    return false;
+                }
+                if(mobile.value == dublicate.value){
+                    window.alert("This Mobile Already Exist");
+                    mobile.focus();
+                    return false;
+                }
+                if((gender1=="")&&(gender2=="")){
+                    window.alert("Select either Male or Female");
                     return false;
                 }
 
@@ -157,7 +180,7 @@
                }
 
 
-        return true;
+              return true;
 
             }
         </script>
@@ -168,7 +191,7 @@
       <div class="container" style="opacity:0.7">
         <div class="z-depth-1 grey lighten-4 row" style="display: inline-block;width: 600px; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-          <form class="col s12" method="post"  action="/register_data_store/" name="formData" onsubmit="return formValidation()">
+          <form class="col s12" method="post"  action="/register_data_store/" name="formData" id="myform" onsubmit="return formValidation()">
 {#            {% csrf_token %}#}
             <div class='row'>
               <div class='col s12'>
@@ -198,9 +221,9 @@
 
               <div class="row">
                   <div class="input-field col s6">
-                      <input class='validate' type='radio' name='gender' id='male' value="male"   />Male
+                      <input class='validate' type='radio' name='gender'  value="male"  id="male"  />Male
                      <label for='male'></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <input class='validate' type='radio' name='gender' value="female" id='female'  />Female
+                       <input class='validate' type='radio' name='gender' value="female"  id="female" />Female
                      <label for='female'></label>
 
 
@@ -224,7 +247,10 @@
                 <label for='password'>Re-Enter password</label>
             </div>
             </div>
-
+              {% for x in reg %}
+                <input type="hidden" name="dublicate" value="{{ x.mobile }}">
+                <input type="hidden" name="demail" value="{{ x.email }}">
+            {% endfor %}
 
             <br />
             <center>
@@ -234,7 +260,10 @@
               </div>
             </center>
               {{ status }}
+
+
           </form>
+
         </div>
       </div>
 

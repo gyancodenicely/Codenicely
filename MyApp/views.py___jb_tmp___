@@ -102,7 +102,7 @@ def student_data_update(request):
     mobile = request.POST.get('mobile')
     gender = request.POST.get('gender')
     address = request.POST.get('address')
-    print(sid)
+    #print(sid)
     print(name)
     print(email)
     print(mobile)

@@ -96,7 +96,9 @@
             <center>
               <div class='row'>
                 <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' style="border-radius: 5px">Login<img style=" padding-top: 15px;padding-left: 10px;" src="{% static 'image/login.png' %}" width="35px" height="35px"></button>
-                <a href="/registration/">New User Register Here...!</a>
+                <span style="color: red;font-size: 15px;">{{ status }}</span>
+                  <a href="/registration/">New User Register Here...!</a>
+
               </div>
             </center>
           </form>

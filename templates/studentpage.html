@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Page</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+        td{
+            font-size: 15px;
+            font-weight: bold;
+            padding-left: 6px;
+            margin-top: 3px;
+        }
+        input{
+            padding: 10px;
+
+        }
+        .custom_button{
+            text-align: center;
+            padding-left: 10px;
+        }
+        input:focus,textarea:focus{
+            background-color: #9fcdff;
+        }
+        input::placeholder{
+            opacity: 0.5;
+        }
+
+    </style>
+</head>
+<body>
+ <div class="container">
+     <div class="row">
+
+         <div class=" col-lg-8 m-auto d-block">
+
+               {% if not student %}
+                <form action="/student_data_store/" method="post" class="bg-light" onsubmit="return formValidation()">
+                 <table class="table" align="center" width="500" border="2" style="margin-top: 50px;">
+                     <tr>
+                         <th colspan="2" class="text-center text-success" style="background-color: #9fcdff">Student Registration Page</th>
+                     </tr>
+                     <tr>
+                         <td>Student ID :</td>
+                         <td><input type="text" name="sid" id="sid" placeholder="Enter Student ID" autocomplete="off">
+                         <span class="text-danger font-weight-bold" id="sids"></span> </td>
+                     </tr>
+                     <tr>
+                         <td>Student Name :</td>
+                         <td><input type="text" name="name" id="name" placeholder="Enter Student name" autocomplete="off">
+                         <span class="text-danger font-weight-bold" id="names"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Student Email :</td>
+                         <td><input type="email" name="email" id="email" placeholder="Enter Student email" autocomplete="off">
+                         <span class="text-danger font-weight-bold" id="emails"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Student Mobile :</td>
+                         <td><input type="number" name="mobile" id="mobile" placeholder="Enter Student Mobile" autocomplete="off">
+                         <span class="text-danger font-weight-bold" id="mobiles"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Password :</td>
+                         <td><input type="password" name="password" id="password" placeholder="Enter password" >
+                         <span class="text-danger font-weight-bold" id="passwords"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Gender :</td>
+                         <td><input type="radio" name="gender" id="male" value="male">&nbsp;&nbsp;Male &nbsp;&nbsp;&nbsp;&nbsp;
+                             <input type="radio" name="gender" id="female" value="female">&nbsp;&nbsp;Female
+                         <span class="text-danger font-weight-bold" id="genders"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Student DOB :</td>
+                         <td><input type="date" name="dob" id="dob" placeholder="Enter Date Of Birth" min="1990-01-01" max="2015-01-01">
+                         <span class="text-danger font-weight-bold" id="dobs"></span></td>
+                     </tr>
+                     <tr>
+                         <td>Student Address:</td>
+                         <td><textarea cols="20" rows="3" name="address" id="address"></textarea>
+                         <span class="text-danger font-weight-bold" id="addr"></span></td>
+                     </tr>
+                 </table>
+                <div class="custom_button">
+                         <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                         <button type="reset" class="btn btn-info btn-lg">Reset</button>
+                   </div>
+                </form>
+                   {% else %}
+                   {% for y in student %}
+
+                <form action="/student_data_update/" method="post" class="bg-light" >
+                  <table class="table" align="center" width="500" border="2" style="margin-top: 50px;">
+                     <tr>
+                         <th colspan="2" class="text-center text-success" style="background-color: #9fcdff">Student Update Page</th>
+                     </tr>
+                     <tr>
+                         <td>Student ID :</td>
+                         <td style="font-size: 20px;font-weight: bold">{{ y.sid }}<input type="hidden" name="sid" id="sid" value="{{ y.sid }}" ></td>
+                     </tr>
+                     <tr>
+                         <td>Student Name :</td>
+                         <td><input type="text" name="name" id="name" value="{{ y.name }}"></td>
+                     </tr>
+                     <tr>
+                         <td>Student Email :</td>
+                         <td><input type="email" name="email" id="email" value="{{ y.email }}"></td>
+                     </tr>
+                     <tr>
+                         <td>Student Mobile :</td>
+                         <td><input type="number" name="mobile" id="mobile" value="{{ y.mobile }}"></td>
+                     </tr>
+                     <tr>
+                         <td>Password :</td>
+                         <td><input type="text" name="password" id="password" value="{{ y.password }}" ></td>
+                     </tr>
+                     <tr>
+                         <td>Gender :</td>
+                         <td><input type="text" name="gender" value="{{ y.gender }}">
+                         </td>
+                     </tr>
+
+                     <tr>
+                         <td>Student Address:</td>
+                         <td><textarea cols="20" rows="3" name="address" id="address">{{ y.address }}</textarea>
+
+                         </td>
+                     </tr>
+                 </table>
+                <div class="custom_button">
+                         <button type="submit" class="btn btn-primary btn-lg">Update</button>
+
+                   </div>
+                </form>
+                   {% endfor %}
+
+                 {% endif %}
+
+                   <span class="text-center text-success font-weight-bold ">{{ success }}</span>
+                   <span class="text-center text-danger">{{ status }}</span>
+
+         </div>
+
+     </div>
+ </div>
+ <script type="text/javascript">
+     function formValidation() {
+         var sid = document.getElementById('sid').value;
+         var name = document.getElementById('name').value;
+         var email = document.getElementById('email').value;
+         var mobile = document.getElementById('mobile').value;
+         var password = document.getElementById('password').value;
+         var gender1 = document.getElementById('male').checked;
+         var gender2 = document.getElementById('female').checked;
+         var dob = document.getElementById('dob').value;
+         var address = document.getElementById('address').value;
+
+         //Student Id Validation
+         if(sid == ""){
+             document.getElementById('sids').innerHTML="** Please Fill the Student ID";
+             return false;
+         }
+
+         //Student Name Validation
+         if(name == ""){
+             document.getElementById('names').innerHTML="** Please Fill The Student Name";
+             return false;
+         }
+         if((name.length < 3) || (name.length >20)){
+            document.getElementById('names').innerHTML="** Please Fill The Student Name Between 3 and 20";
+             return false;
+         }
+         if(!isNaN(name)){
+             document.getElementById('names').innerHTML=" ** Please Only Character..! ";
+             return false;
+         }
+         //Email Validation
+
+         if(email == ""){
+             document.getElementById('emails').innerHTML="** Please Fill the Student Email";
+             return false;
+         }
+         if(email.indexOf('@')<=0){
+             document.getElementById('emails').innerHTML="** Please Fill the Email Id Proper Formate @";
+             return false;
+         }
+         if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+          document.getElementById('emails').innerHTML="** Please Fill the Email Id Proper Formate .";
+             return false;
+         }
+
+
+
+
+         //Mobile no. validation
+         if(mobile == ""){
+             document.getElementById('mobiles').innerHTML="** Please Fill The Mobile Number";
+             return false;
+         }
+         if(mobile.length !=10){
+             document.getElementById('mobiles').innerHTML="** Please Enter Only 10 Digits";
+             return false;
+         }
+         if(isNaN(mobile)){
+             document.getElementById('mobiles').innerHTML="** Mobile Number Should Contains Only Digit";
+             return false;
+         }
+
+
+         //password Validation
+
+         if(password == "") {
+             document.getElementById('passwords').innerHTML = "** Please Fill the Student Password";
+             return false;
+         }
+         if((password.length < 6) || (password.length >20)){
+            document.getElementById('passwords').innerHTML="** Please Fill The Student password Between 6 and 20";
+             return false;
+         }
+         //Gender validation
+         if((gender1=="")&&(gender2=="")){
+             document.getElementById('genders').innerHTML="** Please select Either Male or Female";
+             return false;
+         }
+         //DOB Validation
+         if(dob==""){
+             document.getElementById('dobs').innerHTML = "** Please Fill the Student Date Of Birth";
+             return false;
+
+         }
+         //Address Validation
+         if(address==""){
+             document.getElementById('addr').innerHTML = "** Please Fill the Student Address";
+             return false;
+         }
+
+
+         return true;
+
+
+     }
+ </script>
+
+</body>
+</html>

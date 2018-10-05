@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>DashBoard</title>
     <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         table{
             margin-top: 50px;
@@ -20,19 +23,36 @@
 
 
         }
+        #formpage{
+            display: none;
+        }
         td{
             text-align: center;
         }
+        .custom_toggle{
+            margin-top: 30px;
+        }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#formbutton').click(function () {
+              $('#formpage').toggle();
+            })
+        })
+    </script>
 </head>
 <body bgcolor="#7fffd4">
- <div class="container">
+ <div class="container-fluid">
      <div class="row">
-       <div class="col-md-3 offset-md-3">
-           <form action="/profile_update/" method="post">
+       <div class="col-lg-4">
+       <div class="custom_toggle">
+         <button type="button" class="btn btn-success btn-large" name="formbutton" id="formbutton">Update Profile</button>
+         <a href="/studentpage/" class="btn btn-primary">Create Student Page</a>
+       </div>
+           <form action="/profile_update/" method="post" id="formpage">
 
                {% for x in data %}
-           <table  width="500" align="center"  border="2" >
+           <table  width="500" align="center"  border="0" >
                <tr>
                    <td class="updatefont" colspan="2" >Update Profile</td>
                </tr>
@@ -57,20 +77,61 @@
                     <td><input type="password" name="password" value="{{ x.password }}"></td>
                </tr>
                <tr>
-                   <td colspan="2"><button type="submit" class="btn btn-primary">Update</button></td>
+                   <td><button type="submit" class="btn btn-primary text-center">Update</button></td>
                </tr>
+
            </table>
                {% endfor %}
 
-{#       {{ status }}#}
-            {% if error %}
-              <p style="color: red;font-size: 25px;font-weight: bold">{{ status }}</p>
-                {% else %}
-                <p style="color: green;font-size: 25px;font-weight: bold">{{ status }}</p>
-          {% endif %}
            </form>
        </div>
-     </div>
- </div>
+
+            <div class="col-lg-6 ">
+                <table class="table table-bordered table-striped " >
+                    <tr>
+                        <th>SID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Password</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Address</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% for y in student %}
+                     <tr>
+                     <td>{{ y.sid }}</td>
+                     <td>{{ y.name }}</td>
+                     <td>{{ y.email }}</td>
+                     <td>{{ y.mobile }}</td>
+                     <td>{{ y.password }}</td>
+                     <td>{{ y.gender }}</td>
+                     <td>{{ y.dob }}</td>
+                     <td>{{ y.address }}</td>
+                     <td>
+
+                           <a href="/studentpage/?sid={{y.sid }}"><i class="material-icons" style="font-size: 70px;">update</i></a>
+
+                     </td>
+                     <td>
+                         <a href="/student_data_delete/?sid={{ y.sid }}"><i class="material-icons" style="font-size: 70px;">delete_forever</i></a>
+                     </td>
+
+                     </tr>
+
+
+                    {% endfor %}
+
+                        {{ status }}
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
 </body>
 </html>

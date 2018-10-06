@@ -2,117 +2,235 @@
 
 <head>
     {% load staticfiles %}
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
-    }
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
 
-    main {
-      flex: 1 0 auto;
-    }
+        main {
+            flex: 1 0 auto;
+        }
 
-    body {
-      background-image: url("{% static 'image/theme-9.jpg' %}");
-        background-size: cover;
-        overflow: hidden;
-    }
+        body {
+            background-image: url("{% static 'image/thm.jpg' %}");
+            background-size: cover;
 
-    .input-field input[type=number]:focus + label,
-    .input-field input[type=password]:focus + label {
-      color: #e91e63;
-    }
+        }
+
+        .input-field input[type=number]:focus + label,
+        .input-field input[type=password]:focus + label {
+            color: #e91e63;
+        }
 
 
-    .input-field input[type=number]:focus,
-    .input-field input[type=password]:focus {
-      border-bottom: 2px solid #e91e63;
-      box-shadow: none;
-    }
-  </style>
+        .input-field input[type=number]:focus,
+        .input-field input[type=password]:focus {
+            border-bottom: 2px solid #e91e63;
+            box-shadow: none;
+        }
+        .login label{
+            font-size: 20px;
+            color: #00b0ff;
+        }
+        .login input{
+            font-size: 20px;
+            color: #7cb342;
+        }
+
+    </style>
 </head>
 
 <body>
-  <div class="section"></div>
-  <main>
-    <center>
-{#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
-      <div class="section"></div>
-       <!--Form validation -->
-        <script>
-            function formValidation() {
-                var mobile = document.forms['formData']['mobile']
-                var pass1 = document.forms['formData']['password']
 
 
-                if(mobile.value == "") {
-                    window.alert("Please Enter a Valid mobile");
-                    mobile.focus();
-                    return false;
-                }
+<center>
+    {#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
+    <div class="section"></div>
+    <!--Form validation -->
+    <!--<script>
+        function formValidation() {
+            var mobile = document.forms['formData']['mobile']
+            var pass1 = document.forms['formData']['password']
 
-                if(pass1.value == "" ){
-                    window.alert("Please Enter a Password");
-                    pass1.focus();
-                    return false;
-                }
+
+            if(mobile.value == "") {
+                document.getElementById('mob').innerHTML="**Please Fill The ID Field...!"
+                mobile.focus();
+                return false;
+            }
+
+            if(pass1.value == "" ){
+                document.getElementById('pass').innerHTML="**Please Fill The Password Field...!";
+                pass1.focus();
+                return false;
+            }
+
+            return true;
+
+        }
+    </script>-->
+    <script type="text/javascript">
+        function formValidation() {
+            var user_id = document.getElementById('mobile').value;
+            var user_pass = document.getElementById('password').value;
+            if(user_id ==""){
+                return false;
+            }
+            if(user_pass == ""){
+                return false;
+            }
+
 
                 return true;
 
-            }
-        </script>
+
+        }
+    </script>
+
+    <div class="container " style="opacity: 0.7;padding-top: 120px;">
+        <div class="col s12 l4 offset-l4 z-depth-1 grey lighten-4 row login" style="display: inline-block;border-radius: 10px; width: 600px; border: 1px solid #EEE;">
+
+            <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()"><!--onsubmit="return formValidation()"-->
+
+                 <font face="chiller" size="10" color="green">
+                    <span class="flow-text">Please, login into your account</span>
+                </font>
+
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">phone</i>
+                        <input class='validate' type='number' name='mobile' id='mobile' />
+                        <label for='mobile'>Enter your Mobile</label>
+                        <span class=" h4" id="mob"></span>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <div class='input-field col s12'>
+                        <i class="material-icons prefix">lock</i>
+                        <input class='validate' type='password' name='password' id='password' />
+                        <label for='password'>Enter your password</label>
+                        <span class="  h4" id="pass"></span>
+                    </div>
+                </div>
 
 
-      <div class="section"></div>
-
-      <div class="container" style="opacity: 0.7">
-        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block;width: 500px; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-
-          <form class="col s12" action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
-            <div class='row'>
-              <div class='col s12'>
-              </div>
-            </div>
-            <h5 class="indigo-text">Please, login into your account</h5>
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='number' name='mobile' id='mobile' />
-                <label for='mobile'>Enter your Mobile</label>
-              </div>
-            </div>
-
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' />
-                <label for='password'>Enter your password</label>
-              </div>
-            </div>
-
-
-            <br />
-            <center>
-              <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' style="border-radius: 5px">Login<img style=" padding-top: 15px;padding-left: 10px;" src="{% static 'image/login.png' %}" width="35px" height="35px"></button>
-                <span style="color: red;font-size: 15px;">{{ status }}</span>
-                  <a href="/registration/">New User Register Here...!</a>
-
-              </div>
-            </center>
-          </form>
+                <br />
+                <center>
+                    <div class='row'>
+                        <button type='submit' name='btn_login' id="submit" onclick="return checkToast()"  class='btn waves-effect waves-light btn-large c' style="border-radius: 5px;margin-left:40%;font-size: 20px;">Login<i class="material-icons right ">send</i></button>
+                    </div>
+                    <div>Don't have an Account ?<a href="/registration/"><span class="h5">Signup Now</span></a></div>
+                </center>
+            </form>
+                       <input type="hidden" value="{{ status }}" name="status" id="status">
         </div>
-      </div>
+    </div>
 
-    </center>
 
-    <div class="section"></div>
-    <div class="section"></div>
-  </main>
+</center>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+
+    function  checkToast() {
+        var status = document.getElementById('status').value;
+
+        if(status ==""){
+            Materialize.toast('ID And Password Wrong!!', 3000, 'rounded');
+            return true;
+
+        }else{
+         return false;
+        }
+
+    }
+</script>
+
+
+
+
+<!--<script type="text/javascript">
+    $(document).ready(function () {
+        $('#mob').hide();
+        $('#pass').hide();
+        var user_id = true;
+        var user_pass=true;
+
+        $('#mobile').keyup(function () {
+            userid_check();
+        });
+        function userid_check() {
+            var mobile_data = $('#mobile').val();
+            if(mobile_data.length == " "){
+                $('#mob').show();
+                $('#mob').html("** Please Fill The Mobile No.");
+                $('#mob').focus();
+                $('#mob').css("color",'red')
+                user_id = false;
+                return false;
+            }else{
+                $('#mob').hide();
+            }
+            if(mobile_data.length !=10){
+                $('#mob').show();
+                $('#mob').html("** Please Enter 10 Digit Mobile No.");
+                $('#mob').focus();
+                $('#mob').css("color",'red')
+                user_id = false;
+                return false;
+            }else{
+                $('#mob').hide();
+            }
+
+        }
+        $('#password').keyup(function () {
+            userpass_check();
+        });
+        function userpass_check() {
+            var pass_data=$('#password').val();
+            if(pass_data.length ==" "){
+                $('#pass').show();
+                $('#pass').html("**Please Fill The Password");
+                $('#pass').focus();
+                $('#pass').css('color','red');
+                user_pass=false;
+                return false;
+            }else{
+                $('#pass').hide();
+            }
+        }
+        $('#submit').click(function () {
+            user_id = true;
+            user_pass=true;
+            userid_check();
+            userpass_check();
+            if((user_id == true)){
+                return true;
+            }else{
+                return false;
+            }
+        })
+
+
+    })
+</script>-->
+
 </body>
 
 </html>

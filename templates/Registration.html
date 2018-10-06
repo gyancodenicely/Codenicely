@@ -3,8 +3,9 @@
 
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <style>
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
+   <style>
     body {
       display: flex;
       min-height: 100vh;
@@ -16,9 +17,9 @@
     }
 
     body {
-      background-image: url("{% static 'image/theme-9.jpg' %}");
+        background-image: url("{% static 'image/thm.jpg' %}");
         background-size: cover;
-        overflow: hidden;
+
     }
 
     .input-field input[type=date]:focus + label,
@@ -39,6 +40,17 @@
       border-bottom: 2px solid #e91e63;
       box-shadow: none;
     }
+    .registration label{
+         font-size: 20px;
+         color: #00b0ff;
+     }
+    .registration input{
+         font-size: 20px;
+         color: black;
+        font-weight: bold !important;
+    }
+
+
   </style>
 </head>
 
@@ -185,18 +197,15 @@
             }
         </script>
 
-      <h5 class="indigo-text">Please, login into your account</h5>
-      <div class="section"></div>
 
       <div class="container" style="opacity:0.7">
-        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block;width: 600px; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+        <div class="col s12 l4 offset-l4 z-depth-1 grey lighten-4 row  registration" style="display: inline-block;width: 600px; border: 1px solid #EEE;">
 
           <form class="col s12" method="post"  action="/register_data_store/" name="formData" id="myform" onsubmit="return formValidation()">
 {#            {% csrf_token %}#}
-            <div class='row'>
-              <div class='col s12'>
-              </div>
-            </div>
+           <div class="card-panel #bbdefb blue lighten-4">
+                <span class="flow-text center-align ">Registration Here...!</span>
+           </div>
            <div class='row'>
               <div class='input-field col s12'>
                 <input class='validate' type='text' name='name' id='name' />
@@ -220,7 +229,7 @@
 
 
               <div class="row">
-                  <div class="input-field col s6">
+                  <div class="input-field col s4">
                       <input class='validate' type='radio' name='gender'  value="male"  id="male"  />Male
                      <label for='male'></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        <input class='validate' type='radio' name='gender' value="female"  id="female" />Female
@@ -255,10 +264,9 @@
             <br />
             <center>
               <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo ' style="border-radius: 10px;">Registration</button>
-                <a href="/login/" style="position: relative;right: 10px;">GoTO Login Page</a>
-              </div>
-            </center>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo ' style="border-radius: 10px;font-size: 20px;">Registration
+                <i class="material-icons right">send</i> </button>
+
               {{ status }}
 
 
@@ -269,8 +277,7 @@
 
     </center>
 
-    <div class="section"></div>
-    <div class="section"></div>
+
   </main>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>

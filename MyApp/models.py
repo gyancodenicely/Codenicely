@@ -12,8 +12,8 @@ class Registration(models.Model):
 class StudentData(models.Model):
     sid = models.IntegerField(default=5,primary_key=True)
     name = models.CharField(max_length=20)
-    email = models.EmailField(unique=True)
-    mobile = models.IntegerField(unique=True)
+    email = models.EmailField()
+    mobile = models.IntegerField()
     password = models.CharField(max_length=20)
     gender = models.CharField(max_length=10)
     dob = models.DateField()

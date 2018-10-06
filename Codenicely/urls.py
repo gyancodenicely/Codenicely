@@ -20,7 +20,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'login/$',views.index),
+    url(r'login/$',views.login),
     url(r'^loginUser/$',views.loginUser),
     url(r'^registration/$',views.registration),
     url(r'^register_data_store/$',views.register_data_store),
@@ -31,4 +31,7 @@ urlpatterns = [
 
     url(r'^student_data_update/$',views.student_data_update),
     url(r'^student_data_delete/$',views.student_data_delete),
+
+
+    url(r'^$',views.textExample),
 ]

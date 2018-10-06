@@ -44,9 +44,9 @@
 <body bgcolor="#7fffd4">
  <div class="container-fluid">
      <div class="row">
-       <div class="col-lg-4">
+       <div class="col-lg-3">
        <div class="custom_toggle">
-         <button type="button" class="btn btn-success btn-large" name="formbutton" id="formbutton">Update Profile</button>
+         <button type="button" class="btn btn-success btn-large" name="formbutton" id="formbutton"> Update Profile</button>
          <a href="/studentpage/" class="btn btn-primary">Create Student Page</a>
        </div>
            <form action="/profile_update/" method="post" id="formpage">
@@ -112,11 +112,11 @@
                      <td>{{ y.address }}</td>
                      <td>
 
-                           <a href="/studentpage/?sid={{y.sid }}"><i class="material-icons" style="font-size: 70px;">update</i></a>
+                           <a href="/studentpage/?sid={{y.sid }}" class="btn-floating pulse"><i class="material-icons" style="font-size: 40px;">edit</i></a>
 
                      </td>
                      <td>
-                         <a href="/student_data_delete/?sid={{ y.sid }}"><i class="material-icons" style="font-size: 70px;">delete_forever</i></a>
+                         <a href="/student_data_delete/?sid={{ y.sid }}" onclick="return confirm('Are You sure  Delete Record..?')"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
                      </td>
 
                      </tr>
@@ -124,9 +124,19 @@
 
                     {% endfor %}
 
+
                         {{ status }}
+{#                <script type="text/javascript">#}
+{#                    function clicked() {#}
+{#                        #}
+{#                    }#}
+{#                </script>#}
                 </table>
             </div>
+     <div class="col-lg-2">
+         <a href="#" class="btn "><span>Logout</span>
+         <i class="material-icons">lock_open</i> </a>
+     </div>
         </div>
     </div>
 

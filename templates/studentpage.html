@@ -100,6 +100,7 @@
                    {% else %}
                    {% for y in student %}
 
+
                 <form action="/student_data_update/" method="post" class="bg-light" >
                   <table class="table" align="center" width="500" border="2" style="margin-top: 50px;">
                      <tr>
@@ -108,27 +109,32 @@
                      <tr>
                          <td>Student ID :</td>
                          <td style="font-size: 20px;font-weight: bold">{{ y.sid }}<input type="hidden" name="sid" id="sid" value="{{ y.sid }}" ></td>
+                          </td>
                      </tr>
                      <tr>
                          <td>Student Name :</td>
-                         <td><input type="text" name="name" id="name" value="{{ y.name }}"></td>
+                         <td><input type="text" name="name" id="name" value="{{ y.name }}">
+                         </td>
                      </tr>
                      <tr>
                          <td>Student Email :</td>
-                         <td><input type="email" name="email" id="email" value="{{ y.email }}"></td>
+                         <td><input type="email" name="email" id="email" value="{{ y.email }}">
+                            </td>
                      </tr>
                      <tr>
                          <td>Student Mobile :</td>
-                         <td><input type="number" name="mobile" id="mobile" value="{{ y.mobile }}"></td>
+                         <td><input type="number" name="mobile" id="mobile" value="{{ y.mobile }}">
+                         </td>
                      </tr>
                      <tr>
                          <td>Password :</td>
-                         <td><input type="text" name="password" id="password" value="{{ y.password }}" ></td>
+                         <td><input type="text" name="password" id="password" value="{{ y.password }}" >
+                         </td>
                      </tr>
                      <tr>
                          <td>Gender :</td>
-                         <td><input type="text" name="gender" value="{{ y.gender }}">
-                         </td>
+                         <td><input type="text" name="gender" id="genderdata" value="{{ y.gender }}">
+                         <span class="text-danger font-weight-bold" id="gender1"></span></td>
                      </tr>
 
                      <tr>
@@ -147,7 +153,7 @@
 
                  {% endif %}
 
-                   <span class="text-center text-success font-weight-bold ">{{ success }}</span>
+                   <span class="text-center text-success font-weight-bold ">{{ msg }}</span>
                    <span class="text-center text-danger">{{ status }}</span>
 
          </div>
@@ -165,6 +171,8 @@
          var gender2 = document.getElementById('female').checked;
          var dob = document.getElementById('dob').value;
          var address = document.getElementById('address').value;
+
+
 
          //Student Id Validation
          if(sid == ""){
@@ -233,6 +241,11 @@
              document.getElementById('genders').innerHTML="** Please select Either Male or Female";
              return false;
          }
+         /*if((genderdata != "male") || (genderdata!="female"))
+         {
+           document.getElementById('gender1').innerHTML="** Please select Either Male or Female";
+             return false;
+         }*/
          //DOB Validation
          if(dob==""){
              document.getElementById('dobs').innerHTML = "** Please Fill the Student Date Of Birth";

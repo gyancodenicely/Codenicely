@@ -5,44 +5,68 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
-    <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
+{#    <style>#}
+{##}
+{#       body {#}
+{#            display: flex;#}
+{#            min-height: 100vh;#}
+{#            flex-direction: column;#}
+{#        }#}
+{#        main {#}
+{#            flex: 1 0 auto;#}
+{#        }#}
+{#        body {#}
+{#            background-image: url("{% static 'image/thm.jpg' %}");#}
+{#            background-size: cover;#}
+{#        }#}
+{#        .input-field input[type=number]:focus + label,#}
+{#        .input-field input[type=password]:focus + label {#}
+{#            color: #e91e63;#}
+{#        }#}
+{#        .input-field input[type=number]:focus,#}
+{#        .input-field input[type=password]:focus {#}
+{#            border-bottom: 2px solid #e91e63;#}
+{#            box-shadow: none;#}
+{#        }#}
+{#        .login label{#}
+{#            font-size: 20px;#}
+{#            color: #00b0ff;#}
+{#        }#}
+{#        .login input{#}
+{#            font-size: 20px;#}
+{#            color: #7cb342;#}
+{#        }#}
+{##}
+{#    </style>#}
 
-        main {
-            flex: 1 0 auto;
-        }
 
-        body {
-            background-image: url("{% static 'image/thm.jpg' %}");
-            background-size: cover;
+<style>
 
-        }
-
-        .input-field input[type=number]:focus + label,
-        .input-field input[type=password]:focus + label {
-            color: #e91e63;
-        }
-
-
-        .input-field input[type=number]:focus,
-        .input-field input[type=password]:focus {
-            border-bottom: 2px solid #e91e63;
-            box-shadow: none;
-        }
-        .login label{
-            font-size: 20px;
-            color: #00b0ff;
+    .login{
+        margin: 100px;
+    }
+    body{
+        background-color: honeydew;
+    }
+    .login label{
+            font-size: 16px;
+            color: #ccc;
         }
         .login input{
-            font-size: 20px;
-            color: #7cb342;
-        }
+            font-size: 20px !important;
 
-    </style>
+        }
+        .login button:hover{
+            padding: 0px 40px;
+        }
+      input::placeholder{
+          opacity: 0.5;
+          color: black;
+
+
+      }
+
+</style>
 </head>
 
 <body>
@@ -79,9 +103,12 @@
             var user_id = document.getElementById('mobile').value;
             var user_pass = document.getElementById('password').value;
             if(user_id ==""){
+                Materialize.toast('Fill The Mobile No.', 2000)
+               //    user_id.focus();
                 return false;
             }
             if(user_pass == ""){
+                Materialize.toast('Fill The Password.', 2000)
                 return false;
             }
 
@@ -90,50 +117,46 @@
 
 
         }
+        //<form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
     </script>
+   <div class="container">
+       <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
+       <div class="row login">
+           <div class="col s12 l6 offset-l1">
+               <div class="card" style="width: 500px;">
+                   <div class="card-content green white-text center-align">
+                       <h3>Login Here....!</h3>
+                   </div>
+                   <div class="card-content">
+                       <div class="form-field">
 
-    <div class="container " style="opacity: 0.7;padding-top: 120px;">
-        <div class="col s12 l4 offset-l4 z-depth-1 grey lighten-4 row login" style="display: inline-block;border-radius: 10px; width: 600px; border: 1px solid #EEE;">
+                           <i class="material-icons left prefix">phone</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="Enter Mobile No.">
+                           <span id="mob" class="red-text left-align"></span>
+                       </div><br>
+                       <div class="form-field">
 
-            <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()"><!--onsubmit="return formValidation()"-->
+                           <i class="material-icons left prefix">lock</i>
+                            <input type="password" id="password" name="password" placeholder="Enter Password">
+                       </div>
+                       <div class="form-field left-align">
+                           <input type="checkbox" id="remember" >
+                           <label for="remember">Remember Me!</label>
+                       </div>
+                       <div class="form-field center-align">
+                           <button class="btn-large btn-success " style="border-radius: 5px;"><span>Login</span><i class="material-icons right">send</i> </button>
+                       </div>
+                       <div class="card-content red-text center-align">
+                           <h5>{{ status }}</h5>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
 
-                 <font face="chiller" size="10" color="green">
-                    <span class="flow-text">Please, login into your account</span>
-                </font>
+       </form>
 
-                <div class='row'>
-                    <div class='input-field col s12'>
-                        <i class="material-icons prefix">phone</i>
-                        <input class='validate' type='number' name='mobile' id='mobile' />
-                        <label for='mobile'>Enter your Mobile</label>
-                        <span class=" h4" id="mob"></span>
-                    </div>
-                </div>
-
-                <div class='row'>
-                    <div class='input-field col s12'>
-                        <i class="material-icons prefix">lock</i>
-                        <input class='validate' type='password' name='password' id='password' />
-                        <label for='password'>Enter your password</label>
-                        <span class="  h4" id="pass"></span>
-                    </div>
-                </div>
-
-
-                <br />
-                <center>
-                    <div class='row'>
-                        <button type='submit' name='btn_login' id="submit" onclick="return checkToast()"  class='btn waves-effect waves-light btn-large c' style="border-radius: 5px;margin-left:40%;font-size: 20px;">Login<i class="material-icons right ">send</i></button>
-                    </div>
-                    <div>Don't have an Account ?<a href="/registration/"><span class="h5">Signup Now</span></a></div>
-                </center>
-            </form>
-                       <input type="hidden" value="{{ status }}" name="status" id="status">
-        </div>
-    </div>
-
-
-</center>
+   </div>
 
 
 
@@ -146,21 +169,7 @@
 
 
 
-<script type="text/javascript">
 
-    function  checkToast() {
-        var status = document.getElementById('status').value;
-
-        if(status ==""){
-            Materialize.toast('ID And Password Wrong!!', 3000, 'rounded');
-            return true;
-
-        }else{
-         return false;
-        }
-
-    }
-</script>
 
 
 

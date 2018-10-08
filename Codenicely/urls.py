@@ -23,15 +23,18 @@ urlpatterns = [
     url(r'login/$',views.login),
     url(r'^loginUser/$',views.loginUser),
     url(r'^registration/$',views.registration),
+    url(r'^dashboard/$',views.dashboard),
     url(r'^register_data_store/$',views.register_data_store),
     url(r'^profile_update/$',views.profile_update),
     url(r'^material/$',views.material),
     url(r'^studentpage/$',views.studentpage),
     url(r'^student_data_store/$',views.student_data_store),
-
     url(r'^student_data_update/$',views.student_data_update),
     url(r'^student_data_delete/$',views.student_data_delete),
 
 
-    url(r'^$',views.textExample),
+    url(r'^logout/$',views.logout),
+
+
+
 ]

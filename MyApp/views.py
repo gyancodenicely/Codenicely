@@ -13,22 +13,29 @@ def registration(request):
     reg = Registration.objects.all()
     return render(request,'Registration.html',{'reg':reg})
 
+def dashboard(request):
+    return  HttpResponseRedirect('/dashboard/')
+
 @csrf_exempt
 def loginUser(request):
-    mobile = request.POST.get('mobile')
-    password = request.POST.get('password')
-    print(mobile)
-    print(password)
-    login = Registration.objects.filter(mobile=mobile,password=password)
-    student = StudentData.objects.all()
-    print(login)
-    if login:
-        request.session['mobile']=mobile
-        data = Registration.objects.filter(mobile=mobile).all()
-        return render(request,'dashboard.html',{"data":data,"student":student,})
+    if request.method == "POST":
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        # print(mobile)
+        # print(password)
+        login = Registration.objects.filter(mobile=mobile, password=password)
+        student = StudentData.objects.all()
+        # print(login)
+        if login:
+            request.session['mobile'] = mobile
+            data = Registration.objects.filter(mobile=mobile).all()
+            return render(request, 'dashboard.html', {"data": data, "student": student, })
+        else:
+            #return HttpResponseRedirect('/login/')
+            return render(request, 'login.html', {'status': "Wrong ID And Password......!"})
     else:
-        return HttpResponseRedirect('/login/')
-        #return render(request,'login.html',{'status':"loginError"})
+        return HttpResponseRedirect("/login/")
+
 
 
 
@@ -52,16 +59,18 @@ def register_data_store(request):
 
 @csrf_exempt
 def profile_update(request):
+    student = StudentData.objects.all()
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
         Registration.objects.filter(mobile=mobile).update(name=name,email=email,password=password)
-        student = StudentData.objects.all()
+
         return render(request,'dashboard.html',{'student':student})
     else:
         return render(request, 'dashboard.html', {'student': student})
+
 
 
 def material(request):
@@ -143,11 +152,17 @@ def student_data_delete(request):
     return render(request,'dashboard.html',{'student':student})
 
 
+@csrf_exempt
+def logout(request):
+    try:
+        del request.session['mobile']
+        return HttpResponseRedirect('/login/')
+    except KeyError:
+        return HttpResponseRedirect('/login/')
 
 
 
 
 
-#test Example for materialize
-def textExample(request):
-    return render(request,'index.html')
+
+

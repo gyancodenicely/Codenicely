@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>DashBoard</title>
-    <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <style>
         table{
-            margin-top: 50px;
+            margin-top: 20px;
             border-collapse: collapse;
 
         }
@@ -26,11 +27,31 @@
         #formpage{
             display: none;
         }
-        td{
-            text-align: center;
-        }
+        tr th td{
+            text-align: center;}
+
         .custom_toggle{
             margin-top: 30px;
+        }
+        td{
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .custom{
+            border: 2px solid;
+            background-color: green;
+            color: white;
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .profile label{
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 5px;
+            color: black;
         }
     </style>
     <script type="text/javascript">
@@ -41,55 +62,80 @@
         })
     </script>
 </head>
-<body bgcolor="#7fffd4">
+<body>
  <div class="container-fluid">
+     <div class="custom">
+         {% for z in data %}
+               <span style=" position: relative;top: 5px;font-weight: bold;font-size: 20px;">
+                 <span>User Name :  </span><span class="flow-text">{{ z.name }}</span>
+               </span>
+
+         {% endfor %}
+          <span style="float:left;padding: 7px;">
+           <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span><i class="material-icons right">send</i> </a>
+
+       </span>
+         <span style="float: right;padding: 7px; ">
+           <a href="/logout/" class="btn large " style="border-radius: 10px;"><span>Logout</span><i class="material-icons right">lock</i> </a>
+         </span>
+     </div>
      <div class="row">
-       <div class="col-lg-4">
-       <div class="custom_toggle">
-         <button type="button" class="btn btn-success btn-large" name="formbutton" id="formbutton"> Update Profile</button>
-         <a href="/studentpage/" class="btn btn-primary">Create Student Page</a>
-         <a href="/logout/" class="btn btn-danger">Logout</a>
-       </div>
+       <div class="col s12 l3 m3" style="margin-top: 30px;">
+
+       <span class="custom_toggle">
+         <button type="button" class="btn waves-effect" style="border-radius: 10px;" name="formbutton" id="formbutton"> Update Login Profile</button>
+        </span>
+
+
            <form action="/profile_update/" method="post" id="formpage">
 
                {% for x in data %}
-           <table  width="500" align="center"  border="0" >
-               <tr>
-                   <td class="updatefont" colspan="2" >Update Profile</td>
-               </tr>
-               <tr>
-                   <td class="updatefont" colspan="2" >{{ x.mobile }}</td>
-               </tr>
-               <tr>
-                   <td>Name :</td>
-                   <td><input type="text" name="name" value="{{ x.name }}"></td>
-               </tr>
-               <tr>
-                   <td>Email :</td>
-                   <td><input type="email" name="email" value="{{ x.email }}"></td>
-               </tr>
-               <tr>
+                <div class="card profile">
+                   <div class="card-content green white-text center-align">
+                           <h4>Update Login User..!</h4>
+                   </div>
+                   <div class='row '>
+                              <div class='input-field'>
+                                  <label for="mobile">Mobile :</label>
+                                  <span style="font-size: 20px;font-weight: bold;margin-left: 110px;position: relative;top: 12px;">{{ x.mobile }}</span>
+                                  <input  type='hidden' name='mobile' value="{{ x.mobile }}" id="mobile" />
 
-                   <td><input type="hidden" name="mobile" value="{{ x.mobile }}"></td>
-               </tr>
+                              </div>
+                   </div>
+                   <div class='row '>
+                              <div class='input-field'>
+                                  <label for="name">Name  :</label>
+                                  <input  type='text' name='name' value="{{ x.name }}" style="width: 320px;margin-left: 110px;font-size: 20px; " />
+                              </div>
+                   </div>
+                   <div class='row '>
+                              <div class='input-field'>
+                                  <label for="email">Email  :</label>
+                                  <input  type='email' name='email' value="{{ x.email }}" style="width: 320px;margin-left: 110px;font-size: 20px; " />
+                              </div>
+                   </div>
+                   <div class='row '>
+                              <div class='input-field'>
+                                  <label for="password">Password :</label>
+                                  <input  type='text' name='password' value="{{ x.password }}" style="width: 320px;margin-left: 110px;font-size: 20px; "/>
+                              </div>
+                   </div>
+                   <div class='row ' align="center" style="position: relative;bottom: 10px;">
+                              <button type="submit" class="btn waves-effect waves-light"><span>Update</span>
+                              <i class="material-icons right">send</i> </button>
+                   </div>
 
-               <tr>
-                   <td>Password :</td>
-                    <td><input type="password" name="password" value="{{ x.password }}"></td>
-               </tr>
-               <tr>
-                   <td><button type="submit" class="btn btn-primary text-center">Update</button></td>
-               </tr>
-
-           </table>
+                </div>
                {% endfor %}
 
            </form>
        </div>
 
-            <div class="col-lg-6 ">
-                <table class="table table-bordered table-striped " >
-                    <tr>
+            <div class="col s12 l9 m9">
+                <table class="bordered highlight" >
+                    <thead>
+                      <tr>
+
                         <th>SID</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -99,9 +145,10 @@
                         <th>DOB</th>
                         <th>Address</th>
                         <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
+                          <th>Delete</th></tr>
+                    </thead>
                     {% for y in student %}
+                     <tbody>
                      <tr>
                      <td>{{ y.sid }}</td>
                      <td>{{ y.name }}</td>
@@ -113,14 +160,14 @@
                      <td>{{ y.address }}</td>
                      <td>
 
-                           <a href="/studentpage/?sid={{y.sid }}" class="btn-floating pulse"><i class="material-icons" style="font-size: 40px;">edit</i></a>
+                           <a href="/studentpage/?sid={{y.sid }}"  class="green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
 
                      </td>
                      <td>
-                         <a href="/student_data_delete/?sid={{ y.sid }}" onclick="return confirm('Are You sure  Delete Record..?')"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
+                         <a href="/student_data_delete/?sid={{ y.sid }}" onclick="return confirm('Are You sure  Delete Record..?')" class="red-text"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
                      </td>
-
                      </tr>
+                     </tbody>
 
 
                     {% endfor %}

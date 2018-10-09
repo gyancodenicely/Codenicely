@@ -3,65 +3,45 @@
 
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-  <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
-   <style>
-    body {
-      display: flex;
-      min-height: 100vh;
-      flex-direction: column;
+      <!--Import materialize.css-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+<style>
+    body{
+        background-color: honeydew;
+    }
+    .register{
+        margin: 0px auto;
+        width: 600px;
+        margin-top: 100px;
     }
 
-    main {
-      flex: 1 0 auto;
+    .custom{
+        width: 500px;
+        margin-left: 25px;
+        font-size: 20px;
     }
-
-    body {
-        background-image: url("{% static 'image/thm.jpg' %}");
-        background-size: cover;
+    .register label{
+        font-size: 15px !important;
 
     }
-
-    .input-field input[type=date]:focus + label,
-    .input-field input[type=number]:focus + label,
-    .input-field input[type=text]:focus + label,
-    .input-field input[type=radio]:focus + label,
-    .input-field input[type=email]:focus + label,
-    .input-field input[type=password]:focus + label {
-      color: #e91e63;
-    }
-
-    .input-field input[type=date]:focus,
-    .input-field input[type=text]:focus,
-    .input-field input[type=number]:focus,
-    .input-field input[type=radio]:focus,
-    .input-field input[type=email]:focus,
-    .input-field input[type=password]:focus {
-      border-bottom: 2px solid #e91e63;
-      box-shadow: none;
-    }
-    .registration label{
-         font-size: 20px;
-         color: #00b0ff;
-     }
-    .registration input{
-         font-size: 20px;
-         color: black;
-        font-weight: bold !important;
+    .register input{
+        font-size: 20px !important;
     }
 
 
-  </style>
+
+
+</style>
 </head>
 
 <body>
-  <div class="section"></div>
-  <main>
-    <center>
-{#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
-      <div class="section"></div>
-       <!--Form validation -->
 
+{#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
+            <!--Form validation -->
         <script>
             function formValidation() {
                 var email = document.forms['formData']['email'];
@@ -81,55 +61,56 @@
 
 
                if(name.value == ""){
-                    window.alert("Please Enter Name ");
+                    Materialize.toast('Fill The Name', 2000,'rounded');
                     name.focus();
                     return false;
                 }
                 else if(name.value.length < 4 || name.value.length >20)
                 {
-                    window.alert("Name must be Enter atleast 4 character");
+                   // window.alert("Name must be Enter atleast 4 character");
+                    Materialize.toast('Name must be Enter atleast 4 character', 2000,'rounded');
                     name.focus();
                     return false;
                 }
                 if(email.value == ""){
-                    window.alert("Please Enter a Valid Email");
+                    Materialize.toast('Please Enter a Valid Email', 2000,'rounded');
                     email.focus();
                     return false;
                 }
                 if(email.value.indexOf("@",0)<0){
-                       window.alert("Please enter a valid e-mail address.");
+                       Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
                         email.focus();
                         return false;
                     }
 
                 if (email.value.indexOf(".", 0) < 0)
                     {
-                        window.alert("Please enter a valid e-mail address.");
+                        Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
                         email.focus();
                         return false;
                     }
                 if(email.value == demail.value){
-                    window.alert("This Email Already Exist");
+                     Materialize.toast('This Email Already Exist', 2000,'rounded');
                     email.focus();
                     return false;
                 }
                 if(mobile.value==""){
-                    window.alert("Please Enter Mobile No.");
+                    Materialize.toast('Please Enter Mobile No.', 2000,'rounded');
                     mobile.focus();
                     return false;
                 }
                 if(mobile.value.length != 10){
-                    window.alert("Enter Only 10 Digit Mobile No.");
+                    Materialize.toast('Enter Only 10 Digit Mobile No.', 2000,'rounded');
                     mobile.focus();
                     return false;
                 }
                 if(mobile.value == dublicate.value){
-                    window.alert("This Mobile Already Exist");
+                    Materialize.toast('This Mobile Already Exist',2000,'rounded');
                     mobile.focus();
                     return false;
                 }
                 if((gender1=="")&&(gender2=="")){
-                    window.alert("Select either Male or Female");
+                    Materialize.toast('Select either Male or Female', 2000,'rounded');
                     return false;
                 }
 
@@ -166,13 +147,13 @@
                 var digit = /[0-9]/g;
                 var special = /[@$,<>#:?_*&;]/g;
                 if(pass1.value == "") {
-                    window.alert("Enter a Password...!");
+                    Materialize.toast('Enter a Password...!', 2000,'rounded');
                     pass1.focus();
                     return false;
                 }
 
               if(pass1.value != "" && pass1.value.length < 8){
-                  alert("Enter Password atleast 8 Character");
+                  Materialize.toast('Enter Password atleast 8 Character', 2000,'rounded');
                   pass1.focus();
                   return false;
                   }
@@ -181,12 +162,12 @@
 
 
                if(pass2.value==""){
-                   window.alert("Re-Enter Password...!");
+                   Materialize.toast('Re-Enter Password...!', 2000,'rounded');
                    pass2.focus();
                    return false;
                }
                if(pass1.value != pass2.value){
-                   window.alert("Not Match Re-Enter Password...!");
+                   Materialize.toast('Not Match Re-Enter Password...!', 2000,'rounded');
                    pass2.focus();
                    return false;
                }
@@ -198,87 +179,93 @@
         </script>
 
 
-      <div class="container" style="opacity:0.7">
-        <div class="col s12 l4 offset-l4 z-depth-1 grey lighten-4 row  registration" style="display: inline-block;width: 600px; border: 1px solid #EEE;">
-
+      <div class="container">
           <form class="col s12" method="post"  action="/register_data_store/" name="formData" id="myform" onsubmit="return formValidation()">
 {#            {% csrf_token %}#}
-           <div class="card-panel #bbdefb blue lighten-4">
-                <span class="flow-text center-align ">Registration Here...!</span>
-           </div>
-           <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='text' name='name' id='name' />
-                <label for='name'>Enter your Name</label>
-              </div>
-            </div>
+              <div class="col s12 l4 m4 offset-l4 register" >
+                  <div class="card">
+                       <div class="card-content green white-text center-align">
+                                   <h3>Registration Page....!</h3>
+                               </div>
 
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' />
-                <label for='email'>Enter your email</label>
-              </div>
-            </div>
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='number' name='mobile' id='mobile' size="10" maxlength="10"  />
-                <label for='mobile'>Enter your Mobile Number</label>
-              </div>
-            </div>
+                           <div class='row '>
+                              <div class='input-field custom'>
+                                <input class='validate' type='text' name='name' id='name' />
+                                <label for='name'>Enter your Name</label>
 
+                              </div>
+                            </div>
 
-
-              <div class="row">
-                  <div class="input-field col s4">
-                      <input class='validate' type='radio' name='gender'  value="male"  id="male"  />Male
-                     <label for='male'></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <input class='validate' type='radio' name='gender' value="female"  id="female" />Female
-                     <label for='female'></label>
+                            <div class='row  '>
+                              <div class='input-field custom'>
+                                <input class='validate' type='email' name='email' id='email' />
+                                <label for='email'>Enter your email</label>
+                              </div>
+                            </div>
+                            <div class='row '>
+                              <div class='input-field custom'>
+                                <input class='validate' type='number' name='mobile' id='mobile' size="10" maxlength="10"  />
+                                <label for='mobile'>Enter your Mobile Number</label>
+                              </div>
+                            </div>
 
 
 
+
+
+
+                                <div style="padding-left: 20px">
+                                          <input name="gender" type="radio" id="male" value="male" />
+                                          <label for="male">Male</label>
+
+                                          <input name="gender" type="radio" id="female" value="female" />
+                                          <label for="female">Female</label>
+                                </div>
+
+
+
+
+
+
+
+
+
+                            <div class='row '>
+                              <div class='input-field custom'>
+                                <input class='validate' type='password' name='password' id='password' />
+                                <label for='password'>Enter your password</label>
+                              </div>
+                            </div>
+                            <div class='row '>
+                              <div class='input-field custom'>
+                                <input class='validate' type='password' name='password2' id='password2' />
+                                <label for='password'>Re-Enter password</label>
+                            </div>
+
+                            </div>
+                              {% for x in reg %}
+                                <input type="hidden" name="dublicate" value="{{ x.mobile }}">
+                                <input type="hidden" name="demail" value="{{ x.email }}">
+                            {% endfor %}
+
+
+
+
+                                  <div  class="input-field " align="center" >
+                                    <button type='submit' name='btn_login' class='btn waves-effect waves-light green medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; ">Registration
+                                    <i class="material-icons right">send</i> </button>
+                                  </div>
+
+
+
+                              {{ status }}
                   </div>
 
               </div>
-
-
-
-
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' />
-                <label for='password'>Enter your password</label>
-              </div>
-            </div>
-            <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='password' name='password2' id='password2' />
-                <label for='password'>Re-Enter password</label>
-            </div>
-            </div>
-              {% for x in reg %}
-                <input type="hidden" name="dublicate" value="{{ x.mobile }}">
-                <input type="hidden" name="demail" value="{{ x.email }}">
-            {% endfor %}
-
-            <br />
-            <center>
-              <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo ' style="border-radius: 10px;font-size: 20px;">Registration
-                <i class="material-icons right">send</i> </button>
-
-              {{ status }}
-
-
           </form>
 
-        </div>
+
       </div>
-
-    </center>
-
-
-  </main>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>

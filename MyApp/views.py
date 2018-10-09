@@ -14,7 +14,10 @@ def registration(request):
     return render(request,'Registration.html',{'reg':reg})
 
 def dashboard(request):
-    return  HttpResponseRedirect('/dashboard/')
+    mobile = request.session['mobile']
+    student = StudentData.objects.all()
+    data = Registration.objects.filter(mobile=mobile).all()
+    return render(request, 'dashboard.html', {"data": data,'student': student})
 
 @csrf_exempt
 def loginUser(request):
@@ -31,8 +34,10 @@ def loginUser(request):
             data = Registration.objects.filter(mobile=mobile).all()
             return render(request, 'dashboard.html', {"data": data, "student": student, })
         else:
+
             #return HttpResponseRedirect('/login/')
             return render(request, 'login.html', {'status': "Wrong ID And Password......!"})
+
     else:
         return HttpResponseRedirect("/login/")
 
@@ -66,8 +71,8 @@ def profile_update(request):
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
         Registration.objects.filter(mobile=mobile).update(name=name,email=email,password=password)
-
-        return render(request,'dashboard.html',{'student':student})
+        data = Registration.objects.filter(mobile=mobile)
+        return render(request,'dashboard.html',{"data": data,'student':student})
     else:
         return render(request, 'dashboard.html', {'student': student})
 
@@ -105,18 +110,18 @@ def student_data_store(request):
         # print(dob)
         # print(address)
         try:
-            std = StudentData.objects.create(sid=sid,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
-            print(std)
+            StudentData.objects.create(sid=sid,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
+            #print(std)
         except Exception as ex:
             print(ex)
             msg = "<html><h1>This ID Already Exist</h1></html>"
             return render(request,'studentpage.html',{'msg':msg})
 
 
-        student = StudentData.objects.all()
-        return render(request,'dashboard.html',{'student':student})
+
+        return render(request,'studentpage.html',{'status':"Student Record insert Successfully...!"})
     else:
-        return render(request,'studentpage.html',{'status':"Record Not Store"})
+        return render(request,'studentpage.html',{'status1':"Record Not Store"})
 
 
 
@@ -127,7 +132,8 @@ def student_data_update(request):
     email=request.POST.get('email')
     mobile = request.POST.get('mobile')
     password = request.POST.get('password')
-    gender = request.POST.get('gender')
+    dob = request.POST.get('dob')
+    #gender = request.POST.get('gender')
     address = request.POST.get('address')
     # print(sid)
     # print(name)
@@ -135,10 +141,11 @@ def student_data_update(request):
     # print(mobile)
     # print(gender)
     # print(address)
-    StudentData.objects.filter(sid=sid).update(name=name,email=email,mobile=mobile,password=password,gender=gender,address=address)
+    StudentData.objects.filter(sid=sid).update(name=name,email=email,dob= dob,mobile=mobile,password=password,address=address)
     student = StudentData.objects.all()
-
-    return render(request, 'dashboard.html', {'student': student})
+    mobile1 = request.session['mobile']
+    data = Registration.objects.filter(mobile=mobile1)
+    return render(request, 'dashboard.html', {'data':data,'student': student})
 
 
 

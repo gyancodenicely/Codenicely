@@ -1,167 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <title>Student Page</title>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+          <!--Import Google Icon Font-->
+    <link href="{% static 'css_file/bootstrap.min.css' %}">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <style>
-        td{
+        .register label{
             font-size: 15px;
+            margin-left: 10px;
+            padding-top: 10px;
             font-weight: bold;
-            padding-left: 6px;
-            margin-top: 3px;
         }
-        input{
-            padding: 10px;
+            .register{
+            margin: 50px;
+        }
+        body{
+            background-color: honeydew;
+        }
+         .register input{
+            font-size: 20px !important;
+             padding-left: 10px;
 
         }
-        .custom_button{
-            text-align: center;
-            padding-left: 10px;
+        span{
+            font-size: 20px;
         }
-        input:focus,textarea:focus{
-            background-color: #9fcdff;
-        }
-        input::placeholder{
-            opacity: 0.5;
-        }
+
 
     </style>
-</head>
-<body>
- <div class="container">
-     <div class="row">
+    <script type="text/javascript">
+        $(document).ready(function() {
+        Materialize.updateTextFields();
+      });
+         $('#address').val('New Text');
+      $('#address').trigger('autoresize');
 
-         <div class=" col-lg-8 m-auto d-block">
+     function formValidation(){
 
-               {% if not student %}
-                <form action="/student_data_store/" method="post" class="bg-light" onsubmit="return formValidation()">
-                 <table class="table" align="center" width="500" border="2" style="margin-top: 50px;">
-                     <tr>
-                         <th colspan="2" class="text-center text-success" style="background-color: #9fcdff">Student Registration Page</th>
-                     </tr>
-                     <tr>
-                         <td>Student ID :</td>
-                         <td><input type="text" name="sid" id="sid" placeholder="Enter Student ID" autocomplete="off">
-                         <span class="text-danger font-weight-bold" id="sids"></span> </td>
-                     </tr>
-                     <tr>
-                         <td>Student Name :</td>
-                         <td><input type="text" name="name" id="name" placeholder="Enter Student name" autocomplete="off">
-                         <span class="text-danger font-weight-bold" id="names"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Student Email :</td>
-                         <td><input type="email" name="email" id="email" placeholder="Enter Student email" autocomplete="off">
-                         <span class="text-danger font-weight-bold" id="emails"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Student Mobile :</td>
-                         <td><input type="number" name="mobile" id="mobile" placeholder="Enter Student Mobile" autocomplete="off">
-                         <span class="text-danger font-weight-bold" id="mobiles"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Password :</td>
-                         <td><input type="password" name="password" id="password" placeholder="Enter password" >
-                         <span class="text-danger font-weight-bold" id="passwords"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Gender :</td>
-                         <td><input type="radio" name="gender" id="male" value="male">&nbsp;&nbsp;Male &nbsp;&nbsp;&nbsp;&nbsp;
-                             <input type="radio" name="gender" id="female" value="female">&nbsp;&nbsp;Female
-                         <span class="text-danger font-weight-bold" id="genders"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Student DOB :</td>
-                         <td><input type="date" name="dob" id="dob" placeholder="Enter Date Of Birth" min="1990-01-01" max="2015-01-01">
-                         <span class="text-danger font-weight-bold" id="dobs"></span></td>
-                     </tr>
-                     <tr>
-                         <td>Student Address:</td>
-                         <td><textarea cols="20" rows="3" name="address" id="address"></textarea>
-                         <span class="text-danger font-weight-bold" id="addr"></span></td>
-                     </tr>
-                 </table>
-                <div class="custom_button">
-                         <button type="submit" class="btn btn-primary btn-lg">Register</button>
-                         <button type="reset" class="btn btn-info btn-lg">Reset</button>
-                   </div>
-                </form>
-                   {% else %}
-                   {% for y in student %}
-
-
-                <form action="/student_data_update/" method="post" class="bg-light" >
-                  <table class="table" align="center" width="500" border="2" style="margin-top: 50px;">
-                     <tr>
-                         <th colspan="2" class="text-center text-success" style="background-color: #9fcdff">Student Update Page</th>
-                     </tr>
-                     <tr>
-                         <td>Student ID :</td>
-                         <td style="font-size: 20px;font-weight: bold">{{ y.sid }}<input type="hidden" name="sid" id="sid" value="{{ y.sid }}" ></td>
-                          </td>
-                     </tr>
-                     <tr>
-                         <td>Student Name :</td>
-                         <td><input type="text" name="name" id="name" value="{{ y.name }}">
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Student Email :</td>
-                         <td><input type="email" name="email" id="email" value="{{ y.email }}">
-                            </td>
-                     </tr>
-                     <tr>
-                         <td>Student Mobile :</td>
-                         <td><input type="number" name="mobile" id="mobile" value="{{ y.mobile }}">
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Password :</td>
-                         <td><input type="text" name="password" id="password" value="{{ y.password }}" >
-                         </td>
-                     </tr>
-                     <tr>
-                         <td>Gender :</td>
-                         <td><input type="text" name="gender" id="genderdata" value="{{ y.gender }}">
-                         <span class="text-danger font-weight-bold" id="gender1"></span></td>
-                     </tr>
-
-                     <tr>
-                         <td>Student Address:</td>
-                         <td><textarea cols="20" rows="3" name="address" id="address">{{ y.address }}</textarea>
-
-                         </td>
-                     </tr>
-                 </table>
-                <div class="custom_button">
-                         <button type="submit" class="btn btn-primary btn-lg">Update</button>
-
-                   </div>
-                </form>
-                   {% endfor %}
-
-                 {% endif %}
-
-                   <span class="text-center text-success font-weight-bold ">{{ msg }}</span>
-                   <span class="text-center text-danger">{{ status }}</span>
-
-         </div>
-
-     </div>
- </div>
- <script type="text/javascript">
-     function formValidation() {
          var sid = document.getElementById('sid').value;
          var name = document.getElementById('name').value;
          var email = document.getElementById('email').value;
@@ -172,39 +55,41 @@
          var dob = document.getElementById('dob').value;
          var address = document.getElementById('address').value;
 
+          console.log(sid);
+          console.log(name);
 
 
          //Student Id Validation
          if(sid == ""){
-             document.getElementById('sids').innerHTML="** Please Fill the Student ID";
+              Materialize.toast('**Please Fill Student ID...!', 2000,'rounded');
              return false;
          }
 
          //Student Name Validation
          if(name == ""){
-             document.getElementById('names').innerHTML="** Please Fill The Student Name";
+             Materialize.toast('** Please Fill The Student Name...!', 2000,'rounded');
              return false;
          }
          if((name.length < 3) || (name.length >20)){
-            document.getElementById('names').innerHTML="** Please Fill The Student Name Between 3 and 20";
+            Materialize.toast('** Please Fill The Student Name Between 3 and 20', 2000,'rounded');
              return false;
          }
          if(!isNaN(name)){
-             document.getElementById('names').innerHTML=" ** Please Only Character..! ";
+             Materialize.toast('** Please Only Character..! ', 2000,'rounded');
              return false;
          }
          //Email Validation
 
          if(email == ""){
-             document.getElementById('emails').innerHTML="** Please Fill the Student Email";
+             Materialize.toast('** Please Fill the Student Email..! ', 2000,'rounded');
              return false;
          }
          if(email.indexOf('@')<=0){
-             document.getElementById('emails').innerHTML="** Please Fill the Email Id Proper Formate @";
+             Materialize.toast('** Please Fill the Email Id Proper Formate @', 2000,'rounded');
              return false;
          }
          if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
-          document.getElementById('emails').innerHTML="** Please Fill the Email Id Proper Formate .";
+             Materialize.toast('** Please Fill the Email Id Proper Formate .', 2000,'rounded');
              return false;
          }
 
@@ -213,15 +98,15 @@
 
          //Mobile no. validation
          if(mobile == ""){
-             document.getElementById('mobiles').innerHTML="** Please Fill The Mobile Number";
+             Materialize.toast('** Please Fill The Mobile Number', 2000,'rounded');
              return false;
          }
          if(mobile.length !=10){
-             document.getElementById('mobiles').innerHTML="** Please Enter Only 10 Digits";
+             Materialize.toast('** Please Enter Only 10 Digits"', 2000,'rounded');
              return false;
          }
          if(isNaN(mobile)){
-             document.getElementById('mobiles').innerHTML="** Mobile Number Should Contains Only Digit";
+             Materialize.toast('** Mobile Number Should Contains Only Digit', 2000,'rounded');
              return false;
          }
 
@@ -229,16 +114,16 @@
          //password Validation
 
          if(password == "") {
-             document.getElementById('passwords').innerHTML = "** Please Fill the Student Password";
+             Materialize.toast('** Please Fill the Student Password', 2000,'rounded');
              return false;
          }
          if((password.length < 6) || (password.length >20)){
-            document.getElementById('passwords').innerHTML="** Please Fill The Student password Between 6 and 20";
+             Materialize.toast('** Please Fill The Student password Between 6 and 20', 2000,'rounded');
              return false;
          }
          //Gender validation
          if((gender1=="")&&(gender2=="")){
-             document.getElementById('genders').innerHTML="** Please select Either Male or Female";
+             Materialize.toast('** Please select Either Male or Female', 2000,'rounded');
              return false;
          }
          /*if((genderdata != "male") || (genderdata!="female"))
@@ -248,13 +133,13 @@
          }*/
          //DOB Validation
          if(dob==""){
-             document.getElementById('dobs').innerHTML = "** Please Fill the Student Date Of Birth";
+             Materialize.toast('** Please Fill the Student Date Of Birth', 2000,'rounded');
              return false;
 
          }
          //Address Validation
          if(address==""){
-             document.getElementById('addr').innerHTML = "** Please Fill the Student Address";
+             Materialize.toast('** Please Fill the Student Address', 2000,'rounded');
              return false;
          }
 
@@ -264,6 +149,166 @@
 
      }
  </script>
+</head>
+<body>
+
+ <div class="container">
+     <div class="row register">
+
+         <div class="col s12 m6 l6 offset-l3">
+
+               {% if not student %}
+                <div class="card">
+                  <form action="/student_data_store/" method="post" class="bg-light" onsubmit="return formValidation()">
+                   <div class="card-content green white-text center-align">
+                       <h4>Student Registration Page....!</h4>
+                   </div>
+                      <div class="row register" style="margin-top: 20px;margin-left: 20px;">
+                        <div class="input-field col s12">
+                          <input id="sid" type="number" name="sid" style="width: 550px;" >
+                          <label class="active" for="sid">Student ID</label>
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="name" type="text" name="name"  autocomplete="off" style="width: 550px;">
+                          <label class="active" for="name">Student Name</label>
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="email" type="email" name="email" class="validate" style="width: 550px;">
+                          <label class="active" for="email">Student Email</label>
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="mobile" type="number" name="mobile" style="width: 550px;">
+                          <label class="active" for="mobile">Mobile No.</label>
+
+                        </div>
+
+                       <div class="input-field col s12">
+                          <input id="password" type="password" name="password" style="width: 550px;" >
+                          <label class="active" for="password">Enter Password</label>
+
+                        </div>
+
+                        <div style="padding-left: 20px">
+                                  <input class="female" name="gender" type="radio" id="male"  />
+                                  <label for="male">Male</label>
+                                  <input class="female" name="gender" type="radio" id="female"  />
+                                  <label for="female">Female</label>
+
+                        </div>
+
+
+                       <div class="input-field col s12">
+                          <input id="dob" type="date" name="dob"  max="2015-01-01" style="width: 550px;">
+                          <label class="active" for="password">Date Of Birth</label>
+
+                        </div>
+
+                       <div class="input-field col s12">
+                          <textarea id="address" name="address" class="materialize-textarea" style="width: 550px;"></textarea>
+                          <label class="active" for="address">Address</label>
+
+                        </div>
+
+
+                      </div>
+                      <div class="btn-group center-align" style="position: relative; bottom: 40px;">
+                          <button type="submit" class="btn waves-effect btn-large green">
+                              <span>Registration</span>
+                              <i class="material-icons right">send</i>
+                          </button>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green">GoTO Dashboard</a>
+                      </div>
+                      <div class="flow-text green">{{ status }}</div>
+                  </form>
+                   </div>
+                   {% else %}
+                   {% for y in student %}
+
+
+                <form action="/student_data_update/" method="post" class="bg-light" >
+                 <div class="card">
+                     <div class="card-content green white-text center-align">
+                       <h4>Student Updatation Page....!</h4>
+                   </div>
+                      <div class="row register" style="margin-top: 20px;margin-left: 20px;">
+                          <div class="input-field col s12"><span>SID : </span><span style="font-size: 20px;margin-left:10px;font-weight: bold">{{ y.sid }}</span>
+                          <input id="sid" type="hidden" value="{{ y.sid }}" name="sid" >
+
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="name" type="text" name="name"  value="{{ y.name }}" style="width: 570px;" >
+                          <label class="active" for="name">Enter Name</label>
+
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="email" type="email" name="email" value="{{ y.email }}" class="validate" style="width: 570px;">
+                          <label class="active" for="email">Enter Email</label>
+
+
+                        </div>
+
+                        <div class="input-field col s12">
+                          <input id="mobile" type="number" value="{{ y.mobile }}" name="mobile" style="width: 570px;">
+                           <label class="active" for="mobile">Enter Mobile</label>
+
+
+                        </div>
+
+                       <div class="input-field col s12">
+                          <input id="password" type="text" value="{{ y.password }}" name="password" style="width: 570px;">
+                          <label class="active" for="password">Enter Password</label>
+
+                        </div>
+
+
+
+
+                       <div class="input-field col s12">
+                          <input id="dob" type="text" name="dob" value="{{y.dob|date:"Y-m-d" }}"  max="2015-01-01" style="width: 570px;">
+                          <label class="active" for="dob">Date Of Birth</label>
+
+                        </div>
+
+                       <div class="input-field col s12">
+                          <textarea id="address" name="address" class="materialize-textarea" style="width: 570px;">{{ y.address }}</textarea>
+                          <label class="active" for="address">Address</label>
+
+                        </div>
+
+
+                      </div>
+                      <div class="btn-group center-align" style="position: relative; bottom: 40px;">
+                          <button type="submit" class="btn waves-effect btn-large green">
+                              <span>Update</span>
+                              <i class="material-icons right">send</i>
+                          </button>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green">GoTO Dashboard</a>
+                      </div>
+                 </div>
+                </form>
+
+                   {% endfor %}
+
+                 {% endif %}
+
+                   <span class="text-center text-success font-weight-bold ">{{ msg }}</span>
+                   <span class="text-center text-danger">{{ status1 }}</span>
+
+         </div>
+
+     </div>
+ </div>
+
 
 </body>
 </html>

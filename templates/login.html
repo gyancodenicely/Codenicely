@@ -2,9 +2,11 @@
 
 <head>
     {% load staticfiles %}
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static 'css_file/bootstrap.min.css' %}">
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 {#    <style>#}
 {##}
 {#       body {#}
@@ -53,20 +55,25 @@
             color: #ccc;
         }
         .login input{
-            font-size: 20px !important;
+            font-size: 30px !important;
 
         }
-        .login button:hover{
+       /* .login button:hover{
             padding: 0px 40px;
         }
       input::placeholder{
-          opacity: 0.5;
+          opacity: 0.4;
           color: black;
 
 
-      }
+      }*/
+     .login button:hover{
+            color: white;
+            background-color: green;
+        }
 
 </style>
+
 </head>
 
 <body>
@@ -74,7 +81,7 @@
 
 <center>
     {#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
-    <div class="section"></div>
+
     <!--Form validation -->
     <!--<script>
         function formValidation() {
@@ -103,12 +110,13 @@
             var user_id = document.getElementById('mobile').value;
             var user_pass = document.getElementById('password').value;
             if(user_id ==""){
-                Materialize.toast('Fill The Mobile No.', 2000)
-               //    user_id.focus();
+                Materialize.toast('Enter a Mobile Number...!', 2000,'rounded');
+                mobile.focus();
                 return false;
             }
             if(user_pass == ""){
-                Materialize.toast('Fill The Password.', 2000)
+                Materialize.toast('Fill The Password.', 3000,'rounded');
+                password.focus();
                 return false;
             }
 
@@ -120,41 +128,51 @@
         //<form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
     </script>
    <div class="container">
-       <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
-       <div class="row login">
-           <div class="col s12 l6 offset-l1">
-               <div class="card" style="width: 500px;">
-                   <div class="card-content green white-text center-align">
-                       <h3>Login Here....!</h3>
-                   </div>
-                   <div class="card-content">
-                       <div class="form-field">
 
-                           <i class="material-icons left prefix">phone</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                           <input type="text" name="mobile" id="mobile" autocomplete="off" placeholder="Enter Mobile No.">
-                           <span id="mob" class="red-text left-align"></span>
-                       </div><br>
-                       <div class="form-field">
+           <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
+              <div class="col s12 l6 offset-l1 login">
+               <div class="card" style="width: 500px;margin-top:10px;">
 
-                           <i class="material-icons left prefix">lock</i>
-                            <input type="password" id="password" name="password" placeholder="Enter Password">
+                       <div class="card-content green white-text center-align">
+                           <h3>Login Here....!</h3>
                        </div>
-                       <div class="form-field left-align">
+
+
+                   <div class="row">
+                        <div class="input-field col s12 ">
+                          <i class="material-icons prefix ">phone</i>
+                          <input id="mobile" type="number" name="mobile" class="validate" id="mobile" autocomplete="off">
+                          <label for="mobile">Mobile</label>
+                        </div>
+                   </div>
+                   <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix">lock</i>
+                          <input id="password" type="password" name="password" class="validate">
+                          <label for="password">Password</label>
+                      </div>
+                   </div>
+                   <div class="form-field left-align" style="padding-left: 10px;">
                            <input type="checkbox" id="remember" >
                            <label for="remember">Remember Me!</label>
                        </div>
-                       <div class="form-field center-align">
-                           <button class="btn-large btn-success " style="border-radius: 5px;"><span>Login</span><i class="material-icons right">send</i> </button>
+
+                  <div class="form-field center-align">
+                           <button class="btn-large btn-success  waves-effect waves-light" style="border-radius: 5px; position: relative;bottom: 5px;"><span>Login</span><i class="material-icons right">send</i> </button>
                        </div>
-                       <div class="card-content red-text center-align">
+                   <div class="flow-text">
+                       <span style="font-size: 15px;">Don't have an account</span> <a href="/registration/" style="font-size: 15px;font-weight: bold"> Signup Now ?</a>
+                   </div>
+
+
+                   </div>
+
+               </div>
+
+             <div class="card-content red-text center-align">
                            <h5>{{ status }}</h5>
                        </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-       </form>
+           </form>
 
    </div>
 

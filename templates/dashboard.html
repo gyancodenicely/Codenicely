@@ -6,9 +6,12 @@
     <title>DashBoard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
     <style>
         table{
             margin-top: 20px;
@@ -58,14 +61,18 @@
         $(document).ready(function () {
             $('#formbutton').click(function () {
               $('#formpage').toggle();
-            })
-        })
+            });
+            $('.modal').modal();
+
+        });
+
     </script>
 </head>
 <body>
  <div class="container-fluid">
      <div class="custom">
          {% for z in data %}
+             <!-- Create Student Record--->
                <span style=" position: relative;top: 5px;font-weight: bold;font-size: 20px;">
                  <span>User Name :  </span><span class="flow-text">{{ z.name }}</span>
                </span>
@@ -134,7 +141,7 @@
             <div class="col s12 l9 m9">
                 <table class="bordered highlight" >
                     <thead>
-                      <tr>
+                      <tr align="center">
 
                         <th>SID</th>
                         <th>Name</th>
@@ -142,14 +149,14 @@
                         <th>Mobile</th>
                         <th>Password</th>
                         <th>Gender</th>
-                        <th>DOB</th>
+                        <th>Date Of Birth</th>
                         <th>Address</th>
                         <th>Update</th>
                           <th>Delete</th></tr>
                     </thead>
                     {% for y in student %}
                      <tbody>
-                     <tr>
+                     <tr align="center">
                      <td>{{ y.sid }}</td>
                      <td>{{ y.name }}</td>
                      <td>{{ y.email }}</td>
@@ -159,12 +166,33 @@
                      <td>{{ y.dob }}</td>
                      <td>{{ y.address }}</td>
                      <td>
-
-                           <a href="/studentpage/?sid={{y.sid }}"  class="green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
+                       <a href="/studentpage/?sid={{y.sid }}"  class="         green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
 
                      </td>
                      <td>
-                         <a href="/student_data_delete/?sid={{ y.sid }}" onclick="return confirm('Are You sure  Delete Record..?')" class="red-text"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
+{#                         <a href="/student_data_delete/?sid={{ y.sid }}" onclick="return confirm('Are You sure  Delete Record..?')" class="red-text"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>#}
+
+
+
+
+
+                          <a class="waves-effect waves-light modal-trigger red-text" href="#modal1"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
+
+                          <div id="modal1" class="modal red">
+                        <div class="modal-content">
+                          <h4 >If You are Delete Record Then Click To <strong>Agree</strong></h4>
+                          <p>Thank You</p>
+                        </div>
+
+                        <div class="modal-footer red">
+                          <a class="modal-close waves-effect waves-green btn-flat">Cancle</a>
+                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
+                      </div>
+
+
+
+
                      </td>
                      </tr>
                      </tbody>
@@ -188,5 +216,12 @@
 
 
 
+{# <script type="text/javascript">#}
+{##}
+{#    $(document).ready(function(){#}
+{#    $('.modal').modal();#}
+{#  });#}
+{##}
+{# </script>#}
 </body>
 </html>

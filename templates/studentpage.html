@@ -137,6 +137,9 @@
              return false;
 
          }
+
+
+
          //Address Validation
          if(address==""){
              Materialize.toast('** Please Fill the Student Address', 2000,'rounded');
@@ -149,6 +152,14 @@
 
      }
  </script>
+    <!-- current date picker-->
+    <script>
+        $(document).ready( function() {
+            var now = new Date();
+            var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+            $('#dob').val(today);
+        });
+    </script>
 </head>
 <body>
 
@@ -204,7 +215,7 @@
 
 
                        <div class="input-field col s12">
-                          <input id="dob" type="date" name="dob"  max="2015-01-01" style="width: 550px;">
+                          <input id="dob" type="date" name="dob" value=""  max="2015-01-01" style="width: 550px;">
                           <label class="active" for="password">Date Of Birth</label>
 
                         </div>
@@ -292,7 +303,7 @@
                               <span>Update</span>
                               <i class="material-icons right">send</i>
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green">GoTO Dashboard</a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green"><span>Cancle</span><i class="material-icons right">close</i> </a>
                       </div>
                  </div>
                 </form>

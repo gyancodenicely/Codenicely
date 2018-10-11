@@ -173,6 +173,7 @@
                }
 
 
+
               return true;
 
             }
@@ -204,7 +205,7 @@
                             </div>
                             <div class='row '>
                               <div class='input-field custom'>
-                                <input class='validate' type='number' name='mobile' id='mobile' size="10" maxlength="10"  />
+                                <input class='validate' type='text' name='mobile' id='mobile'  maxlength="10"  onkeypress="return numberCheck(event)"/>
                                 <label for='mobile'>Enter your Mobile Number</label>
                               </div>
                             </div>
@@ -253,9 +254,11 @@
 
                                   <div  class="input-field " align="center" >
                                     <button type='submit' name='btn_login' class='btn waves-effect waves-light green medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; ">Registration
-                                    <i class="material-icons right">send</i> </button>
+                                    <i class="material-icons right">send</i> </button><br>
+                                      <span>Are You Have Account ? </span><a href="/login/" >Login</a>
                                   </div>
-
+                            <span class="flow-text green-text">{{ success }}</span>
+                            <span class="flow-text red-text">{{ fail }}</span>
 
 
                               {{ status }}
@@ -265,10 +268,23 @@
           </form>
 
 
+
       </div>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<!--Mobile no Only 10 Digit-->
+<script type="text/javascript">
+        function numberCheck(evt) {
+            evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+             return true;
+
+        }
+</script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@
             color: #ccc;
         }
         .login input{
-            font-size: 30px !important;
+            font-size: 20px !important;
 
         }
        /* .login button:hover{
@@ -145,40 +145,39 @@
         }
     </script>
    <div class="container">
+       <div class="row">
+          <div class="col s12 m8 l8 offset-l2 offset-m2">
+            <form  action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
+              {% csrf_token %}
+               <div class="login">
+               <div class="card z-depth-4">
 
-           <form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
-              <div class="col s12 l6 offset-l1 login">
-               <div class="card" style="width: 500px;margin-top:10px;">
-
-                       <div class="card-content green white-text center-align">
-                           <h3>Login Here....!</h3>
+                       <div class="card-content teal white-text center-align">
+                           <h3>Login Here</h3>
                        </div>
 
 
                    <div class="row">
-                        <div class="input-field col s12 ">
-                          <i class="material-icons prefix ">phone</i>
-                          <input id="mobile" type="text" name="mobile" class="validate" id="mobile" maxlength="10" autocomplete="off" onkeypress="return numberCheck(event)">
-                          <label for="mobile">Mobile</label>
+                        <div class="input-field  ">
+                          <i class="material-icons prefix " style="margin-left: -2%;">phone</i>
+                          <input id="mobile" type="text" name="mobile" style="width: 83%;margin-left: 5%" class="validate" id="mobile" maxlength="10" autocomplete="off" onkeypress="return numberCheck(event)">
+                          <label for="mobile" style="margin-left: 12%;">Mobile</label>
                         </div>
                    </div>
                    <div class="row">
-                        <div class="input-field col s12">
-                          <i class="material-icons prefix">lock</i>
-                          <input id="password" type="password" name="password" class="validate">
-                          <label for="password">Password</label>
+                        <div class="input-field ">
+                          <i class="material-icons prefix" style="margin-left: -2%;">lock</i>
+                          <input id="password" type="password" name="password" class="validate" style="width: 83%;margin-left: 5%">
+                          <label for="password" style="margin-left: 12%;">Password</label>
                       </div>
                    </div>
-                   <div class="form-field left-align" style="padding-left: 10px;">
-                           <input type="checkbox" id="remember" >
-                           <label for="remember">Remember Me!</label>
-                       </div>
+
 
                   <div class="form-field center-align">
                            <button class="btn-large btn-success  waves-effect waves-light" style="border-radius: 5px; position: relative;bottom: 5px;"><span>Login</span><i class="material-icons right">send</i> </button>
                        </div>
                    <div class="flow-text">
-                       <span style="font-size: 15px;">Don't have an account</span> <a href="/registration/" style="font-size: 15px;font-weight: bold"> Signup Now ?</a>
+                       <span style="font-size: 15px;">Don't have an account <strong>?</strong></span> &nbsp;&nbsp;<a href="/registration/" style="font-size: 15px;font-weight: bold"> Signup Now </a>
                    </div>
 
 
@@ -190,7 +189,9 @@
                            <h5>{{ status }}</h5>
                        </div>
            </form>
+          </div>
 
+       </div>
    </div>
 
 

@@ -1,7 +1,8 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import *
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -12,13 +13,15 @@ def login(request):
 def registration(request):
     reg = Registration.objects.all()
     return render(request,'Registration.html',{'reg':reg})
-
+#@login_required(login_url='/login/')
 def dashboard(request):
     mobile = request.session['mobile']
     student = StudentData.objects.all()
     data = Registration.objects.filter(mobile=mobile).all()
     return render(request, 'dashboard.html', {"data": data,'student': student})
 
+
+#@login_required(login_url='/login/')
 @csrf_exempt
 def loginUser(request):
     if request.method == "POST":
@@ -55,9 +58,12 @@ def register_data_store(request):
         mobile = request.POST.get('mobile')
         gender = request.POST.get('gender')
         password = request.POST.get('password')
-        register = Registration(name=name,email=email,mobile=mobile,gender=gender,password=password)
-        register.save()
-        return render(request,'login.html')
+        reg = Registration.objects.create(name=name,email=email,mobile=mobile,gender=gender,password=password)
+        if reg:
+            reg.save()
+            return render(request,'Registration.html',{'success':"Registration Successfully"})
+        else:
+            return render(request,'Registration.html',{'fail':'Registration Fail'})
     else:
         return render(request,'Registration.html',{'status':"Not Store Data In Database"})
 

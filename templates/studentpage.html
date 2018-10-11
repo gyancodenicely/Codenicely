@@ -20,7 +20,7 @@
             font-weight: bold;
         }
             .register{
-            margin: 50px;
+            margin: 0px;
         }
         body{
             background-color: honeydew;
@@ -32,6 +32,15 @@
         }
         span{
             font-size: 20px;
+        }
+        .custom{
+            border: 2px solid;
+            background-color: green;
+            color: white;
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+            border-radius: 10px;
         }
 
 
@@ -163,10 +172,19 @@
 </head>
 <body>
 
- <div class="container">
+ <div class="container-fluid">
+   <div class="custom">
+         <span style="float:left;padding: 7px;">
+           <a href="/dashboard/" class="btn waves-effect" style="border-radius: 10px;"><span>Home</span><i class="material-icons right">home</i> </a>
+
+       </span>
+         <span style="float: right;padding: 7px; ">
+           <a href="/logout/" class="btn large " style="border-radius: 10px;"><span>Logout</span><i class="material-icons right">lock</i> </a>
+         </span>
+     </div>
      <div class="row register">
 
-         <div class="col s12 m6 l6 offset-l3">
+         <div class="col s12 m8 l5 offset-l3  offset-m3">
 
                {% if not student %}
                 <div class="card">
@@ -176,59 +194,59 @@
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 20px;">
                         <div class="input-field col s12">
-                          <input id="sid" type="number" name="sid" style="width: 550px;" >
+                          <input id="sid" type="number" name="sid" >
                           <label class="active" for="sid">Student ID</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="name" type="text" name="name"  autocomplete="off" style="width: 550px;">
+                          <input id="name" type="text" name="name"  autocomplete="off" >
                           <label class="active" for="name">Student Name</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="email" type="email" name="email" class="validate" style="width: 550px;">
+                          <input id="email" type="email" name="email" class="validate" >
                           <label class="active" for="email">Student Email</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="mobile" type="number" name="mobile" style="width: 550px;">
+                          <input id="mobile" type="text" name="mobile"  maxlength="10" onkeypress="return numberCheck(event)">
                           <label class="active" for="mobile">Mobile No.</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <input id="password" type="password" name="password" style="width: 550px;" >
+                          <input id="password" type="password" name="password"  >
                           <label class="active" for="password">Enter Password</label>
 
                         </div>
 
                         <div style="padding-left: 20px">
-                                  <input class="female" name="gender" type="radio" id="male"  />
+                                  <input class="female" name="gender" type="radio" id="male"  value="male" />
                                   <label for="male">Male</label>
-                                  <input class="female" name="gender" type="radio" id="female"  />
+                                  <input class="female" name="gender" type="radio" id="female" value="female"  />
                                   <label for="female">Female</label>
 
                         </div>
 
 
                        <div class="input-field col s12">
-                          <input id="dob" type="date" name="dob" value=""  max="2015-01-01" style="width: 550px;">
-                          <label class="active" for="password">Date Of Birth</label>
+                          <input id="dob" type="date" name="dob" value=""  max="2015-01-01" >
+                          <label class="active" for="dob">Date Of Birth</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea" style="width: 550px;"></textarea>
+                          <textarea id="address" name="address" class="materialize-textarea" ></textarea>
                           <label class="active" for="address">Address</label>
 
                         </div>
 
 
                       </div>
-                      <div class="btn-group center-align" style="position: relative; bottom: 40px;">
+                      <div class="btn-group center-align" style="position: relative; bottom: 10px;">
                           <button type="submit" class="btn waves-effect btn-large green">
                               <span>Registration</span>
                               <i class="material-icons right">send</i>
@@ -255,28 +273,28 @@
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="name" type="text" name="name"  value="{{ y.name }}" style="width: 570px;" >
+                          <input id="name" type="text" name="name"  value="{{ y.name }}"  >
                           <label class="active" for="name">Enter Name</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="email" type="email" name="email" value="{{ y.email }}" class="validate" style="width: 570px;">
+                          <input id="email" type="email" name="email" value="{{ y.email }}" class="validate" >
                           <label class="active" for="email">Enter Email</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="mobile" type="number" value="{{ y.mobile }}" name="mobile" style="width: 570px;">
+                          <input id="mobile" type="text" value="{{ y.mobile }}" name="mobile" maxlength="10" onkeypress="return numberCheck(event)">
                            <label class="active" for="mobile">Enter Mobile</label>
 
 
                         </div>
 
                        <div class="input-field col s12">
-                          <input id="password" type="text" value="{{ y.password }}" name="password" style="width: 570px;">
+                          <input id="password" type="text" value="{{ y.password }}" name="password" >
                           <label class="active" for="password">Enter Password</label>
 
                         </div>
@@ -285,25 +303,25 @@
 
 
                        <div class="input-field col s12">
-                          <input id="dob" type="text" name="dob" value="{{y.dob|date:"Y-m-d" }}"  max="2015-01-01" style="width: 570px;">
-                          <label class="active" for="dob">Date Of Birth</label>
+                          <input id="dob1" type="date" name="dob" value="{{y.dob|date:"Y-m-d" }}"  max="2015-01-01" >
+                          <label class="active" for="dob1">Date Of Birth</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea" style="width: 570px;">{{ y.address }}</textarea>
+                          <textarea id="address" name="address" class="materialize-textarea" >{{ y.address }}</textarea>
                           <label class="active" for="address">Address</label>
 
                         </div>
 
 
                       </div>
-                      <div class="btn-group center-align" style="position: relative; bottom: 40px;">
-                          <button type="submit" class="btn waves-effect btn-large green">
+                      <div class="btn-group center-align" style="position: relative; bottom: 10px;">
+                          <button type="submit" class="btn waves-effect btn-large green" onclick="Materialize.toast('Student Record Update...!',2000,'rounded');">
                               <span>Update</span>
                               <i class="material-icons right">send</i>
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green"><span>Cancle</span><i class="material-icons right">close</i> </a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding-left: 5px;"><span>Cancle</span><i class="material-icons right">close</i> </a>
                       </div>
                  </div>
                 </form>
@@ -320,6 +338,16 @@
      </div>
  </div>
 
+  <script type="text/javascript">
+        function numberCheck(evt) {
+            evt = (evt) ? evt : window.event;
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+             return true;
 
+        }
+    </script>
 </body>
 </html>

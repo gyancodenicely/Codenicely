@@ -70,7 +70,10 @@
 </head>
 <body>
  <div class="container-fluid">
-     <div class="custom">
+   <div class="row">
+
+       <div class="custom">
+          <div class="col s12 m12 l12">
          {% for z in data %}
              <!-- Create Student Record--->
                <span style=" position: relative;top: 5px;font-weight: bold;font-size: 20px;">
@@ -85,14 +88,17 @@
          <span style="float: right;padding: 7px; ">
            <a href="/logout/" class="btn large " style="border-radius: 10px;"><span>Logout</span><i class="material-icons right">lock</i> </a>
          </span>
+          </div>
      </div>
-     <div class="row">
-       <div class="col s12 l3 m3" style="margin-top: 30px;">
 
+   </div>
+     <div class="row">
+       <div class="col s12 l3 m6" style="margin-top: 30px;">
+      <!-- Create Toggle-->
        <span class="custom_toggle">
          <button type="button" class="btn waves-effect" style="border-radius: 10px;" name="formbutton" id="formbutton"> Update Login Profile</button>
         </span>
-
+       <!-- End Toggle-->
 
            <form action="/profile_update/" method="post" id="formpage">
 
@@ -104,31 +110,31 @@
                    <div class='row '>
                               <div class='input-field'>
                                   <label for="mobile">Mobile :</label>
-                                  <span style="font-size: 20px;font-weight: bold;margin-left: 110px;position: relative;top: 12px;">{{ x.mobile }}</span>
+                                  <span style="font-size: 20px;font-weight: bold;margin-left: 23%;position: relative;top: 12px;">{{ x.mobile }}</span>
                                   <input  type='hidden' name='mobile' value="{{ x.mobile }}" id="mobile" />
 
+                              </div><br>
+                   </div>
+                   <div class='row '>
+                              <div class='input-field'>
+                                  <label for="name" style="position: absolute;top:50%;" >Name  :</label>
+                                  <input  type='text' name='name' value="{{ x.name }}" style="width:70%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="name">Name  :</label>
-                                  <input  type='text' name='name' value="{{ x.name }}" style="width: 320px;margin-left: 110px;font-size: 20px; " />
+                                  <label for="email" style="position: absolute;top:50%;" >Email  :</label>
+                                  <input  type='email' name='email' value="{{ x.email }}" style="width: 70%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="email">Email  :</label>
-                                  <input  type='email' name='email' value="{{ x.email }}" style="width: 320px;margin-left: 110px;font-size: 20px; " />
-                              </div>
-                   </div>
-                   <div class='row '>
-                              <div class='input-field'>
-                                  <label for="password">Password :</label>
-                                  <input  type='text' name='password' value="{{ x.password }}" style="width: 320px;margin-left: 110px;font-size: 20px; "/>
+                                  <label for="password" style="position: absolute;top:50%;"  >Password :</label>
+                                  <input  type='password' name='password' value="{{ x.password }}" style="width: 70%;margin-left: 27%;font-size: 20px; "/>
                               </div>
                    </div>
                    <div class='row ' align="center" style="position: relative;bottom: 10px;">
-                              <button type="submit" class="btn waves-effect waves-light"><span>Update</span>
+                              <button type="submit" class="btn waves-effect waves-light" onclick="Materialize.toast('Update Profile SuccessFully...!',3000,'rounded');"><span>Update</span>
                               <i class="material-icons right">send</i> </button>
                    </div>
 
@@ -138,7 +144,7 @@
            </form>
        </div>
 
-            <div class="col s12 l9 m9">
+            <div class="col s12 l9 m7">
                 <table class="bordered highlight" >
                     <thead>
                       <tr align="center">
@@ -163,7 +169,7 @@
                      <td>{{ y.mobile }}</td>
                      <td>{{ y.password }}</td>
                      <td>{{ y.gender }}</td>
-                     <td>{{ y.dob }}</td>
+                     <td>{{y.dob|date:"d-m-Y" }}</td>
                      <td>{{ y.address }}</td>
                      <td>
                        <a href="/studentpage/?sid={{y.sid }}"  class="         green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
@@ -178,15 +184,15 @@
 
                           <a class="waves-effect waves-light modal-trigger red-text" href="#modal1"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
 
-                          <div id="modal1" class="modal red">
+                          <div id="modal1" class="modal white">
                         <div class="modal-content">
-                          <h4 >If You are Delete Record Then Click To <strong>Agree</strong></h4>
-                          <p>Thank You</p>
+                          <h4 >Delete Record</h4>
+                          <p>Are You Sure to delete this Student Record   ?</p>
                         </div>
 
-                        <div class="modal-footer red">
-                          <a class="modal-close waves-effect waves-green btn-flat">Cancle</a>
-                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        <div class="modal-footer while">
+                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                           <a class="modal-close waves-effect waves-green btn-flat">Cancle</a>
                         </div>
                       </div>
 

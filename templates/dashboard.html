@@ -30,15 +30,18 @@
         #formpage{
             display: none;
         }
-        tr th td{
-            text-align: center;}
+        tr,th,td{
+
+            border: 1px solid;
+            text-align: center;
+        }
 
         .custom_toggle{
             margin-top: 30px;
         }
         td{
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 20px !important;
+
         }
 
         .custom{
@@ -73,11 +76,11 @@
    <div class="row">
 
        <div class="custom">
-          <div class="col s12 m12 l12">
+          <div class="col s12 m12 l12" style="padding: 2px;">
          {% for z in data %}
              <!-- Create Student Record--->
-               <span style=" position: relative;top: 5px;font-weight: bold;font-size: 20px;">
-                 <span>User Name :  </span><span class="flow-text">{{ z.name }}</span>
+               <span style=" position: relative;top: 14px;">
+                 <span>User Name :  </span><span >{{ z.name }}</span>
                </span>
 
          {% endfor %}
@@ -180,23 +183,24 @@
 
 
 
-
+             <!-- create Model--->
 
                           <a class="waves-effect waves-light modal-trigger red-text" href="#modal1"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
 
                           <div id="modal1" class="modal white">
                         <div class="modal-content">
-                          <h4 >Delete Record</h4>
-                          <p>Are You Sure to delete this Student Record   ?</p>
+                          <h4  class="left-align">Delete Record</h4>
+                          <p class="left-align">Are You Sure to delete this Student Record   ?</p>
                         </div>
 
                         <div class="modal-footer while">
-                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-                           <a class="modal-close waves-effect waves-green btn-flat">Cancle</a>
+                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">
+                              <i class="material-icons right">delete</i> Delete</a>
+                           <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
                         </div>
                       </div>
 
-
+<!--close Model-->
 
 
                      </td>

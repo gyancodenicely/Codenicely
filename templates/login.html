@@ -76,63 +76,67 @@
 
 </head>
 
-<body>
-
-
-<center>
-    {#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
-
-    <!--Form validation -->
-    <!--<script>
-        function formValidation() {
-            var mobile = document.forms['formData']['mobile']
-            var pass1 = document.forms['formData']['password']
-
-
-            if(mobile.value == "") {
-                document.getElementById('mob').innerHTML="**Please Fill The ID Field...!"
-                mobile.focus();
-                return false;
-            }
-
-            if(pass1.value == "" ){
-                document.getElementById('pass').innerHTML="**Please Fill The Password Field...!";
-                pass1.focus();
-                return false;
-            }
-
-            return true;
-
-        }
-    </script>-->
-    <script type="text/javascript">
+<script type="text/javascript">
         function formValidation() {
             var user_id = document.getElementById('mobile').value;
             var user_pass = document.getElementById('password').value;
+
             if(user_id ==""){
                 Materialize.toast('Enter a Mobile Number...!', 2000,'rounded');
                 mobile.focus();
                 return false;
             }
-            if(isNaN(user_id)){
+            else if(isNaN(user_id)){
 
                 Materialize.toast('Enter Only Digit...!',2000,'rounded');
                 mobile.focus();
                 return false;
             }
-            if(user_pass == ""){
+            else if(user_pass == ""){
                 Materialize.toast('Fill The Password.', 3000,'rounded');
                 password.focus();
                 return false;
             }
+            else{
+                ajaxSubmit();
+            }
 
-
-                return true;
-
-
+            
         }
-        //<form class="col s12 " action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
+
+        function ajaxSubmit() {
+            $.ajax({
+               type:'POST',
+               url:'/loginUser/',
+               data:{
+                   mobile:$("#mobile").val(),
+                   password:$("#password").val(),
+               },
+               success:function (data) {
+                    if(data.success == true){
+                        window.location=/dashboard/;
+                    }else {
+
+                       Materialize.toast('Wrong ID or Password..!', 3000,'rounded');
+                    }
+               },
+
+               });
+            }
+
     </script>
+<script type="text/javascript">
+    var message = document.getElementById('msg').value;
+    alert(message);
+</script>
+
+
+<body>
+
+
+<center>
+
+  <!-- Allow only Digit in mobile no.-->
     <script type="text/javascript">
         function numberCheck(evt) {
             evt = (evt) ? evt : window.event;
@@ -144,11 +148,27 @@
 
         }
     </script>
+
+     <!--End Call-->
+
+    <!-- Ajax Calling -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        })
+
+
+
+
+    </script>
+    <!--End Ajax Calling-->
+
+
+
    <div class="container">
        <div class="row">
           <div class="col s12 m8 l8 offset-l2 offset-m2">
-            <form  action="/loginUser/" method="post" name="formData" onsubmit="return formValidation()">
-              {% csrf_token %}
+
                <div class="login">
                <div class="card z-depth-4">
 
@@ -167,33 +187,29 @@
                    <div class="row">
                         <div class="input-field ">
                           <i class="material-icons prefix" style="margin-left: -2%;">lock</i>
-                          <input id="password" type="password" name="password" class="validate" style="width: 83%;margin-left: 5%">
+                          <input id="password" type="password" name="password" class="validate" style="width: 83%;margin-left: 5%" >
                           <label for="password" style="margin-left: 12%;">Password</label>
                       </div>
                    </div>
 
 
                   <div class="form-field center-align">
-                           <button class="btn-large btn-success  waves-effect waves-light" style="border-radius: 5px; position: relative;bottom: 5px;"><span>Login</span><i class="material-icons right">send</i> </button>
+                           <button class="btn-large btn-success  waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;" onclick="return formValidation()"><span>Login</span><i class="material-icons right">send</i> </button>
                        </div>
                    <div class="flow-text">
                        <span style="font-size: 15px;">Don't have an account <strong>?</strong></span> &nbsp;&nbsp;<a href="/registration/" style="font-size: 15px;font-weight: bold"> Signup Now </a>
                    </div>
 
-
                    </div>
 
                </div>
 
-             <div class="card-content red-text center-align">
-                           <h5>{{ status }}</h5>
-                       </div>
-           </form>
+
+
           </div>
 
        </div>
    </div>
-
 
 
 
@@ -275,7 +291,7 @@
 
     })
 </script>-->
-
+</center>
 </body>
 
 </html>

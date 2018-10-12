@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
 <style>
@@ -44,27 +45,27 @@
             <!--Form validation -->
         <script>
             function formValidation() {
-                var email = document.forms['formData']['email'];
-                 var demail = document.forms['formData']['demail'];
-                var pass1 = document.forms['formData']['password'];
-                var pass2 = document.forms['formData']['password2'];
-                var name = document.forms['formData']['name'];
-                var mobile = document.forms['formData']['mobile'];
-                var dublicate = document.forms['formData']['dublicate'];
+
+                var name = document.getElementById('name');
+                var email = document.getElementById('email');
+                var demail = document.getElementById('demail');
+                var mobile = document.getElementById('mobile');
+                var dublicate = document.getElementById('dublicate');
                 var gender1 = document.getElementById("male").checked;
                 var gender2 = document.getElementById("female").checked;
+                var pass1 = document.getElementById('password');
+                var pass2 = document.getElementById('password2');
 
 
-
-
-
-
-
-               if(name.value == ""){
+              if(name.value == ""){
                     Materialize.toast('Fill The Name', 2000,'rounded');
                     name.focus();
                     return false;
                 }
+                else if(!isNaN(name.value)){
+                    Materialize.toast('Enter Only Character...','2000','rounded')
+                   return false;
+              }
                 else if(name.value.length < 4 || name.value.length >20)
                 {
                    // window.alert("Name must be Enter atleast 4 character");
@@ -72,87 +73,51 @@
                     name.focus();
                     return false;
                 }
-                if(email.value == ""){
+                else if(email.value == ""){
                     Materialize.toast('Please Enter a Valid Email', 2000,'rounded');
                     email.focus();
                     return false;
                 }
-                if(email.value.indexOf("@",0)<0){
+                else if(email.value.indexOf("@",0)<0){
                        Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
                         email.focus();
                         return false;
                     }
 
-                if (email.value.indexOf(".", 0) < 0)
+                else if (email.value.indexOf(".", 0) < 0)
                     {
                         Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
                         email.focus();
                         return false;
                     }
-                if(email.value == demail.value){
+                else if(email.value == ((demail.value) || (demail.value== "")) ){
                      Materialize.toast('This Email Already Exist', 2000,'rounded');
-                    email.focus();
-                    return false;
+                     email.focus();
+                     return false;
                 }
-                if(mobile.value==""){
-                    Materialize.toast('Please Enter Mobile No.', 2000,'rounded');
+                else if(mobile.value==""){
+                   Materialize.toast('Please enter Mobile No.', 2000,'rounded');
                     mobile.focus();
                     return false;
                 }
-                if(mobile.value.length != 10){
-                    Materialize.toast('Enter Only 10 Digit Mobile No.', 2000,'rounded');
-                    mobile.focus();
-                    return false;
-                }
-                if(mobile.value == dublicate.value){
+
+                else if(mobile.value == ((dublicate.value)|| (dublicate.value ==""))){
                     Materialize.toast('This Mobile Already Exist',2000,'rounded');
                     mobile.focus();
                     return false;
                 }
-                if((gender1=="")&&(gender2=="")){
+                else if((gender1=="")&&(gender2=="")){
                     Materialize.toast('Select either Male or Female', 2000,'rounded');
                     return false;
                 }
 
-                <!-- Password Validation -->
-
-             /*   if(pass1.value == ""){
-                    window.alert("Enter Password");
-                    pass1.focus();
-                    return false;
-                }
-                else if(pass1.value.length < 8) {
-                    window.alert("Enter Password Atleast 8");
-                    pass1.focus();
-                    return false;
-                }
-
-
-
-
-                if(pass2.value == ""){
-                    window.alert("Re-Enter Password");
-                    pass1.focus();
-                    return false;
-                }
-
-                if(pass1.value != pass2.value){
-                    window.alert("Password Not Match again Enter..!");
-                    pass2.focus();
-                    return false;
-
-                }*/
-               var lower = /[a-z]/g;
-                var upper = /[A-Z]/g;
-                var digit = /[0-9]/g;
-                var special = /[@$,<>#:?_*&;]/g;
-                if(pass1.value == "") {
+                else if(pass1.value == "") {
                     Materialize.toast('Enter a Password...!', 2000,'rounded');
                     pass1.focus();
                     return false;
                 }
 
-              if(pass1.value != "" && pass1.value.length < 8){
+              else if(pass1.value != "" && pass1.value.length < 8){
                   Materialize.toast('Enter Password atleast 8 Character', 2000,'rounded');
                   pass1.focus();
                   return false;
@@ -161,12 +126,12 @@
 
 
 
-               if(pass2.value==""){
+               else if(pass2.value==""){
                    Materialize.toast('Re-Enter Password...!', 2000,'rounded');
                    pass2.focus();
                    return false;
                }
-               if(pass1.value != pass2.value){
+               else if(pass1.value != pass2.value){
                    Materialize.toast('Not Match Re-Enter Password...!', 2000,'rounded');
                    pass2.focus();
                    return false;
@@ -174,15 +139,36 @@
 
 
 
-              return true;
+              ajaxCalling()
 
+            }
+            function ajaxCalling(){
+              $.ajax({
+                  type:'POST',
+                  url:/register_data_store/,
+                  data:{
+                      name:$('.name').val(),
+                      email:$('.email').val(),
+                      mobile:$('.mobile').val(),
+                      gender:$('.gender').val(),
+                      password:$('.password').val(),
+                  },
+                  success:function (data) {
+                      if(data.success == true){
+                          Materialize.toast("Registration Successfully..",3000,'rounded')
+                          window.location=/login/
+                      }
+                      else{
+                          Materialize.toast("Registration Failed..",3000,'rounded')
+                      }
+                  }
+              })
             }
         </script>
 
 
       <div class="container">
-          <form class="col s12" method="post"  action="/register_data_store/" name="formData" id="myform" onsubmit="return formValidation()">
-{#            {% csrf_token %}#}
+
               <div class="col s12 l4 m4 offset-l4 register" >
                   <div class="card">
                        <div class="card-content green white-text center-align">
@@ -191,22 +177,22 @@
 
                            <div class='row '>
                               <div class='input-field custom'>
-                                <input class='validate' type='text' name='name' id='name' />
-                                <label for='name'>Enter your Name</label>
+                                <input class='validate name' type='text' name='name' id='name' />
+                                <label for='name'>Enter  Name</label>
 
                               </div>
                             </div>
 
                             <div class='row  '>
                               <div class='input-field custom'>
-                                <input class='validate' type='email' name='email' id='email' />
-                                <label for='email'>Enter your email</label>
+                                <input class='validate email' type='email' name='email' id='email' />
+                                <label for='email'>Enter  email</label>
                               </div>
                             </div>
                             <div class='row '>
                               <div class='input-field custom'>
-                                <input class='validate' type='text' name='mobile' id='mobile'  maxlength="10"  onkeypress="return numberCheck(event)"/>
-                                <label for='mobile'>Enter your Mobile Number</label>
+                                <input class='validate mobile' type='text' name='mobile' id='mobile' maxlength="10" minlength="10" onkeypress="return numberCheck(event)" />
+                                <label for='mobile'>Enter Mobile Number</label>
                               </div>
                             </div>
 
@@ -216,10 +202,10 @@
 
 
                                 <div style="padding-left: 20px">
-                                          <input name="gender" type="radio" id="male" value="male" />
+                                          <input name="gender" type="radio" class="gender" id="male" value="male" />
                                           <label for="male">Male</label>
 
-                                          <input name="gender" type="radio" id="female" value="female" />
+                                          <input name="gender" type="radio" class="gender" id="female" value="female" />
                                           <label for="female">Female</label>
                                 </div>
 
@@ -233,39 +219,39 @@
 
                             <div class='row '>
                               <div class='input-field custom'>
-                                <input class='validate' type='password' name='password' id='password' />
-                                <label for='password'>Enter your password</label>
+                                <input class='validate password' type='password' name='password' id='password' />
+                                <label for='password'>Enter password</label>
                               </div>
                             </div>
                             <div class='row '>
                               <div class='input-field custom'>
-                                <input class='validate' type='password' name='password2' id='password2' />
+                                <input class='validate password2' type='password' name='password2' id='password2' />
                                 <label for='password'>Re-Enter password</label>
                             </div>
 
                             </div>
                               {% for x in reg %}
-                                <input type="hidden" name="dublicate" value="{{ x.mobile }}">
-                                <input type="hidden" name="demail" value="{{ x.email }}">
+                                <input type="hidden" name="dublicate" id="dublicate" value="{{ x.mobile }}">
+                                <input type="hidden" name="demail" id="demail" value="{{ x.email }}">
+
                             {% endfor %}
+                          {% if not reg %}
+                              <input type="hidden" name="dublicate" id="dublicate" value="0">
+                              <input type="hidden" name="demail" id="demail" value="abc@gmail.com">
+                          {% endif %}
 
 
 
 
                                   <div  class="input-field " align="center" >
-                                    <button type='submit' name='btn_login' class='btn waves-effect waves-light green medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; ">Registration
+                                    <button type='submit' name='btn_login' class='btn waves-effect green medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; " onclick="return formValidation()">Registration
                                     <i class="material-icons right">send</i> </button><br>
                                       <span>Are You Have Account ? </span><a href="/login/" >Login</a>
                                   </div>
-                            <span class="flow-text green-text">{{ success }}</span>
-                            <span class="flow-text red-text">{{ fail }}</span>
 
-
-                              {{ status }}
                   </div>
 
               </div>
-          </form>
 
 
 

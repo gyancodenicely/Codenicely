@@ -16,7 +16,6 @@ def registration(request):
 #@login_required(login_url='/login/')
 def dashboard(request):
     mobile = request.session['mobile']
-
     try:
         if mobile:
             student = StudentData.objects.all()
@@ -49,19 +48,10 @@ def loginUser(request):
                 response['success']=False
                 return JsonResponse(response)
         except Exception as e:
-            print(e)
-
-    return JsonResponse(response)
+            print("Login Error")
 
 
-
-
-
-
-
-
-
-
+        return JsonResponse(response)
 
 
 
@@ -69,18 +59,30 @@ def loginUser(request):
 
 @csrf_exempt
 def register_data_store(request):
+    response={}
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
         gender = request.POST.get('gender')
         password = request.POST.get('password')
+        # print(name)
+        # print(email)
+        # print(mobile)
+        # print(gender)
+        # print(password)
+        # return JsonResponse(response)
+
         reg = Registration.objects.create(name=name,email=email,mobile=mobile,gender=gender,password=password)
         if reg:
             reg.save()
-            return render(request,'Registration.html',{'success':"Registration Successfully"})
+            response['success']=True
+            return JsonResponse(response)
         else:
-            return render(request,'Registration.html',{'fail':'Registration Fail'})
+            response['success']=False
+            return JsonResponse(response)
+
+
     else:
         return render(request,'Registration.html',{'status':"Not Store Data In Database"})
 
@@ -137,8 +139,7 @@ def student_data_store(request):
             #print(std)
         except Exception as ex:
             print(ex)
-            msg = "<html><h1>This ID Already Exist</h1></html>"
-            return render(request,'studentpage.html',{'msg':msg})
+            return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
 
 
 
@@ -187,6 +188,7 @@ def logout(request):
     try:
 
         del request.session['mobile']
+
         return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')

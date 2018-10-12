@@ -63,14 +63,9 @@
          var gender2 = document.getElementById('female').checked;
          var dob = document.getElementById('dob').value;
          var address = document.getElementById('address').value;
-
-          console.log(sid);
-          console.log(name);
-
-
          //Student Id Validation
          if(sid == ""){
-              Materialize.toast('**Please Fill Student ID...!', 2000,'rounded');
+              Materialize.toast('**Please Fill Student Roll No....!', 2000,'rounded');
              return false;
          }
 
@@ -195,7 +190,7 @@
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
                         <div class="input-field col s12">
                           <input id="sid" type="number" name="sid" >
-                          <label class="active" for="sid">Student ID</label>
+                          <label class="active" for="sid">Student Roll No.</label>
 
                         </div>
 
@@ -224,9 +219,9 @@
                         </div>
 
                         <div style="padding-left: 20px">
-                                  <input class="female" name="gender" type="radio" id="male"  value="male" />
+                                  <input class="with-gap" name="gender" type="radio" id="male"  value="male" />
                                   <label for="male">Male</label>
-                                  <input class="female" name="gender" type="radio" id="female" value="female"  />
+                                  <input class="with-gap" name="gender" type="radio" id="female" value="female"  />
                                   <label for="female">Female</label>
 
                         </div>
@@ -251,7 +246,8 @@
                               <span>Registration</span>
                               <i class="material-icons right">send</i>
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;margin: 0px;">GoTO Dashboard</a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;margin: 0px;"><span>Dashboard</span>
+                          <i class="material-icons right">home</i> </a>
                       </div>
                       <div class="flow-text green">{{ status }}</div>
                   </form>
@@ -260,13 +256,13 @@
                    {% for y in student %}
 
 
-                <form action="/student_data_update/" method="post" class="bg-light" >
+                <form action="/student_data_update/" method="post" class="bg-light" onsubmit="return updateValidation()">
                  <div class="card">
                      <div class="card-content green white-text center-align">
                        <h4>Student Updatation Page....!</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
-                          <div class="input-field col s12"><span>SID : </span><span style="font-size: 20px;margin-left:10px;font-weight: bold">{{ y.sid }}</span>
+                          <div class="input-field col s12"><span>Roll No. : </span><span style="font-size: 20px;margin-left:10px;font-weight: bold">{{ y.sid }}</span>
                           <input id="sid" type="hidden" value="{{ y.sid }}" name="sid" >
 
 
@@ -317,7 +313,7 @@
 
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
-                          <button type="submit" class="btn waves-effect btn-large green" onclick="Materialize.toast('Student Record Update...!',2000,'rounded');">
+                          <button type="submit" class="btn waves-effect btn-large green">
                               <span>Update</span>
                               <i class="material-icons right">send</i>
                           </button>
@@ -337,6 +333,63 @@
 
      </div>
  </div>
+ <!-- form Validation for Updation-->
+ <script type="text/javascript">
+     function updateValidation() {
+         var name = document.getElementById('name').value;
+         var email = document.getElementById('email').value;
+         var mobile = document.getElementById('mobile').value;
+         var password = document.getElementById('password').value;
+         var dob = document.getElementById('dob1').value;
+         var address = document.getElementById('address').value;
+
+         if(name == ""){
+             Materialize.toast('Fill Student Name...!', 2000,'rounded');
+             return false;
+         }
+         else if(!isNaN(name)){
+             Materialize.toast('** Please Only Character..! ', 2000,'rounded');
+             return false;
+         }
+         else if(email == ""){
+             Materialize.toast('Fill Student Email...!', 2000,'rounded');
+             return false;
+         }
+         else if(email.indexOf('@')<=0)
+         {
+             Materialize.toast('** Please Fill the Email Id Proper Formate @', 2000,'rounded');
+             return false;
+         }
+         else if((email.charAt(email.length-4) != '.') && (email.charAt(email.length-3)!='.')){
+           Materialize.toast('** Please Fill the Email Id Proper Formate .', 2000,'rounded');
+             return false;
+         }
+
+         else if(mobile == ""){
+             Materialize.toast('** Please Fill the Mobile No. .', 2000,'rounded');
+             return false;
+         }
+
+         else if(password == ""){
+             Materialize.toast('** Please Fill the Password. .', 2000,'rounded');
+             return false;
+         }
+         else if(address == ""){
+             Materialize.toast('** Please Fill the Address. .', 2000,'rounded');
+             return false;
+         }
+
+
+
+
+
+         updateSuccess()
+
+     }
+     function updateSuccess(){
+         Materialize.toast('Student Record Update...!',2000,'rounded')
+     }
+ </script>
 
   <script type="text/javascript">
         function numberCheck(evt) {

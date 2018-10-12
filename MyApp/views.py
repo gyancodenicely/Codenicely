@@ -75,7 +75,6 @@ def register_data_store(request):
 
         reg = Registration.objects.create(name=name,email=email,mobile=mobile,gender=gender,password=password)
         if reg:
-            reg.save()
             response['success']=True
             return JsonResponse(response)
         else:
@@ -118,13 +117,14 @@ def studentpage(request):
 
 @csrf_exempt
 def student_data_store(request):
+    response={}
     if request.method == "POST":
         sid = request.POST.get('sid')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
-        password = request.POST.get('password')
         gender = request.POST.get('gender')
+        password = request.POST.get('password')
         dob = request.POST.get('dob')
         address = request.POST.get('address')
         # print(sid)
@@ -132,18 +132,23 @@ def student_data_store(request):
         # print(email)
         # print(mobile)
         # print(gender)
+        # print(password)
         # print(dob)
         # print(address)
+        # response['success']=True
+        # return JsonResponse(response)
         try:
-            StudentData.objects.create(sid=sid,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
-            #print(std)
+            reg = StudentData.objects.create(sid=sid,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
+            if reg:
+                response['success'] = True
+                return JsonResponse(response)
+            else:
+                response['success'] = False
+                return JsonResponse(response)
+
         except Exception as ex:
             print(ex)
             return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
-
-
-
-        return render(request,'studentpage.html',{'status':"Student Record insert Successfully...!"})
     else:
         return render(request,'studentpage.html',{'status1':"Record Not Store"})
 
@@ -151,25 +156,36 @@ def student_data_store(request):
 
 @csrf_exempt
 def student_data_update(request):
-    sid = request.POST.get('sid')
-    name = request.POST.get('name')
-    email=request.POST.get('email')
-    mobile = request.POST.get('mobile')
-    password = request.POST.get('password')
-    dob = request.POST.get('dob')
-    #gender = request.POST.get('gender')
-    address = request.POST.get('address')
-    # print(sid)
-    # print(name)
-    # print(email)
-    # print(mobile)
-    # print(gender)
-    # print(address)
-    StudentData.objects.filter(sid=sid).update(name=name,email=email,dob= dob,mobile=mobile,password=password,address=address)
-    student = StudentData.objects.all()
-    mobile1 = request.session['mobile']
-    data = Registration.objects.filter(mobile=mobile1)
-    return render(request, 'dashboard.html', {'data':data,'student': student})
+    response={}
+    if request.method == "POST":
+        sid = request.POST.get('sid')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        dob = request.POST.get('dob')
+        address = request.POST.get('address')
+        #print(sid)
+        # print(name)
+        # print(email)
+        # print(mobile)
+        # print(password)
+        # print(address)
+        # print(dob)
+        # response['success']=True
+        # return JsonResponse(response)
+        try:
+            std = StudentData.objects.filter(sid=sid).update(name=name, email=email,mobile=mobile,
+                                                             password=password,dob=dob, address=address)
+            #print(std)
+            if std:
+                response['success'] = True
+                return JsonResponse(response)
+            else:
+                response['success'] = False
+                return JsonResponse(response)
+        except Exception as e:
+            print(e)
 
 
 

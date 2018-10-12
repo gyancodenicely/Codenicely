@@ -156,11 +156,13 @@
                   success:function (data) {
                       if(data.success == true){
                           Materialize.toast("Registration Successfully..",3000,'rounded')
-                          window.location=/login/
+
                       }
                       else{
                           Materialize.toast("Registration Failed..",3000,'rounded')
                       }
+                      $('input[type="text"],input[type="email"],input[type="radio"],input[type="password"]').val('');
+
                   }
               })
             }

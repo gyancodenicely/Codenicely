@@ -25,7 +25,7 @@
         body{
             background-color: honeydew;
         }
-         .register input{
+         .register input,textarea{
             font-size: 20px !important;
              padding-left: 10px;
 
@@ -39,7 +39,7 @@
             color: white;
             width: 100%;
             height: 60px;
-            margin-top: 10px;
+            margin-top: 0px;
             border-radius: 10px;
         }
 
@@ -50,7 +50,7 @@
         Materialize.updateTextFields();
       });
          $('#address').val('New Text');
-      $('#address').trigger('autoresize');
+         $('#address').trigger('autoresize');
 
      function formValidation(){
 
@@ -151,17 +151,47 @@
          }
 
 
-         return true;
+         studentRegistration();
+
+
 
 
      }
+     function  studentRegistration() {
+         $.ajax({
+             type:'POST',
+             url:/student_data_store/,
+             data:{
+                 sid:$('.sid').val(),
+                 name:$('.name').val(),
+                 email:$('.email').val(),
+                 mobile:$('.mobile').val(),
+                 password:$('.password').val(),
+                 gender :$('.gender').val(),
+                 dob:$('.dob').val(),
+                 address:$('.address').val()
+             },
+             success:function (data) {
+                 if(data.success == true){
+                     Materialize.toast("Registration Success..!",2000,'rounded')
+                 }else{
+                     Materialize.toast("Registration Failed..!",2000,'rounded')
+                 }
+                 $('input[type="text"],textarea,input[type="number"],input[type="email"],input[type="password"],input[type="radio"]').val('');
+             }
+
+
+         });
+
+     }
+
  </script>
     <!-- current date picker-->
     <script>
         $(document).ready( function() {
             var now = new Date();
             var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-            $('#dob').val(today);
+            $('.dob').val(today);
         });
     </script>
 </head>
@@ -179,62 +209,63 @@
      </div>
      <div class="row register">
 
-         <div class="col s12 m8 l5 offset-l3  offset-m3">
+         <div class="col s12 m8 l5 offset-l3  offset-m3 ">
+           <div class="card z-depth-3">
 
                {% if not student %}
-                <div class="card">
-                  <form action="/student_data_store/" method="post" class="bg-light" onsubmit="return formValidation()">
+             <!--=============================Create Student Record=====================-->
+                <div id="formData">
                    <div class="card-content green white-text center-align">
                        <h4>Student Registration Page....!</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
                         <div class="input-field col s12">
-                          <input id="sid" type="number" name="sid" >
+                          <input id="sid" type="number" name="sid" class="sid" >
                           <label class="active" for="sid">Student Roll No.</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="name" type="text" name="name"  autocomplete="off" >
+                          <input id="name" type="text" name="name" class="name"  autocomplete="off" >
                           <label class="active" for="name">Student Name</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="email" type="email" name="email" class="validate" >
+                          <input id="email" type="email"  name="email" class="validate email" >
                           <label class="active" for="email">Student Email</label>
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="mobile" type="text" name="mobile"  maxlength="10" onkeypress="return numberCheck(event)">
+                          <input id="mobile" type="text" name="mobile" class="mobile"  maxlength="10" onkeypress="return numberCheck(event)">
                           <label class="active" for="mobile">Mobile No.</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <input id="password" type="password" name="password"  >
+                          <input id="password" type="password" class="password" name="password"  >
                           <label class="active" for="password">Enter Password</label>
 
                         </div>
 
                         <div style="padding-left: 20px">
-                                  <input class="with-gap" name="gender" type="radio" id="male"  value="male" />
+                                  <input class="with-gap gender" name="gender" type="radio" id="male"  value="male" />
                                   <label for="male">Male</label>
-                                  <input class="with-gap" name="gender" type="radio" id="female" value="female"  />
+                                  <input class="with-gap gender" name="gender" type="radio" id="female" value="female"  />
                                   <label for="female">Female</label>
 
                         </div>
 
 
                        <div class="input-field col s12">
-                          <input id="dob" type="date" name="dob" value=""  max="2015-01-01" >
+                          <input id="dob" type="date" name="dob" value="" class="dob" max="2015-01-01" >
                           <label class="active" for="dob">Date Of Birth</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea" ></textarea>
+                          <textarea id="address" name="address" class="materialize-textarea address" ></textarea>
                           <label class="active" for="address">Address</label>
 
                         </div>
@@ -242,55 +273,57 @@
 
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
-                          <button type="submit" class="btn waves-effect btn-large green">
+                          <button type="submit" class="btn waves-effect btn-large green submit" id="submit" onclick="return formValidation()" style="padding: 0px;margin: 10px;padding-left: 13px;padding-right: 13px;">
                               <span>Registration</span>
                               <i class="material-icons right">send</i>
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;margin: 0px;"><span>Dashboard</span>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;"><span>Dashboard</span>
                           <i class="material-icons right">home</i> </a>
                       </div>
-                      <div class="flow-text green">{{ status }}</div>
-                  </form>
+                      <div class="flow-text red-text">{{ msg }}</div>
+                    </div>
                    </div>
+
                    {% else %}
+
                    {% for y in student %}
 
 
-                <form action="/student_data_update/" method="post" class="bg-light" onsubmit="return updateValidation()">
-                 <div class="card">
+                <!--==============================Update Student Record================-->
+                   <div class="updateForm">
                      <div class="card-content green white-text center-align">
                        <h4>Student Updatation Page....!</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
                           <div class="input-field col s12"><span>Roll No. : </span><span style="font-size: 20px;margin-left:10px;font-weight: bold">{{ y.sid }}</span>
-                          <input id="sid" type="hidden" value="{{ y.sid }}" name="sid" >
+                          <input id="sid" type="hidden" value="{{ y.sid }}" name="sid" class="sid">
 
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="name" type="text" name="name"  value="{{ y.name }}"  >
+                          <input id="name" type="text" name="name" class="name"  value="{{ y.name }}"  >
                           <label class="active" for="name">Enter Name</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="email" type="email" name="email" value="{{ y.email }}" class="validate" >
+                          <input id="email" type="email" name="email" value="{{ y.email }}" class="validate email" >
                           <label class="active" for="email">Enter Email</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
-                          <input id="mobile" type="text" value="{{ y.mobile }}" name="mobile" maxlength="10" onkeypress="return numberCheck(event)">
+                          <input id="mobile" type="text" value="{{ y.mobile }}" class="mobile" name="mobile" maxlength="10" onkeypress="return numberCheck(event)">
                            <label class="active" for="mobile">Enter Mobile</label>
 
 
                         </div>
 
                        <div class="input-field col s12">
-                          <input id="password" type="text" value="{{ y.password }}" name="password" >
+                          <input id="password" type="text" value="{{ y.password }}" name="password" class="password">
                           <label class="active" for="password">Enter Password</label>
 
                         </div>
@@ -299,13 +332,13 @@
 
 
                        <div class="input-field col s12">
-                          <input id="dob1" type="date" name="dob" value="{{y.dob|date:"Y-m-d" }}"  max="2015-01-01" >
+                          <input id="dob1" type="date" name="dob" value="{{y.dob|date:"Y-m-d" }}"  class="dob" max="2015-01-01" >
                           <label class="active" for="dob1">Date Of Birth</label>
 
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea" >{{ y.address }}</textarea>
+                          <textarea id="address" name="address" class="materialize-textarea address" >{{ y.address }}</textarea>
                           <label class="active" for="address">Address</label>
 
                         </div>
@@ -313,21 +346,21 @@
 
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
-                          <button type="submit" class="btn waves-effect btn-large green">
+                          <button type="submit" class="btn waves-effect btn-large green" onclick="return updateValidation()" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;">
                               <span>Update</span>
                               <i class="material-icons right">send</i>
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding-left: 5px;"><span>Cancle</span><i class="material-icons right">close</i> </a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;"><span>Cancle</span><i class="material-icons right">close</i> </a>
                       </div>
-                 </div>
-                </form>
+
+
+                </div>
 
                    {% endfor %}
 
                  {% endif %}
 
-                   <span class="text-center text-success font-weight-bold ">{{ msg }}</span>
-                   <span class="text-center text-danger">{{ status1 }}</span>
+
 
          </div>
 
@@ -374,6 +407,10 @@
              Materialize.toast('** Please Fill the Password. .', 2000,'rounded');
              return false;
          }
+         else if(dob == ""){
+             Materialize.toast('** Please Fill the Date of Birthday. .', 2000,'rounded');
+             return false;
+         }
          else if(address == ""){
              Materialize.toast('** Please Fill the Address. .', 2000,'rounded');
              return false;
@@ -383,11 +420,31 @@
 
 
 
-         updateSuccess()
+         updateRecord()
 
      }
-     function updateSuccess(){
-         Materialize.toast('Student Record Update...!',2000,'rounded')
+     function updateRecord(){
+         $.ajax({
+             type: 'POST',
+             url:/student_data_update/,
+             data:{
+                sid:$('.sid').val(),
+               name:$('.name').val(),
+               email:$('.email').val(),
+               mobile:$('.mobile').val(),
+               password:$('.password').val(),
+               dob:$('.dob').val(),
+                 address:$('.address').val(),
+             },
+             success:function (data) {
+                 if(data.success == true){
+                     Materialize.toast("Student Recore Update Successfully...!",3000,'rounded');
+                     window.location=/dashboard/
+                 }else{
+                     Materialize.toast("Record Updat Failed...!",3000,'rounded')
+                 }
+             }
+         })
      }
  </script>
 

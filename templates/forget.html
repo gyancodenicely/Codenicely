@@ -7,39 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-{#    <style>#}
-{##}
-{#       body {#}
-{#            display: flex;#}
-{#            min-height: 100vh;#}
-{#            flex-direction: column;#}
-{#        }#}
-{#        main {#}
-{#            flex: 1 0 auto;#}
-{#        }#}
-{#        body {#}
-{#            background-image: url("{% static 'image/thm.jpg' %}");#}
-{#            background-size: cover;#}
-{#        }#}
-{#        .input-field input[type=number]:focus + label,#}
-{#        .input-field input[type=password]:focus + label {#}
-{#            color: #e91e63;#}
-{#        }#}
-{#        .input-field input[type=number]:focus,#}
-{#        .input-field input[type=password]:focus {#}
-{#            border-bottom: 2px solid #e91e63;#}
-{#            box-shadow: none;#}
-{#        }#}
-{#        .login label{#}
-{#            font-size: 20px;#}
-{#            color: #00b0ff;#}
-{#        }#}
-{#        .login input{#}
-{#            font-size: 20px;#}
-{#            color: #7cb342;#}
-{#        }#}
-{##}
-{#    </style>#}
+
 
 
 <style>
@@ -78,46 +46,65 @@
 
 <script type="text/javascript">
         function formValidation() {
-            var user_id = document.getElementById('mobile').value;
-            var user_pass = document.getElementById('password').value;
+            var mobile = document.getElementById('mobile').value;
+            var password = document.getElementById('password').value;
+            var password1 = document.getElementById('password1').value;
+            var dmobile = document.getElementById('dmobile').value;
+            var mobile_pattern = /^[1-9]{1}[0-9]+/;
 
-            if(user_id ==""){
+
+
+            if(mobile ==""){
                 Materialize.toast('Enter a Mobile Number...!', 2000,'rounded');
                 mobile.focus();
                 return false;
             }
-            else if(isNaN(user_id)){
+            else if(isNaN(mobile)){
 
                 Materialize.toast('Enter Only Digit...!',2000,'rounded');
                 mobile.focus();
                 return false;
             }
-            else if(user_pass == ""){
+            else if(mobile.match(mobile_pattern)){
+                Materialize.toast("Mobile No. Not Start 0",2000,'rounded')
+                return false;
+            }
+
+            else if(password == ""){
                 Materialize.toast('Fill The Password.', 3000,'rounded');
                 password.focus();
                 return false;
             }
+            else if(password1 == ""){
+                Materialize.toast("Fill The Re_Enter Password",2000,'rounded');
+                return false;
+            }
+            else if(password != password1){
+                Materialize.toast("Password Not Match",2000,'rounded')
+                return false;
+            }
             else{
-                ajaxSubmit();
+                ajaxRest();
             }
 
 
         }
 
-        function ajaxSubmit() {
+        function ajaxRest() {
             $.ajax({
                type:'POST',
-               url:'/loginUser/',
+               url:'/reset_password/',
                data:{
                    mobile:$(".mobile").val(),
                    password:$(".password").val(),
                },
                success:function (data) {
                     if(data.success == true){
-                        window.location=/dashboard/;
+                        Materialize.toast("Password Reset",2000,'rounded')
+                        window.location=/login/;
                     }else {
 
-                       Materialize.toast('Wrong ID or Password..!', 3000,'rounded');
+                       Materialize.toast('Mobile No. Not Exist', 3000,'rounded');
                     }
                },
 
@@ -170,7 +157,7 @@
                <div class="card z-depth-4">
 
                        <div class="card-content teal white-text center-align">
-                           <h3>Admin-Login</h3>
+                           <h3>Reset Password</h3>
                        </div>
 
 
@@ -188,16 +175,22 @@
                           <label for="password" style="margin-left: 12%;">Password</label>
                       </div>
                    </div>
+                   <div class="row">
+                        <div class="input-field ">
+                          <i class="material-icons prefix" style="margin-left: -2%;">lock</i>
+                          <input id="password1" type="password" name="password1" class="validate password1" style="width: 83%;margin-left: 5%" >
+                          <label for="password1" style="margin-left: 12%;">Re Password</label>
+                      </div>
+                   </div>
+                     {%  for x in reg %}
 
+                         <input type="hidden" value="{{ x.mobile }}" id="dmobile" class="dmobile">
+                     {% endfor %}
 
                   <div class="form-field center-align">
-                           <button class="btn-large btn-success  waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;" onclick="return formValidation()"><span>Login</span><i class="material-icons right">send</i> </button>
-                       </div>
-                   <p class="center-align"><a href="/resetPage/">Forget Password ?</a> </p>
-                   <div class="flow-text">
-                       <span style="font-size: 15px;">Don't have an account <strong>?</strong></span> &nbsp;&nbsp;<a href="/registration/" style="font-size: 15px;font-weight: bold"> Signup Now </a>
-                        <br><br>
-                   </div>
+                           <button class="btn-large btn-success  waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;" onclick="return formValidation()"><span>Reset Password</span> </button>
+                  </div><br>
+
 
                    </div>
 
@@ -225,71 +218,6 @@
 
 
 
-<!--<script type="text/javascript">
-    $(document).ready(function () {
-        $('#mob').hide();
-        $('#pass').hide();
-        var user_id = true;
-        var user_pass=true;
-
-        $('#mobile').keyup(function () {
-            userid_check();
-        });
-        function userid_check() {
-            var mobile_data = $('#mobile').val();
-            if(mobile_data.length == " "){
-                $('#mob').show();
-                $('#mob').html("** Please Fill The Mobile No.");
-                $('#mob').focus();
-                $('#mob').css("color",'red')
-                user_id = false;
-                return false;
-            }else{
-                $('#mob').hide();
-            }
-            if(mobile_data.length !=10){
-                $('#mob').show();
-                $('#mob').html("** Please Enter 10 Digit Mobile No.");
-                $('#mob').focus();
-                $('#mob').css("color",'red')
-                user_id = false;
-                return false;
-            }else{
-                $('#mob').hide();
-            }
-
-        }
-        $('#password').keyup(function () {
-            userpass_check();
-        });
-        function userpass_check() {
-            var pass_data=$('#password').val();
-            if(pass_data.length ==" "){
-                $('#pass').show();
-                $('#pass').html("**Please Fill The Password");
-                $('#pass').focus();
-                $('#pass').css('color','red');
-                user_pass=false;
-                return false;
-            }else{
-                $('#pass').hide();
-            }
-        }
-        $('#submit').click(function () {
-            user_id = true;
-            user_pass=true;
-            userid_check();
-            userpass_check();
-            if((user_id == true)){
-                return true;
-            }else{
-                return false;
-            }
-        })
-
-
-    })
-</script>-->
 </center>
 </body>
 

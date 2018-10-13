@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from MyApp import views
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('',views.login),
     url(r'^login/$',views.login),
+    url(r'^base/$',views.base),
     url(r'^loginUser/$',views.loginUser),
     url(r'^registration/$',views.registration),
     url(r'^dashboard/$',views.dashboard),
@@ -33,6 +37,8 @@ urlpatterns = [
     url(r'^student_data_store/$',views.student_data_store),
     url(r'^student_data_update/$',views.student_data_update),
     url(r'^student_data_delete/$',views.student_data_delete),
+    url(r'^resetPage/$',views.resetpage),
+    url(r'^reset_password/$',views.reset_password),
 
 
     url(r'^logout/$',views.logout),

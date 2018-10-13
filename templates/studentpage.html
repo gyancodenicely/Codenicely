@@ -17,7 +17,7 @@
             font-size: 15px;
             margin-left: 10px;
             padding-top: 10px;
-            font-weight: bold;
+
         }
             .register{
             margin: 0px;
@@ -40,7 +40,7 @@
             width: 100%;
             height: 60px;
             margin-top: 0px;
-            border-radius: 10px;
+            border-radius: 0px;
         }
 
 
@@ -79,7 +79,7 @@
              return false;
          }
          if(!isNaN(name)){
-             Materialize.toast('** Please Only Character..! ', 2000,'rounded');
+             Materialize.toast('** Name Only Character..! ', 2000,'rounded');
              return false;
          }
          //Email Validation
@@ -173,11 +173,13 @@
              },
              success:function (data) {
                  if(data.success == true){
-                     Materialize.toast("Registration Success..!",2000,'rounded')
+                     Materialize.toast("Registration Success..!",4000,'rounded');
+                     window.location='/dashboard/'
                  }else{
-                     Materialize.toast("Registration Failed..!",2000,'rounded')
+                     Materialize.toast("Registration Failed..!",2000,'rounded');
                  }
-                 $('input[type="text"],textarea,input[type="number"],input[type="email"],input[type="password"],input[type="radio"]').val('');
+                 $('input[type="text"],input[type="number"],input[type="email"],input[type="password"]').val('');
+                 $("input:radio").removeAttr("checked");
              }
 
 
@@ -265,7 +267,7 @@
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea address" ></textarea>
+                          <input type="text" id="address" name="address" class="address">
                           <label class="active" for="address">Address</label>
 
                         </div>
@@ -274,11 +276,11 @@
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
                           <button type="submit" class="btn waves-effect btn-large green submit" id="submit" onclick="return formValidation()" style="padding: 0px;margin: 10px;padding-left: 13px;padding-right: 13px;">
-                              <span>Registration</span>
-                              <i class="material-icons right">send</i>
+                              <span>Register</span>
+
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;"><span>Dashboard</span>
-                          <i class="material-icons right">home</i> </a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;"><span>Cancel</span>
+                           </a>
                       </div>
                       <div class="flow-text red-text">{{ msg }}</div>
                     </div>
@@ -338,7 +340,7 @@
                         </div>
 
                        <div class="input-field col s12">
-                          <textarea id="address" name="address" class="materialize-textarea address" >{{ y.address }}</textarea>
+                          <input type="text" id="address" name="address" class="address"  value="{{ y.address }}">
                           <label class="active" for="address">Address</label>
 
                         </div>
@@ -348,9 +350,9 @@
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
                           <button type="submit" class="btn waves-effect btn-large green" onclick="return updateValidation()" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;">
                               <span>Update</span>
-                              <i class="material-icons right">send</i>
+
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;"><span>Cancle</span><i class="material-icons right">close</i> </a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;"><span>Cancel</span><i class="material-icons right">close</i> </a>
                       </div>
 
 

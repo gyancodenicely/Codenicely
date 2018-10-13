@@ -100,6 +100,11 @@
                     mobile.focus();
                     return false;
                 }
+                else if(mobile.value.length != 10){
+                    Materialize.toast("Please Enter 10 Digit Mobile No.",2000,'rounded');
+                    mobile.focus();
+                   return false;
+              }
 
                 else if(mobile.value == ((dublicate.value)|| (dublicate.value ==""))){
                     Materialize.toast('This Mobile Already Exist',2000,'rounded');
@@ -156,6 +161,7 @@
                   success:function (data) {
                       if(data.success == true){
                           Materialize.toast("Registration Successfully..",3000,'rounded')
+                          window.location='/login/'
 
                       }
                       else{
@@ -173,11 +179,12 @@
 
               <div class="col s12 l4 m4 offset-l4 register" >
                   <div class="card">
-                       <div class="card-content green white-text center-align">
-                                   <h3>Registration Page....!</h3>
+                       <div class="card-content teal white-text center-align">
+                                   <h3>Admin-Registration</h3>
                                </div>
 
-                           <div class='row '>
+
+                           <div class='row ' style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
                                 <input class='validate name' type='text' name='name' id='name' />
                                 <label for='name'>Enter  Name</label>
@@ -185,15 +192,15 @@
                               </div>
                             </div>
 
-                            <div class='row  '>
+                            <div class='row'style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
                                 <input class='validate email' type='email' name='email' id='email' />
                                 <label for='email'>Enter  email</label>
                               </div>
                             </div>
-                            <div class='row '>
+                            <div class='row'style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
-                                <input class='validate mobile' type='text' name='mobile' id='mobile' maxlength="10" minlength="10" onkeypress="return numberCheck(event)" />
+                                <input class='validate mobile' type='text' name='mobile' id='mobile' maxlength="10" onkeypress="return numberCheck(event)" />
                                 <label for='mobile'>Enter Mobile Number</label>
                               </div>
                             </div>
@@ -203,7 +210,7 @@
 
 
 
-                                <div style="padding-left: 20px">
+                                <div style="padding-left: 7%;" >
                                           <input name="gender" type="radio" class="gender" id="male" value="male" />
                                           <label for="male">Male</label>
 
@@ -219,13 +226,13 @@
 
 
 
-                            <div class='row '>
+                            <div class='row ' style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
                                 <input class='validate password' type='password' name='password' id='password' />
                                 <label for='password'>Enter password</label>
                               </div>
                             </div>
-                            <div class='row '>
+                            <div class='row ' style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
                                 <input class='validate password2' type='password' name='password2' id='password2' />
                                 <label for='password'>Re-Enter password</label>
@@ -246,10 +253,10 @@
 
 
                                   <div  class="input-field " align="center" >
-                                    <button type='submit' name='btn_login' class='btn waves-effect green medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; " onclick="return formValidation()">Registration
-                                    <i class="material-icons right">send</i> </button><br>
-                                      <span>Are You Have Account ? </span><a href="/login/" >Login</a>
-                                  </div>
+                                    <button type='submit' name='btn_login' class='btn waves-effect teal medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; " onclick="return formValidation()">Register
+                                       </button><br>
+                                      <span>Already have an Account ? </span><a href="/login/" >Login</a>
+                                  </div><br>
 
                   </div>
 

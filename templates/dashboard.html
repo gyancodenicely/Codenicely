@@ -50,12 +50,14 @@
             color: white;
             width: 100%;
             height: 60px;
-            margin-top: 10px;
-            border-radius: 10px;
+            margin-top: 0px;
+            position: relative;
+            left: 0px;
+
         }
         .profile label{
             font-size: 20px;
-            font-weight: bold;
+
             margin-left: 5px;
             color: black;
         }
@@ -99,30 +101,29 @@
 
     </script>
 </head>
+
 <body>
  <div class="container-fluid">
-   <div class="row">
+
 
        <div class="custom">
           <div class="col s12 m12 l12" style="padding: 2px;">
+          <img src="{% static 'image/logo.ico' %}" width="50" height="50">
          {% for z in data %}
              <!-- Create Student Record--->
-               <span style=" position: relative;top: 14px;">
-                 <span>User Name :  </span><span >{{ z.name }}</span>
+               <span style=" position: absolute;top: 14px; ">
+                 <span >{{ z.name }}</span>
                </span>
 
          {% endfor %}
-          <span style="float:left;padding: 7px;">
-           <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span><i class="material-icons right">send</i> </a>
 
-       </span>
          <span style="float: right;padding: 7px; ">
            <a href="/logout/" class="btn large " style="border-radius: 10px;"><span>Logout</span><i class="material-icons right">lock</i> </a>
          </span>
           </div>
      </div>
 
-   </div>
+
      <div class="row">
        <div class="col s12 l3 m6" style="margin-top: 30px;">
       <!-- Create Toggle-->
@@ -140,27 +141,27 @@
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="mobile">Mobile :</label>
-                                  <span style="font-size: 20px;font-weight: bold;margin-left: 23%;position: relative;top: 12px;">{{ x.mobile }}</span>
+                                  <label for="mobile">Mobile </label>
+                                  <span style="font-size: 20px;margin-left: 27%;position: relative;top: 12px;">{{ x.mobile }}</span>
                                   <input  type='hidden' name='mobile' value="{{ x.mobile }}" id="mobile" />
 
                               </div><br>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="name" style="position: absolute;top:50%;" >Name  :</label>
+                                  <label for="name" style="position: absolute;top:50%;" >Name  </label>
                                   <input  type='text' name='name' id="name" value="{{ x.name }}" style="width:70%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="email" style="position: absolute;top:50%;" >Email  :</label>
+                                  <label for="email" style="position: absolute;top:50%;" >Email  </label>
                                   <input  type='email' name='email' id="email" value="{{ x.email }}" style="width: 70%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="password" style="position: absolute;top:50%;"  >Password :</label>
+                                  <label for="password" style="position: absolute;top:50%;"  >Password </label>
                                   <input  type='password' name='password' id="password" value="{{ x.password }}" style="width: 70%;margin-left: 27%;font-size: 20px; "/>
                               </div>
                    </div>
@@ -176,6 +177,14 @@
        </div>
 
             <div class="col s12 l9 m7">
+             <span style="float: right;padding: 7px;">
+           <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span></a>
+
+       </span>
+                <div class="flow-text white green-text center-align"><h3>Student Records</h3></div>
+             {% if not student %}
+                      <p class="flow-text red-text center-align ">Not Student Record In Database</p>
+                 {% else %}
                 <table class="bordered highlight" >
                     <thead>
                       <tr align="center">
@@ -184,7 +193,6 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Mobile</th>
-                        <th>Password</th>
                         <th>Gender</th>
                         <th>Date Of Birth</th>
                         <th>Address</th>
@@ -192,18 +200,18 @@
                           <th>Delete</th></tr>
                     </thead>
                     {% for y in student %}
+
                      <tbody>
                      <tr align="center">
                      <td>{{ y.sid }}</td>
                      <td>{{ y.name }}</td>
                      <td>{{ y.email }}</td>
                      <td>{{ y.mobile }}</td>
-                     <td>{{ y.password }}</td>
                      <td>{{ y.gender }}</td>
                      <td>{{y.dob|date:"d-m-Y" }}</td>
                      <td>{{ y.address }}</td>
                      <td>
-                       <a href="/studentpage/?sid={{y.sid }}"  class="         green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
+                       <a href="/studentpage/?sid={{y.sid }}"  class="green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
 
                      </td>
                      <td>
@@ -216,16 +224,16 @@
                           <a class="waves-effect waves-light modal-trigger red-text" href="#modal1"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
 
                           <div id="modal1" class="modal white">
-                        <div class="modal-content">
-                          <h4  class="left-align">Delete Record</h4>
-                          <p class="left-align">Are You Sure to delete this Student Record   ?</p>
-                        </div>
+                            <div class="modal-content">
+                              <h4  class="left-align">Delete Record</h4>
+                              <p class="left-align">Are You Sure to delete this Student Record   ?</p>
+                            </div>
 
-                        <div class="modal-footer while">
-                          <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">
-                              <i class="material-icons right">delete</i> Delete</a>
-                           <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
-                        </div>
+                            <div class="modal-footer while">
+                              <a href="/student_data_delete/?sid={{ y.sid }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">
+                                  <i class="material-icons right">delete</i> Delete</a>
+                               <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
+                            </div>
                       </div>
 
 <!--close Model-->
@@ -234,9 +242,9 @@
                      </td>
                      </tr>
                      </tbody>
-
-
                     {% endfor %}
+
+                        {% endif %}
 
 
                         {{ status }}

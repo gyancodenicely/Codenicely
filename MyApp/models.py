@@ -9,6 +9,7 @@ class Registration(models.Model):
     password = models.CharField(max_length=20)
 
 
+
 class StudentData(models.Model):
     sid = models.IntegerField(default=5,primary_key=True)
     name = models.CharField(max_length=20)

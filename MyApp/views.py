@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
 from django.views.decorators.csrf import *
 from .models import *
@@ -6,25 +6,58 @@ from django.contrib.auth.decorators import login_required
 
 
 def login(request):
-    # if request.method == 'GET':
-    return render(request,'login.html')
+    try:
+        mobile = request.session['mobile']
+        if mobile:
+            return HttpResponseRedirect('/dashboard/')
+        else:
+            return render(request, 'login.html')
+    except Exception:
+        return render(request,'login.html')
+
+def base(request):
+    return render(request,'base.html')
 
 
 def registration(request):
     reg = Registration.objects.all()
     return render(request,'Registration.html',{'reg':reg})
 #@login_required(login_url='/login/')
+
 def dashboard(request):
-    mobile = request.session['mobile']
+
     try:
+        mobile = request.session['mobile']
         if mobile:
             student = StudentData.objects.all()
             data = Registration.objects.filter(mobile=mobile).all()
-            return render(request, 'dashboard.html', {"data": data,'student': student})
+            return render(request,'dashboard.html',{"data": data, 'student': student})
         else:
             return HttpResponseRedirect('/login/')
-    except Exception:
-        raise render(request,'login.html')
+
+
+    except KeyError as e:
+        return HttpResponseRedirect('/login/')
+
+
+
+
+
+# def dashboard(request):
+#     mobile = request.session['mobile']
+#     if mobile:
+#         try:
+#             if mobile:
+#                 student = StudentData.objects.all()
+#                 data = Registration.objects.filter(mobile=mobile).all()
+#                 return render(request, 'dashboard.html', {"data": data, 'student': student})
+#             else:
+#                 return HttpResponseRedirect('/login/')
+#         except KeyError:
+#             raise HttpResponseRedirect('/login/')
+#     else:
+#         return HttpResponseRedirect('/login/')
+
 
 
 
@@ -165,7 +198,7 @@ def student_data_update(request):
         password = request.POST.get('password')
         dob = request.POST.get('dob')
         address = request.POST.get('address')
-        #print(sid)
+        # print(sid)
         # print(name)
         # print(email)
         # print(mobile)
@@ -192,19 +225,45 @@ def student_data_update(request):
 @csrf_exempt
 def student_data_delete(request):
     sid = request.GET.get('sid')
-    #print(sid)
+    print(sid)
     StudentData.objects.filter(sid=sid).delete()
-    student = StudentData.objects.all()
+    return HttpResponseRedirect('/dashboard/')
 
-    return render(request,'dashboard.html',{'student':student})
+
+
+def resetpage(request):
+    reg = Registration.objects.all()
+    return render(request,'forget.html',{'reg':reg})
+
+@csrf_exempt
+def reset_password(request):
+    response={}
+    if request.method == "POST":
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        # print(mobile)
+        # print(password)
+        try:
+            reg = Registration.objects.filter(mobile=mobile).update(password=password)
+            if reg:
+                response['success']=True
+                return JsonResponse(response)
+            else:
+                response['success']=False
+                return JsonResponse(response)
+        except Exception as e:
+            raise Http404
+
+
+    else:
+        return render(request,'forget.html')
+
 
 
 @csrf_exempt
 def logout(request):
     try:
-
         del request.session['mobile']
-
         return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')

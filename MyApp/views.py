@@ -27,10 +27,10 @@ def registration(request):
 def dashboard(request):
 
     try:
-        mobile = request.session['mobile']
-        if mobile:
+        id = request.session['id']
+        if id:
             student = StudentData.objects.all()
-            data = Registration.objects.filter(mobile=mobile).all()
+            data = Registration.objects.filter(id=id).all()
             return render(request,'dashboard.html',{"data": data, 'student': student})
         else:
             return HttpResponseRedirect('/login/')
@@ -71,9 +71,9 @@ def loginUser(request):
         mobile = request.POST['mobile']
         password = request.POST['password']
         try:
-            login = Registration.objects.get(mobile=mobile, password=password)
-            if login :
-                request.session['mobile'] = mobile
+            login = Registration.objects.get(mobile=mobile,password=password)
+            request.session['id'] = login.id
+            if login:
                 response['success']=True
                 return JsonResponse(response)
                 #return HttpResponseRedirect('/dashboard/')
@@ -121,17 +121,34 @@ def register_data_store(request):
 
 @csrf_exempt
 def profile_update(request):
-    student = StudentData.objects.all()
+    #student = StudentData.objects.all()
+    response={}
     if request.method == "POST":
+        id = request.POST.get('id')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
-        Registration.objects.filter(mobile=mobile).update(name=name,email=email,password=password)
-        data = Registration.objects.filter(mobile=mobile)
-        return render(request,'dashboard.html',{"data": data,'student':student})
-    else:
-        return render(request, 'dashboard.html', {'student': student})
+        # print(id)
+        # print(name)
+        # print(email)
+        # print(mobile)
+        # print(password)
+        # response['success']=True
+        # return JsonResponse(response)
+        try:
+            update = Registration.objects.filter(id=id).update(mobile=mobile,name=name,email=email,password=password)
+            if update:
+                response['success']=True
+                return JsonResponse(response)
+            else:
+                response['success']=False
+                return JsonResponse(response)
+        except Exception as e:
+            raise Http404
+
+
+
 
 
 
@@ -141,18 +158,16 @@ def material(request):
 
 
 def studentpage(request):
-    sid = request.GET.get('sid')
-    #print(sid)
-    student = StudentData.objects.filter(sid=sid)
-
-
+    id = request.GET.get('id')
+    # print(sid)
+    student = StudentData.objects.filter(id=id)
     return render(request, 'studentpage.html',{'student':student})
 
 @csrf_exempt
 def student_data_store(request):
     response={}
     if request.method == "POST":
-        sid = request.POST.get('sid')
+        roll_no = request.POST.get('roll_no')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
@@ -160,7 +175,7 @@ def student_data_store(request):
         password = request.POST.get('password')
         dob = request.POST.get('dob')
         address = request.POST.get('address')
-        # print(sid)
+        # print(roll_no)
         # print(name)
         # print(email)
         # print(mobile)
@@ -171,7 +186,7 @@ def student_data_store(request):
         # response['success']=True
         # return JsonResponse(response)
         try:
-            reg = StudentData.objects.create(sid=sid,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
+            reg = StudentData.objects.create(roll_no=roll_no,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
             if reg:
                 response['success'] = True
                 return JsonResponse(response)
@@ -191,7 +206,8 @@ def student_data_store(request):
 def student_data_update(request):
     response={}
     if request.method == "POST":
-        sid = request.POST.get('sid')
+        id = request.POST.get('id')
+        roll_no= request.POST.get('roll_no')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
@@ -208,7 +224,7 @@ def student_data_update(request):
         # response['success']=True
         # return JsonResponse(response)
         try:
-            std = StudentData.objects.filter(sid=sid).update(name=name, email=email,mobile=mobile,
+            std = StudentData.objects.filter(id=id).update(roll_no=roll_no,name=name, email=email,mobile=mobile,
                                                              password=password,dob=dob, address=address)
             #print(std)
             if std:
@@ -224,9 +240,9 @@ def student_data_update(request):
 
 @csrf_exempt
 def student_data_delete(request):
-    sid = request.GET.get('sid')
-    print(sid)
-    StudentData.objects.filter(sid=sid).delete()
+    id = request.GET.get('id')
+    # print(sid)
+    StudentData.objects.filter(id=id).delete()
     return HttpResponseRedirect('/dashboard/')
 
 
@@ -263,7 +279,7 @@ def reset_password(request):
 @csrf_exempt
 def logout(request):
     try:
-        del request.session['mobile']
+        del request.session['id']
         return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')

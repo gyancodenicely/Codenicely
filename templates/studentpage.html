@@ -25,7 +25,7 @@
         body{
             background-color: honeydew;
         }
-         .register input,textarea{
+         .register input{
             font-size: 20px !important;
              padding-left: 10px;
 
@@ -46,15 +46,8 @@
 
     </style>
     <script type="text/javascript">
-        $(document).ready(function() {
-        Materialize.updateTextFields();
-      });
-         $('#address').val('New Text');
-         $('#address').trigger('autoresize');
-
      function formValidation(){
-
-         var sid = document.getElementById('sid').value;
+         var roll_no = document.getElementById('roll_no').value;
          var name = document.getElementById('name').value;
          var email = document.getElementById('email').value;
          var mobile = document.getElementById('mobile').value;
@@ -63,8 +56,12 @@
          var gender2 = document.getElementById('female').checked;
          var dob = document.getElementById('dob').value;
          var address = document.getElementById('address').value;
+
+
+
+
          //Student Id Validation
-         if(sid == ""){
+         if(roll_no == ""){
               Materialize.toast('**Please Fill Student Roll No....!', 2000,'rounded');
              return false;
          }
@@ -162,7 +159,7 @@
              type:'POST',
              url:/student_data_store/,
              data:{
-                 sid:$('.sid').val(),
+                 roll_no:$('.roll_no').val(),
                  name:$('.name').val(),
                  email:$('.email').val(),
                  mobile:$('.mobile').val(),
@@ -218,12 +215,12 @@
              <!--=============================Create Student Record=====================-->
                 <div id="formData">
                    <div class="card-content green white-text center-align">
-                       <h4>Student Registration Page....!</h4>
+                       <h4>Student Registration</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
                         <div class="input-field col s12">
-                          <input id="sid" type="number" name="sid" class="sid" >
-                          <label class="active" for="sid">Student Roll No.</label>
+                          <input id="roll_no" type="number" name="roll_no" class="roll_no" >
+                          <label class="active" for="roll_no">Student Roll No.</label>
 
                         </div>
 
@@ -297,36 +294,48 @@
                        <h4>Student Updatation Page....!</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
-                          <div class="input-field col s12"><span>Roll No. : </span><span style="font-size: 20px;margin-left:10px;font-weight: bold">{{ y.sid }}</span>
-                          <input id="sid" type="hidden" value="{{ y.sid }}" name="sid" class="sid">
+
+
+                         <div class="input-field col s12">
+                          <input id="id" type="hidden" name="id" class="id"  value="{{ y.id }}"  >
+
 
 
                         </div>
 
+                         <div class="input-field col s12">
+                          <input id="roll_no" type="text" name="roll_no" class="roll_no"  value="{{ y.roll_no }}"  >
+                          <label class="active" for="roll_no">Roll _No.</label>
+
+
+                        </div>
+
+
+
                         <div class="input-field col s12">
                           <input id="name" type="text" name="name" class="name"  value="{{ y.name }}"  >
-                          <label class="active" for="name">Enter Name</label>
+                          <label class="active" for="name">Name</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
                           <input id="email" type="email" name="email" value="{{ y.email }}" class="validate email" >
-                          <label class="active" for="email">Enter Email</label>
+                          <label class="active" for="email">Email</label>
 
 
                         </div>
 
                         <div class="input-field col s12">
                           <input id="mobile" type="text" value="{{ y.mobile }}" class="mobile" name="mobile" maxlength="10" onkeypress="return numberCheck(event)">
-                           <label class="active" for="mobile">Enter Mobile</label>
+                           <label class="active" for="mobile">Mobile</label>
 
 
                         </div>
 
                        <div class="input-field col s12">
                           <input id="password" type="text" value="{{ y.password }}" name="password" class="password">
-                          <label class="active" for="password">Enter Password</label>
+                          <label class="active" for="password">Password</label>
 
                         </div>
 
@@ -352,7 +361,7 @@
                               <span>Update</span>
 
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;"><span>Cancel</span><i class="material-icons right">close</i> </a>
+                          <a href="/dashboard/" class="btn waves-effect btn-large green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;"><span>Cancel</span></a>
                       </div>
 
 
@@ -371,6 +380,8 @@
  <!-- form Validation for Updation-->
  <script type="text/javascript">
      function updateValidation() {
+         //var id = document.getElementById('id').value;
+         var roll_no=document.getElementById('roll_no').value;
          var name = document.getElementById('name').value;
          var email = document.getElementById('email').value;
          var mobile = document.getElementById('mobile').value;
@@ -378,8 +389,19 @@
          var dob = document.getElementById('dob1').value;
          var address = document.getElementById('address').value;
 
+
+
+         if(roll_no == ""){
+             Materialize.toast("**Fill Student Roll No.",2000,'rounded');
+             return false;
+         }
+         else if(isNaN(roll_no)){
+             Materialize.toast("Enter Only Digit",2000,'rounded');
+             return false;
+         }
+
          if(name == ""){
-             Materialize.toast('Fill Student Name...!', 2000,'rounded');
+             Materialize.toast('**Fill Student Name...!', 2000,'rounded');
              return false;
          }
          else if(!isNaN(name)){
@@ -430,7 +452,8 @@
              type: 'POST',
              url:/student_data_update/,
              data:{
-                sid:$('.sid').val(),
+                 id:$('.id').val(),
+                roll_no:$('.roll_no').val(),
                name:$('.name').val(),
                email:$('.email').val(),
                mobile:$('.mobile').val(),

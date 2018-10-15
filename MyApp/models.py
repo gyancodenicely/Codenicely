@@ -2,19 +2,21 @@ from django.db import models
 
 # Create your models here.
 class Registration(models.Model):
+
     name = models.CharField(max_length=20)
-    email = models.EmailField(max_length=20)
-    mobile = models.IntegerField(primary_key=True)
+    email = models.EmailField()
+    mobile = models.CharField(max_length=10)
     gender = models.CharField(max_length=6)
     password = models.CharField(max_length=20)
 
 
-
+#create Student Record
 class StudentData(models.Model):
-    sid = models.IntegerField(default=5,primary_key=True)
+
+    roll_no = models.CharField(max_length=5)
     name = models.CharField(max_length=20)
     email = models.EmailField()
-    mobile = models.IntegerField()
+    mobile = models.CharField(max_length=10)
     password = models.CharField(max_length=20)
     gender = models.CharField(max_length=10)
     dob = models.DateField()

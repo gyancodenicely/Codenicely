@@ -1,0 +1,23 @@
+
+    body{
+        background-color: honeydew;
+    }
+    .register{
+        margin: 0px auto;
+        width: 600px;
+        margin-top: 100px;
+    }
+
+    .custom{
+        width: 500px;
+        margin-left: 25px;
+        font-size: 20px;
+    }
+    .register label{
+        font-size: 15px !important;
+
+    }
+    .register input{
+        font-size: 20px !important;
+    }
+

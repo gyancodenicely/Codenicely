@@ -167,7 +167,7 @@ def studentpage(request):
 def student_data_store(request):
     response={}
     if request.method == "POST":
-        roll_no = request.POST.get('roll_no')
+        roll = request.POST.get('roll_no')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
@@ -185,18 +185,32 @@ def student_data_store(request):
         # print(address)
         # response['success']=True
         # return JsonResponse(response)
+
+        # try:
+        #     reg = StudentData.objects.create(roll_no=roll,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
+        #     if reg:
+        #         response['success'] = True
+        #         return JsonResponse(response)
+        #     else:
+        #         response['success'] = False
+        #         return JsonResponse(response)
+        #
+        # except Exception as ex:
+        #     print(ex)
+        #     return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
         try:
-            reg = StudentData.objects.create(roll_no=roll_no,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
-            if reg:
+            obj = StudentData.objects.get(roll_no=roll)
+           # print(obj)
+        except StudentData.DoesNotExist:
+            obj = StudentData.objects.create(roll_no=roll,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
+            if obj:
                 response['success'] = True
                 return JsonResponse(response)
             else:
                 response['success'] = False
                 return JsonResponse(response)
 
-        except Exception as ex:
-            print(ex)
-            return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
+
     else:
         return render(request,'studentpage.html',{'status1':"Record Not Store"})
 
@@ -240,10 +254,15 @@ def student_data_update(request):
 
 @csrf_exempt
 def student_data_delete(request):
-    id = request.GET.get('id')
-    # print(sid)
-    StudentData.objects.filter(id=id).delete()
-    return HttpResponseRedirect('/dashboard/')
+    response={}
+    if request.method == "POST":
+        id = request.POST.get('sid')
+        #print(id)
+        StudentData.objects.filter(id=id).delete()
+        response['success']=True
+        return JsonResponse(response)
+    #StudentData.objects.filter(id=id).delete()
+    #return HttpResponseRedirect('/dashboard/')
 
 
 

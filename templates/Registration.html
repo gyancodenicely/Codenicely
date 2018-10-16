@@ -3,179 +3,19 @@
 
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="{% static 'css_file/admin_reg.css' %}">
       <!--Import materialize.css-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+  <script type="text/javascript" src="{% static 'js_file/admin_reg.js' %}"></script>
 
-
-<style>
-    body{
-        background-color: honeydew;
-    }
-    .register{
-        margin: 0px auto;
-        width: 600px;
-        margin-top: 100px;
-    }
-
-    .custom{
-        width: 500px;
-        margin-left: 25px;
-        font-size: 20px;
-    }
-    .register label{
-        font-size: 15px !important;
-
-    }
-    .register input{
-        font-size: 20px !important;
-    }
-
-
-
-
-</style>
 </head>
-
 <body>
-
-{#      <img class="responsive-img" style="width: 250px;" src="https://i.imgur.com/ax0NCsK.gif" />#}
-            <!--Form validation -->
-        <script>
-            function formValidation() {
-
-                var name = document.getElementById('name');
-                var email = document.getElementById('email');
-                var demail = document.getElementById('demail');
-                var mobile = document.getElementById('mobile');
-                var dublicate = document.getElementById('dublicate');
-                var gender1 = document.getElementById("male").checked;
-                var gender2 = document.getElementById("female").checked;
-                var pass1 = document.getElementById('password');
-                var pass2 = document.getElementById('password2');
-
-
-              if(name.value == ""){
-                    Materialize.toast('Fill The Name', 2000,'rounded');
-                    name.focus();
-                    return false;
-                }
-                else if(!isNaN(name.value)){
-                    Materialize.toast('Enter Only Character...','2000','rounded')
-                   return false;
-              }
-                else if(name.value.length < 4 || name.value.length >20)
-                {
-                   // window.alert("Name must be Enter atleast 4 character");
-                    Materialize.toast('Name must be Enter atleast 4 character', 2000,'rounded');
-                    name.focus();
-                    return false;
-                }
-                else if(email.value == ""){
-                    Materialize.toast('Please Enter a Valid Email', 2000,'rounded');
-                    email.focus();
-                    return false;
-                }
-                else if(email.value.indexOf("@",0)<0){
-                       Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
-                        email.focus();
-                        return false;
-                    }
-
-                else if (email.value.indexOf(".", 0) < 0)
-                    {
-                        Materialize.toast('Please enter a valid e-mail address.', 2000,'rounded');
-                        email.focus();
-                        return false;
-                    }
-                else if(email.value == ((demail.value) || (demail.value== "")) ){
-                     Materialize.toast('This Email Already Exist', 2000,'rounded');
-                     email.focus();
-                     return false;
-                }
-                else if(mobile.value==""){
-                   Materialize.toast('Please enter Mobile No.', 2000,'rounded');
-                    mobile.focus();
-                    return false;
-                }
-                else if(mobile.value.length != 10){
-                    Materialize.toast("Please Enter 10 Digit Mobile No.",2000,'rounded');
-                    mobile.focus();
-                   return false;
-              }
-
-                else if(mobile.value == ((dublicate.value)|| (dublicate.value ==""))){
-                    Materialize.toast('This Mobile Already Exist',2000,'rounded');
-                    mobile.focus();
-                    return false;
-                }
-                else if((gender1=="")&&(gender2=="")){
-                    Materialize.toast('Select either Male or Female', 2000,'rounded');
-                    return false;
-                }
-
-                else if(pass1.value == "") {
-                    Materialize.toast('Enter a Password...!', 2000,'rounded');
-                    pass1.focus();
-                    return false;
-                }
-
-              else if(pass1.value != "" && pass1.value.length < 8){
-                  Materialize.toast('Enter Password atleast 8 Character', 2000,'rounded');
-                  pass1.focus();
-                  return false;
-                  }
-
-
-
-
-               else if(pass2.value==""){
-                   Materialize.toast('Re-Enter Password...!', 2000,'rounded');
-                   pass2.focus();
-                   return false;
-               }
-               else if(pass1.value != pass2.value){
-                   Materialize.toast('Not Match Re-Enter Password...!', 2000,'rounded');
-                   pass2.focus();
-                   return false;
-               }
-
-
-
-              ajaxCalling()
-
-            }
-            function ajaxCalling(){
-              $.ajax({
-                  type:'POST',
-                  url:/register_data_store/,
-                  data:{
-                      name:$('.name').val(),
-                      email:$('.email').val(),
-                      mobile:$('.mobile').val(),
-                      gender:$('.gender').val(),
-                      password:$('.password').val(),
-                  },
-                  success:function (data) {
-                      if(data.success == true){
-                          Materialize.toast("Registration Successfully..",3000,'rounded')
-                          window.location='/login/'
-
-                      }
-                      else{
-                          Materialize.toast("Registration Failed..",3000,'rounded')
-                      }
-                      $('input[type="text"],input[type="email"],input[type="radio"],input[type="password"]').val('');
-
-                  }
-              })
-            }
-        </script>
-
-
-      <div class="container">
+ <div class="container">
 
               <div class="col s12 l4 m4 offset-l4 register" >
                   <div class="card">
@@ -205,11 +45,6 @@
                               </div>
                             </div>
 
-
-
-
-
-
                                 <div style="padding-left: 7%;" >
                                           <input name="gender" type="radio" class="gender" id="male" value="male" />
                                           <label for="male">Male</label>
@@ -217,14 +52,6 @@
                                           <input name="gender" type="radio" class="gender" id="female" value="female" />
                                           <label for="female">Female</label>
                                 </div>
-
-
-
-
-
-
-
-
 
                             <div class='row ' style="padding-left:5%;padding-right: 5%;">
                               <div class='input-field custom'>
@@ -261,26 +88,8 @@
                   </div>
 
               </div>
-
-
-
       </div>
 
-
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-<!--Mobile no Only 10 Digit-->
-<script type="text/javascript">
-        function numberCheck(evt) {
-            evt = (evt) ? evt : window.event;
-                var charCode = (evt.which) ? evt.which : evt.keyCode;
-                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                    return false;
-                }
-             return true;
-
-        }
-</script>
 </body>
 
 </html>

@@ -4,150 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <title>DashBoard</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css_file/dashboard.css' %}">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
       <!--Import materialize.css-->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <style>
-        table{
-            margin-top: 20px;
-            border-collapse: collapse;
-
-        }
-        td.updatefont{
-            font-size: 20px;
-            font-weight: bold;
-            color: #9fcdff;
-            text-align: center;
-            background-color: #1e7e34;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="{% static 'js_file/dashboard.js' %}"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
-        }
-        #formpage{
-            display: none;
-        }
-        tr,th,td{
-
-            border: 1px solid;
-            text-align: center;
-        }
-
-        .custom_toggle{
-            margin-top: 30px;
-        }
-        td{
-            font-size: 20px !important;
-
-        }
-
-        .custom{
-            border: 2px solid;
-            background-color: green;
-            color: white;
-            width: 100%;
-            height: 60px;
-            margin-top: 0px;
-            position: relative;
-            left: 0px;
-
-        }
-        .profile label{
-            font-size: 20px;
-
-            margin-left: 5px;
-            color: black;
-        }
-    </style>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#form_button').click(function () {
-              $('.form_page').toggle();
-            });
-            $('.form_page').hide();
 
 
-        });
-        function updateLogedUser() {
-            var mobile = document.getElementById('mobile').value;
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
 
+<style>
+    table {
+    counter-reset: tableCount;
+}
+.counterCell:before {
+    content: counter(tableCount);
+    counter-increment: tableCount;
+}
+</style>
 
-            if(mobile == ""){
-                Materialize.toast("** Fill The Mobile No....",2000,'rounded');
-                return false;
-            }
-            else if(isNaN(mobile)){
-
-                Materialize.toast("Enter Only Character",2000,'rounded');
-                return false;
-            }
-            else if(mobile.length != 10){
-                Materialize.toast('Enter 10 Digit Only',2000,'rounded');
-                return false;
-            }
-
-            if(name == ""){
-                Materialize.toast("**Fill The Name...!",2000,'rounded');
-                return false;
-            }
-            else if(email == ""){
-             Materialize.toast('Fill Student Email...!', 2000,'rounded');
-             return false;
-         }
-         else if(email.indexOf('@')<=0)
-         {
-             Materialize.toast('** Please Fill the Email Id Proper Formate @', 2000,'rounded');
-             return false;
-         }
-         else if((email.charAt(email.length-4) != '.') && (email.charAt(email.length-3)!='.')){
-           Materialize.toast('** Please Fill the Email Id Proper Formate .', 2000,'rounded');
-             return false;
-         }
-         else if(password == ""){
-             Materialize.toast('** Please Fill the Password .', 2000,'rounded');
-             return false;
-            }
-            logedUser()
-        }
-        function logedUser() {
-           $.ajax({
-               type:'POST',
-               url:'/profile_update/',
-               data:{
-                   id:$('.id').val(),
-                   mobile:$('.mobile').val(),
-                   name:$('.name').val(),
-                   email:$('.email').val(),
-                   password:$('.password').val()
-               },
-               success:function (data) {
-                   if (data.success == true){
-                      Materialize.toast("Update Profile.",2000,'rounded') ;
-                      window.location=/dashboard/;
-
-                   }else {
-                       Materialize.toast('Update Failes.',2000,'rounded');
-
-                   }
-               }
-           })
-        }
-        function numberCheck(evt) {
-            evt = (evt) ? evt : window.event;
-                var charCode = (evt.which) ? evt.which : evt.keyCode;
-                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                    return false;
-                }
-             return true;
-
-        }
-
-    </script>
 </head>
 
 <body>
@@ -197,26 +79,26 @@
                    </div>
                     <div class='row '>
                               <div class='input-field'>
-                                  <label for="mobile" style="position: absolute;top:50%;" >Mobile  </label>
-                                  <input  type='text' class="validate mobile" value="{{ x.mobile }}" id="mobile" maxlength="10" autocomplete="off" style="width:70%;margin-left: 27%;font-size: 20px; " onkeypress="return numberCheck(event)"/>
+                                  <label for="mobile" style="position: absolute;top:31%; margin-left: 6%" >Mobile  </label>
+                                  <input  type='text' class="validate mobile" value="{{ x.mobile }}" id="mobile" maxlength="10" autocomplete="off" style="width:58%;margin-left: 27%;font-size: 20px; " onkeypress="return numberCheck(event)"/>
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="name" style="position: absolute;top:50%;" >Name  </label>
-                                  <input  type='text' name='name' id="name" class="name" value="{{ x.name }}" style="width:70%;margin-left: 27%;font-size: 20px; " />
+                                  <label for="name" style="position: absolute;top:31%; margin-left: 6%">Name  </label>
+                                  <input  type='text' name='name' id="name" class="name" value="{{ x.name }}" style="width:58%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="email" style="position: absolute;top:50%;" >Email  </label>
-                                  <input  type='email' name='email' class="validate email" id="email" value="{{ x.email }}" style="width: 70%;margin-left: 27%;font-size: 20px; " />
+                                  <label for="email" style="position: absolute;top:31%; margin-left: 6%">Email  </label>
+                                  <input  type='email' name='email' class="validate email" id="email" value="{{ x.email }}" style="width: 58%;margin-left: 27%;font-size: 20px; " />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="password" style="position: absolute;top:50%;"  >Password </label>
-                                  <input  type='password' name='password' id="password" class="password" value="{{ x.password }}" style="width: 70%;margin-left: 27%;font-size: 20px; "/>
+                                  <label for="password" style="position: absolute;top:31%; margin-left: 6%"  >Password </label>
+                                  <input  type='password' name='password' id="password" class="password" value="{{ x.password }}" style="width: 58%;margin-left: 27%;font-size: 20px; "/>
                               </div>
                    </div>
                    <div class='row ' align="center" style="position: relative;bottom: 10px;">
@@ -239,10 +121,10 @@
              {% if not student %}
                       <p class="flow-text red-text center-align ">Not Student Record In Database</p>
                  {% else %}
-                <table class="bordered highlight" >
+                <table class="bordered highlight display" id="table_data"  >
                     <thead>
                       <tr align="center">
-                        <th>ID</th>
+                        <th>SNo.</th>
                         <th>Roll No.</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -257,7 +139,7 @@
 
                      <tbody>
                      <tr align="center">
-                     <td>{{ y.id }}</td>
+                     <td class="counterCell"></td>
                      <td>{{ y.roll_no }}</td>
                      <td>{{ y.name }}</td>
                      <td>{{ y.email }}</td>
@@ -275,9 +157,9 @@
 
              <!-- create Model--->
 
-{#                          <a class="waves-effect waves-light modal-trigger red-text" data-id="{{ y.id }}"  data-toggle="modal" data-target="modal1"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>#}
+                         <a class="waves-effect waves-light modal-trigger red-text"  data-toggle="modal" data-target="modal1" id="delete_id" onclick="return delete_Data({{ y.id }})"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
 
-                  <button type="button" class="btn red-text" data-toggle="modal" data-target="modal1" onclick="return delete_data(this)">Delete</button>
+
 
 <!--close Model-->
 
@@ -298,8 +180,9 @@
                             </div>
 
                             <div class="modal-footer while">
-                           <a href="/student_data_delete/?id={{ y.id }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">
-                                  <i class="material-icons right">delete</i> Delete</a>
+{#                           <a href="/student_data_delete/?id={{ y.id }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">#}
+                                <input type="hidden" name="s_id" id="s_id" class="s_id">
+                                <button type="button" class="modal-close waves-effect btn waves-light" onclick="ajaxCalling()" style="border-radius: 7px;"><i class="material-icons right">delete</i> Delete</button>
                                <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
                             </div>
                       </div>
@@ -311,13 +194,20 @@
 
 
 
- <script type="text/javascript">
-
-    $(document).ready(function(){
-    $('.modal').modal();
-  });
 
 
- </script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       $('#table_data').DataTable();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $('.modal').modal();
+    })
+</script>
+
 </body>
 </html>

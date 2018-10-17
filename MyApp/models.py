@@ -23,3 +23,8 @@ class StudentData(models.Model):
     address = models.CharField(max_length=100)
 
 
+#create marks table
+
+
+
+

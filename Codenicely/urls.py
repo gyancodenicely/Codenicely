@@ -37,6 +37,10 @@ urlpatterns = [
     url(r'^student_data_store/$',views.student_data_store),
     url(r'^student_data_update/$',views.student_data_update),
     url(r'^student_data_delete/$',views.student_data_delete),
+    url(r'^add_marks/$',views.add_Marks),
+
+
+
     url(r'^resetPage/$',views.resetpage),
     url(r'^reset_password/$',views.reset_password),
 

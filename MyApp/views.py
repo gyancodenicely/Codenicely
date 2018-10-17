@@ -266,6 +266,38 @@ def student_data_delete(request):
 
 
 
+
+@csrf_exempt
+def add_Marks(request):
+    response={}
+    if request.method == "POST":
+        id= request.POST.get('id')
+        roll_no = request.POST.get('roll_no')
+        math = request.POST.get('math')
+        science = request.POST.get('science')
+        socal = request.POST.get('socal')
+        english = request.POST.get('english')
+        hindi = request.POST.get('hindi')
+        sanskrit = request.POST.get('sanskrit')
+        total = request.POST.get('total')
+        percentage=request.POST.get('percentage')
+        print(id)
+        print(roll_no)
+        print(math)
+        print(science)
+        print(socal)
+        print(english)
+        print(hindi)
+        print(sanskrit)
+        print(total)
+        print(percentage)
+        response['success']=True
+        return JsonResponse(response)
+
+
+
+
+
 def resetpage(request):
     reg = Registration.objects.all()
     return render(request,'forget.html',{'reg':reg})

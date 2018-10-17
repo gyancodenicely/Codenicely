@@ -190,7 +190,7 @@
                 type:'POST',
                 url:/add_marks/,
                 data:{
-                    id:$('.sid').val(),
+                    sid:$('.sid').val(),
                     roll_no:$('.roll_no').val(),
                     math:$('.math').val(),
                     science:$('.science').val(),
@@ -198,7 +198,7 @@
                     english:$('.english').val(),
                     hindi:$('.hindi').val(),
                     sanskrit:$('.sanskrit').val(),
-                    total:$('.total').val(),
+                    obtain:$('.obtain').val(),
                     percentage:$('.percentage').val(),
 
                 },
@@ -235,19 +235,19 @@
      calculate();
     });
     function calculate() {
-        var math = parseInt($('#math').val());
-        var science = parseInt($('#science').val());
-        var socal = parseInt($('#socal').val());
-        var english = parseInt($('#english').val());
-        var hindi = parseInt($('#hindi').val());
-        var sanskrit = parseInt($('#sanskrit').val());
+        var math = parseFloat($('#math').val());
+        var science = parseFloat($('#science').val());
+        var socal = parseFloat($('#socal').val());
+        var english = parseFloat($('#english').val());
+        var hindi = parseFloat($('#hindi').val());
+        var sanskrit = parseFloat($('#sanskrit').val());
         var percentage = "";
-        var total = "";
+        var obtain = "";
         var result="";
         if (isNaN(math) || isNaN(science) || isNaN(socal) || isNaN(english) || isNaN(hindi) || isNaN(sanskrit)) {
-            total = " ";
+            obtain = " ";
         } else {
-            total = (math + science + socal + english + hindi + sanskrit);
+            obtain = (math + science + socal + english + hindi + sanskrit);
         }
         if (isNaN(math) || isNaN(science) || isNaN(socal) || isNaN(english) || isNaN(hindi) || isNaN(sanskrit)) {
             percentage = " ";
@@ -261,7 +261,7 @@
             result="Fail"
         }
 
-        $('#total').val(total);
+        $('#obtain').val(obtain);
         $('#percentage').val(percentage);
         $('#result').val(result);
     }

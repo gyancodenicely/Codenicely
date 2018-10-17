@@ -9,16 +9,10 @@
      <link rel="stylesheet" href="{% static 'css_file/dashboard.css' %}">
      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="{% static 'js_file/dashboard.js' %}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-
-
-
-
-
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
 <style>
@@ -29,6 +23,17 @@
     content: counter(tableCount);
     counter-increment: tableCount;
 }
+  .dataTables_length label select{
+      display: inline-block;
+      width: 42%;
+
+  }
+    .dataTables_length label{
+        color: black;
+    }
+    .dataTables_filter label input[type=search]{
+        border: 1px solid;
+    }
 </style>
 
 </head>
@@ -163,7 +168,7 @@
              <!--close Model-->
                      </td>
                          <td>
-                         <a class="waves-effect waves-light modal-trigger green-text" data-toggle="modal" data-target="modal2" id="add_marks" onclick="return add_marks({{ y.id }},{{ y.roll_no }})"><i class="material-icons">add</i> </a>
+                         <a class="waves-effect waves-light modal-trigger green-text" data-toggle="modal" data-target="modal2" id="add_marks" onclick="return add_marks({{ y.id }},{{ y.roll_no }})"><i class="material-icons" style="font-size: 40px;">add_circle</i> </a>
                          </td>
                      </tr>
                      </tbody>
@@ -190,7 +195,12 @@
               <!--Model Content for Add Marks-->
                           <div id="modal2" class="modal white">
                             <div class="modal-content">
-                              <h4  class="left-align green-text">Add Marks</h4>
+                              <div class="card green  " style="margin: -24px;padding: 0px;">
+                               <div class="card-content">
+                                   <h4  class="center-align white-text">Add Marks</h4>
+                               </div>
+                              </div>
+
                                <div class="container-fluid">
                                    <div class="row">
                                            <input type="hidden" name="sid" id="sid" class="sid">
@@ -199,7 +209,7 @@
                                    </div>
                                        <div class="row">
                                             <span class="input-field  ">
-                                              <input id="math"  type="number" name="math"  class="math" id="math" style="width: 45%;">
+                                              <input type="number" name="math"  class="math" id="math" style="width: 45%;">
                                               <label for="math" style="margin-left: 2%;">Math</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -210,43 +220,45 @@
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
-                                              <input id="socal"  type="number" name="socal"  class="socal" id="socal" style="width: 45%;">
+                                              <input   type="number" name="socal"  class="socal" id="socal" style="width: 45%;">
                                               <label for="socal" style="margin-left: 2%;">Socal Science</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input id="english"  type="number" name="english"  class="english" id="english" style="width: 45%;" >
+                                              <input  type="number" name="english"  class="english" id="english" style="width: 45%;" >
                                               <label for="english" style="margin-left: 2%;">English</label>
                                             </span>
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
-                                              <input id="hindi"  type="number" name="hindi"  class="hindi" id="hindi" style="width: 45%;">
+                                              <input   type="number" name="hindi"  class="hindi" id="hindi" style="width: 45%;">
                                               <label for="hindi" style="margin-left: 2%;">Hindi</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input id="sanskrit"  type="number" name="sanskrit"  class="sanskrit" id="sanskrit" style="width: 45%;" >
+                                              <input type="number" name="sanskrit"  class="sanskrit" id="sanskrit" style="width: 45%;" >
                                               <label for="sanskrit" style="margin-left: 2%;">Sanskrit</label>
                                             </span>
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
-                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input id="total"  type="text" name="total"  class="total" id="total" style="width: 35%; font-weight: bold" disabled>
+                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="obtain"  class="obtain" id="obtain" style="width: 35%; font-weight: bold" disabled>
 
                                             </span>
 
                                             <span class="input-field">
-                                                Percentage :&nbsp;&nbsp;&nbsp;&nbsp;<input id="percentage"  type="text" name="percentage"  class="percentage" id="percentage" style="width: 35%;font-weight: bold" disabled >
+                                                Percentage :&nbsp;&nbsp;&nbsp;&nbsp;<input  type="text" name="percentage"  class="percentage" id="percentage" style="width: 35%;font-weight: bold" disabled >
 
                                             </span>
                                       </div>
                                       <div class="row">
                                           <span class="input-field">
-                                                Result :&nbsp;&nbsp;&nbsp;&nbsp;<input id="result"  type="text" name="result"  class="result" id="result" style="width: 35%;font-weight: bold" disabled >
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              Result :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="result"  class="result" id="result" style="width: 35%;font-weight: bold" disabled >
 
-                                            </span><br>
+                                            </span>
                                             <span class="input-field">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <span>Total Marks :</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>600</span>
 
                                             </span><br>
@@ -262,7 +274,7 @@
 
                                 <button type="button" class="waves-effect btn waves-light" style="border-radius: 7px;" onclick="return save_marks()">Save</button>
                                <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;">Cancel</a>
-                            </div>
+                            </div><br>
                       </div>
             <!-- End Model COntent -->
             </div>

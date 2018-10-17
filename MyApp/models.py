@@ -24,6 +24,19 @@ class StudentData(models.Model):
 
 
 #create marks table
+class Marks(models.Model):
+
+    id = models.OneToOneField(StudentData,primary_key=True,on_delete=models.CASCADE)
+    roll_no = models.CharField(max_length=5)
+    math = models.CharField(max_length=3)
+    science = models.CharField(max_length=3)
+    socal = models.CharField(max_length=3)
+    english = models.CharField(max_length=3)
+    hindi = models.CharField(max_length=3)
+    sanskrit = models.CharField(max_length=3)
+    obtain = models.DecimalField(max_digits=6,decimal_places=2)
+    percentage = models.DecimalField(max_digits=6,decimal_places=2)
+
 
 
 

@@ -3,312 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="dd689653-873e-4bb7-9ec0-5c8797c655d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codenicely/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Codenicely/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyApp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyApp/static/js_file/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/MyApp/static/js_file/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyApp/static/js_file/student_reg.js" beforeDir="false" afterPath="$PROJECT_DIR$/MyApp/static/js_file/student_reg.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/pip3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/pip3.6" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/pip3.6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/easy-install.pth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/entry_points.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/not-zip-safe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/requires.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/EGG-INFO/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/__main__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/basecommand.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/baseparser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/build_env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/cache.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/cmdoptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/completion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/configuration.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/download.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/freeze.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/hash.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/help.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/install.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/list.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/search.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/show.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/uninstall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/commands/wheel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/configuration.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/download.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/locations.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/models/index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/operations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/operations/check.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/operations/freeze.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/operations/prepare.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/pep425tags.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/req/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/req/req_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/req/req_install.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/req/req_set.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/req/req_uninstall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/resolve.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/status_codes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/appdirs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/deprecation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/encoding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/filesystem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/glibc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/hashes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/logging.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/misc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/outdated.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/packaging.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/setuptools_build.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/temp_dir.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/typing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/utils/ui.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/vcs/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/vcs/bazaar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/vcs/git.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/vcs/mercurial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/vcs/subversion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_internal/wheel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/appdirs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/_cmd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/adapter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/cache.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/file_cache.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/redis_cache.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/controller.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/filewrapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/heuristics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/serialize.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/cachecontrol/wrapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/certifi/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/certifi/__main__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/certifi/cacert.pem" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/certifi/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/big5freq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/big5prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/chardistribution.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/charsetgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/charsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/cli/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/cli/chardetect.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/codingstatemachine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/cp949prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/escprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/escsm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/eucjpprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/euckrfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/euckrprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/euctwfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/euctwprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/gb2312freq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/gb2312prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/hebrewprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/jisfreq.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/jpcntx.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langbulgarianmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langcyrillicmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langgreekmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langhebrewmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langhungarianmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langthaimodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/langturkishmodel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/latin1prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/mbcharsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/mbcsgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/mbcssm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/sbcharsetprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/sbcsgroupprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/sjisprober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/universaldetector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/utf8prober.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/chardet/version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/ansi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/ansitowin32.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/initialise.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/win32.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/colorama/winterm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/misc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/shutil.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/_backport/tarfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/index.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/locators.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/manifest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/markers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/metadata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/resources.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/scripts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/t32.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/t64.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/w32.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/w64.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distlib/wheel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/distro.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_ihatexml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_inputstream.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_tokenizer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/_base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/datrie.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/py.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/alphabeticalattributes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/inject_meta_charset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/lint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/optionaltags.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/sanitizer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/filters/whitespace.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/html5parser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/serializer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/genshi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/sax.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/dom.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree_lxml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/dom.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree_lxml.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/genshi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/codec.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/idnadata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/intranges.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/package_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/idna/uts46data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/ipaddress.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/linklockfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/mkdirlockfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/pidlockfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/sqlitelockfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/lockfile/symlinklockfile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/msgpack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/msgpack/_version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/msgpack/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/msgpack/fallback.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/__about__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/_compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/_structures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/markers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/requirements.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/specifiers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/packaging/version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pkg_resources/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pkg_resources/py31compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/progress/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/progress/bar.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/progress/counter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/progress/helpers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/progress/spinner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pyparsing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pytoml/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pytoml/core.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pytoml/parser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/pytoml/writer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/__version__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/_internal_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/adapters.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/auth.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/certs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/cookies.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/help.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/hooks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/packages.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/sessions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/status_codes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/structures.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/requests/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/retrying.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/six.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/_collections.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/connection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/connectionpool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/_securetransport/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/_securetransport/bindings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/_securetransport/low_level.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/appengine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/ntlmpool.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/pyopenssl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/securetransport.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/contrib/socks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/fields.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/filepost.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/backports/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/backports/makefile.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/ordered_dict.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/six.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/ssl_match_hostname/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/packages/ssl_match_hostname/_implementation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/poolmanager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/response.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/connection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/request.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/response.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/retry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/selectors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/ssl_.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/timeout.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/url.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/urllib3/util/wait.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/webencodings/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/webencodings/labels.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/webencodings/mklabels.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/webencodings/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.6/site-packages/pip-10.0.1-py3.6.egg/pip/_vendor/webencodings/x_user_defined.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/studentpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/studentpage.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -337,7 +38,7 @@
     <session id="1307427342">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="28" />
+          <entry key="project.closed" value="30" />
           <entry key="project.open.time.13" value="3" />
           <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.15" value="3" />
@@ -355,18 +56,18 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="3" />
+          <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="34" />
+          <entry key="project.opened" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="5" />
           <entry key="ent" value="1" />
-          <entry key="html" value="51" />
-          <entry key="js" value="10" />
-          <entry key="py" value="27" />
+          <entry key="html" value="52" />
+          <entry key="js" value="11" />
+          <entry key="py" value="29" />
           <entry key="rnc" value="1" />
         </counts>
       </usages-collector>
@@ -374,18 +75,18 @@
         <counts>
           <entry key="CSS" value="5" />
           <entry key="DTD" value="1" />
-          <entry key="HTML" value="51" />
-          <entry key="JavaScript" value="10" />
-          <entry key="Python" value="27" />
+          <entry key="HTML" value="52" />
+          <entry key="JavaScript" value="11" />
+          <entry key="Python" value="29" />
           <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="7" />
-          <entry key="html" value="40780" />
-          <entry key="js" value="1589" />
-          <entry key="py" value="10395" />
+          <entry key="html" value="41289" />
+          <entry key="js" value="1614" />
+          <entry key="py" value="10902" />
           <entry key="py@Codenicely" value="72" />
         </counts>
       </usages-collector>
@@ -393,10 +94,10 @@
         <counts>
           <entry key="CSS" value="7" />
           <entry key="CommandLine" value="69" />
-          <entry key="HTML" value="40780" />
-          <entry key="JavaScript" value="1589" />
+          <entry key="HTML" value="41289" />
+          <entry key="JavaScript" value="1614" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="10395" />
+          <entry key="Python" value="10902" />
         </counts>
       </usages-collector>
     </session>
@@ -406,89 +107,39 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="242" column="44" lean-forward="true" selection-start-line="242" selection-start-column="44" selection-end-line="242" selection-end-column="44" />
+            <state relative-caret-position="754">
+              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#a#0;n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#a#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#10036#10042#0#HTML" expanded="true" />
-                <element signature="e#10042#10048#0#HTML" expanded="true" />
-                <element signature="e#10052#10058#0#HTML" expanded="true" />
-                <element signature="e#10058#10064#0#HTML" expanded="true" />
-                <element signature="e#10060#10066#0#HTML" expanded="true" />
-                <element signature="e#10066#10072#0#HTML" expanded="true" />
-                <element signature="e#10072#10078#0#HTML" expanded="true" />
-                <element signature="e#10078#10084#0#HTML" expanded="true" />
-                <element signature="e#10084#10090#0#HTML" expanded="true" />
-                <element signature="e#10090#10096#0#HTML" expanded="true" />
-                <element signature="e#10096#10102#0#HTML" expanded="true" />
-                <element signature="e#10102#10108#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#10964#10970#0#HTML" expanded="true" />
-                <element signature="e#10970#10976#0#HTML" expanded="true" />
-                <element signature="e#10976#10982#0#HTML" expanded="true" />
-                <element signature="e#10982#10988#0#HTML" expanded="true" />
-                <element signature="e#10988#10994#0#HTML" expanded="true" />
-                <element signature="e#10994#11000#0#HTML" expanded="true" />
-                <element signature="e#11000#11006#0#HTML" expanded="true" />
-                <element signature="e#11006#11012#0#HTML" expanded="true" />
-                <element signature="e#11012#11018#0#HTML" expanded="true" />
-                <element signature="e#11018#11024#0#HTML" expanded="true" />
-                <element signature="e#11024#11030#0#HTML" expanded="true" />
-                <element signature="e#11030#11036#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#11895#11901#0#HTML" expanded="true" />
-                <element signature="e#11901#11907#0#HTML" expanded="true" />
-                <element signature="e#11907#11913#0#HTML" expanded="true" />
-                <element signature="e#11913#11919#0#HTML" expanded="true" />
-                <element signature="e#11919#11925#0#HTML" expanded="true" />
-                <element signature="e#11925#11931#0#HTML" expanded="true" />
-                <element signature="e#11931#11937#0#HTML" expanded="true" />
-                <element signature="e#11937#11943#0#HTML" expanded="true" />
-                <element signature="e#11943#11949#0#HTML" expanded="true" />
-                <element signature="e#11949#11955#0#HTML" expanded="true" />
-                <element signature="e#11955#11961#0#HTML" expanded="true" />
-                <element signature="e#11961#11967#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#1;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#span#1;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#12737#12743#1#HTML" expanded="true" />
-                <element signature="e#12743#12749#0#HTML" expanded="true" />
-                <element signature="e#12749#12755#0#HTML" expanded="true" />
-                <element signature="e#12755#12761#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#0;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#13054#13060#0#HTML" expanded="true" />
-                <element signature="e#13060#13066#0#HTML" expanded="true" />
-                <element signature="e#13066#13072#0#HTML" expanded="true" />
-                <element signature="e#13072#13078#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#1;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#13403#13409#0#HTML" expanded="true" />
-                <element signature="e#13409#13415#0#HTML" expanded="true" />
-                <element signature="e#13415#13421#0#HTML" expanded="true" />
-                <element signature="e#13421#13427#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#span#2;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#13444#13450#0#HTML" expanded="true" />
-                <element signature="e#13450#13456#0#HTML" expanded="true" />
-                <element signature="e#13456#13462#0#HTML" expanded="true" />
-                <element signature="e#13462#13468#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#13664#13670#0#HTML" expanded="true" />
+                <element signature="e#13670#13676#0#HTML" expanded="true" />
+                <element signature="e#13676#13682#0#HTML" expanded="true" />
+                <element signature="e#13682#13688#0#HTML" expanded="true" />
+                <element signature="e#13688#13694#0#HTML" expanded="true" />
+                <element signature="e#13694#13700#0#HTML" expanded="true" />
+                <element signature="e#13700#13706#0#HTML" expanded="true" />
+                <element signature="e#13706#13712#0#HTML" expanded="true" />
+                <element signature="e#13712#13718#0#HTML" expanded="true" />
+                <element signature="e#13718#13724#0#HTML" expanded="true" />
+                <element signature="e#13724#13730#0#HTML" expanded="true" />
+                <element signature="e#13730#13736#0#HTML" expanded="true" />
+                <element signature="e#13736#13742#0#HTML" expanded="true" />
+                <element signature="e#13742#13748#0#HTML" expanded="true" />
+                <element signature="e#14108#14114#0#HTML" expanded="true" />
+                <element signature="e#14114#14120#0#HTML" expanded="true" />
+                <element signature="e#14120#14126#0#HTML" expanded="true" />
+                <element signature="e#14126#14132#0#HTML" expanded="true" />
+                <element signature="e#14132#14138#0#HTML" expanded="true" />
+                <element signature="e#14138#14144#0#HTML" expanded="true" />
+                <element signature="e#14144#14150#0#HTML" expanded="true" />
+                <element signature="e#14150#14156#0#HTML" expanded="true" />
+                <element signature="e#14156#14162#0#HTML" expanded="true" />
+                <element signature="e#14162#14168#0#HTML" expanded="true" />
+                <element signature="e#14168#14174#0#HTML" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="29" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -496,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="258" column="9" selection-start-line="258" selection-start-column="9" selection-end-line="258" selection-end-column="9" />
+            <state relative-caret-position="720">
+              <caret line="209" column="25" lean-forward="true" selection-start-line="209" selection-start-column="25" selection-end-line="209" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -505,7 +156,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Codenicely/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
+            <state relative-caret-position="816">
               <caret line="39" column="20" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="20" />
               <folding>
                 <element signature="e#634#666#0" expanded="true" />
@@ -526,12 +177,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="292" column="24" selection-start-line="292" selection-start-column="24" selection-end-line="292" selection-end-column="24" />
+            <state relative-caret-position="215">
+              <caret line="301" column="37" lean-forward="true" selection-start-line="301" selection-start-column="37" selection-end-line="301" selection-end-column="37" />
               <folding>
-                <marker date="1539764153938" expanded="true" signature="537:579" ph="..." />
-                <marker date="1539764153938" expanded="true" signature="740:741" ph="..." />
-                <marker date="1539764153938" expanded="true" signature="8027:8794" ph="..." />
+                <marker date="1539775484740" expanded="true" signature="537:579" ph="..." />
+                <marker date="1539775484740" expanded="true" signature="740:741" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
+              <folding>
+                <marker date="1539773969057" expanded="true" signature="91:96" ph="..." />
               </folding>
             </state>
           </provider>
@@ -581,14 +243,14 @@
         <option value="$PROJECT_DIR$/MyApp/static/css_file/admin_reg.css" />
         <option value="$PROJECT_DIR$/templates/Registration.html" />
         <option value="$PROJECT_DIR$/MyApp/static/css_file/student_reg.css" />
-        <option value="$PROJECT_DIR$/templates/studentpage.html" />
-        <option value="$PROJECT_DIR$/MyApp/static/js_file/student_reg.js" />
         <option value="$PROJECT_DIR$/MyApp/static/js_file/admin_reg.js" />
         <option value="$PROJECT_DIR$/MyApp/static/css_file/dashboard.css" />
-        <option value="$PROJECT_DIR$/MyApp/models.py" />
         <option value="$PROJECT_DIR$/Codenicely/urls.py" />
-        <option value="$PROJECT_DIR$/MyApp/views.py" />
+        <option value="$PROJECT_DIR$/MyApp/models.py" />
         <option value="$PROJECT_DIR$/MyApp/static/js_file/dashboard.js" />
+        <option value="$PROJECT_DIR$/MyApp/views.py" />
+        <option value="$PROJECT_DIR$/templates/studentpage.html" />
+        <option value="$PROJECT_DIR$/MyApp/static/js_file/student_reg.js" />
         <option value="$PROJECT_DIR$/templates/dashboard.html" />
       </list>
     </option>
@@ -721,9 +383,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.12728278" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1278362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -879,24 +540,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/studentpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="200" column="7" lean-forward="true" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/student_reg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="235" column="45" lean-forward="true" selection-start-line="235" selection-start-column="45" selection-end-line="235" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/loginpage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/admin_reg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="131" column="34" lean-forward="true" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Codenicely/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="e#634#666#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -909,41 +573,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="705">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
           <folding>
-            <marker date="1539756220230" expanded="true" signature="91:96" ph="..." />
-            <marker date="1539756220230" expanded="true" signature="717:721" ph="..." />
+            <marker date="1539773969057" expanded="true" signature="91:96" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Codenicely/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="20" />
-          <folding>
-            <element signature="e#634#666#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/admin_reg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="131" column="34" lean-forward="true" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="292" column="24" selection-start-line="292" selection-start-column="24" selection-end-line="292" selection-end-column="24" />
+        <state relative-caret-position="215">
+          <caret line="301" column="37" lean-forward="true" selection-start-line="301" selection-start-column="37" selection-end-line="301" selection-end-column="37" />
           <folding>
-            <marker date="1539764153938" expanded="true" signature="537:579" ph="..." />
-            <marker date="1539764153938" expanded="true" signature="740:741" ph="..." />
-            <marker date="1539764153938" expanded="true" signature="8027:8794" ph="..." />
+            <marker date="1539775484740" expanded="true" signature="537:579" ph="..." />
+            <marker date="1539775484740" expanded="true" signature="740:741" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="209" column="25" lean-forward="true" selection-start-line="209" selection-start-column="25" selection-end-line="209" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/student_reg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="229" column="19" lean-forward="true" selection-start-line="229" selection-start-column="19" selection-end-line="229" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/studentpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111">
+          <caret line="165" column="65" selection-start-line="165" selection-start-column="65" selection-end-line="165" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -954,88 +620,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/static/js_file/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="258" column="9" selection-start-line="258" selection-start-column="9" selection-end-line="258" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="242" column="44" lean-forward="true" selection-start-line="242" selection-start-column="44" selection-end-line="242" selection-end-column="44" />
+        <state relative-caret-position="754">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
             <element signature="n#style#0;n#i#0;n#a#0;n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10036#10042#0#HTML" expanded="true" />
-            <element signature="e#10042#10048#0#HTML" expanded="true" />
-            <element signature="e#10052#10058#0#HTML" expanded="true" />
-            <element signature="e#10058#10064#0#HTML" expanded="true" />
-            <element signature="e#10060#10066#0#HTML" expanded="true" />
-            <element signature="e#10066#10072#0#HTML" expanded="true" />
-            <element signature="e#10072#10078#0#HTML" expanded="true" />
-            <element signature="e#10078#10084#0#HTML" expanded="true" />
-            <element signature="e#10084#10090#0#HTML" expanded="true" />
-            <element signature="e#10090#10096#0#HTML" expanded="true" />
-            <element signature="e#10096#10102#0#HTML" expanded="true" />
-            <element signature="e#10102#10108#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#span#0;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#10964#10970#0#HTML" expanded="true" />
-            <element signature="e#10970#10976#0#HTML" expanded="true" />
-            <element signature="e#10976#10982#0#HTML" expanded="true" />
-            <element signature="e#10982#10988#0#HTML" expanded="true" />
-            <element signature="e#10988#10994#0#HTML" expanded="true" />
-            <element signature="e#10994#11000#0#HTML" expanded="true" />
-            <element signature="e#11000#11006#0#HTML" expanded="true" />
-            <element signature="e#11006#11012#0#HTML" expanded="true" />
-            <element signature="e#11012#11018#0#HTML" expanded="true" />
-            <element signature="e#11018#11024#0#HTML" expanded="true" />
-            <element signature="e#11024#11030#0#HTML" expanded="true" />
-            <element signature="e#11030#11036#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#span#1;n#div#2;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#span#0;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#11895#11901#0#HTML" expanded="true" />
-            <element signature="e#11901#11907#0#HTML" expanded="true" />
-            <element signature="e#11907#11913#0#HTML" expanded="true" />
-            <element signature="e#11913#11919#0#HTML" expanded="true" />
-            <element signature="e#11919#11925#0#HTML" expanded="true" />
-            <element signature="e#11925#11931#0#HTML" expanded="true" />
-            <element signature="e#11931#11937#0#HTML" expanded="true" />
-            <element signature="e#11937#11943#0#HTML" expanded="true" />
-            <element signature="e#11943#11949#0#HTML" expanded="true" />
-            <element signature="e#11949#11955#0#HTML" expanded="true" />
-            <element signature="e#11955#11961#0#HTML" expanded="true" />
-            <element signature="e#11961#11967#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#1;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#span#1;n#div#3;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#12737#12743#1#HTML" expanded="true" />
-            <element signature="e#12743#12749#0#HTML" expanded="true" />
-            <element signature="e#12749#12755#0#HTML" expanded="true" />
-            <element signature="e#12755#12761#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#0;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#13054#13060#0#HTML" expanded="true" />
-            <element signature="e#13060#13066#0#HTML" expanded="true" />
-            <element signature="e#13066#13072#0#HTML" expanded="true" />
-            <element signature="e#13072#13078#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#1;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#13403#13409#0#HTML" expanded="true" />
-            <element signature="e#13409#13415#0#HTML" expanded="true" />
-            <element signature="e#13415#13421#0#HTML" expanded="true" />
-            <element signature="e#13421#13427#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#span#2;n#div#4;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#13444#13450#0#HTML" expanded="true" />
-            <element signature="e#13450#13456#0#HTML" expanded="true" />
-            <element signature="e#13456#13462#0#HTML" expanded="true" />
-            <element signature="e#13462#13468#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#13664#13670#0#HTML" expanded="true" />
+            <element signature="e#13670#13676#0#HTML" expanded="true" />
+            <element signature="e#13676#13682#0#HTML" expanded="true" />
+            <element signature="e#13682#13688#0#HTML" expanded="true" />
+            <element signature="e#13688#13694#0#HTML" expanded="true" />
+            <element signature="e#13694#13700#0#HTML" expanded="true" />
+            <element signature="e#13700#13706#0#HTML" expanded="true" />
+            <element signature="e#13706#13712#0#HTML" expanded="true" />
+            <element signature="e#13712#13718#0#HTML" expanded="true" />
+            <element signature="e#13718#13724#0#HTML" expanded="true" />
+            <element signature="e#13724#13730#0#HTML" expanded="true" />
+            <element signature="e#13730#13736#0#HTML" expanded="true" />
+            <element signature="e#13736#13742#0#HTML" expanded="true" />
+            <element signature="e#13742#13748#0#HTML" expanded="true" />
+            <element signature="e#14108#14114#0#HTML" expanded="true" />
+            <element signature="e#14114#14120#0#HTML" expanded="true" />
+            <element signature="e#14120#14126#0#HTML" expanded="true" />
+            <element signature="e#14126#14132#0#HTML" expanded="true" />
+            <element signature="e#14132#14138#0#HTML" expanded="true" />
+            <element signature="e#14138#14144#0#HTML" expanded="true" />
+            <element signature="e#14144#14150#0#HTML" expanded="true" />
+            <element signature="e#14150#14156#0#HTML" expanded="true" />
+            <element signature="e#14156#14162#0#HTML" expanded="true" />
+            <element signature="e#14162#14168#0#HTML" expanded="true" />
+            <element signature="e#14168#14174#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

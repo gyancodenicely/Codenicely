@@ -271,7 +271,7 @@ def student_data_delete(request):
 def add_Marks(request):
     response={}
     if request.method == "POST":
-        id= request.POST.get('id')
+        sid = request.POST.get('sid')
         roll_no = request.POST.get('roll_no')
         math = request.POST.get('math')
         science = request.POST.get('science')
@@ -279,20 +279,35 @@ def add_Marks(request):
         english = request.POST.get('english')
         hindi = request.POST.get('hindi')
         sanskrit = request.POST.get('sanskrit')
-        total = request.POST.get('total')
+        obtain = request.POST.get('obtain')
         percentage=request.POST.get('percentage')
+
+        # print(sid)
+        # print(roll_no)
+        # print(math)
+        # print(science)
+        # print(socal)
+        # print(english)
+        # print(hindi)
+        # print(sanskrit)
+        # print(obtain)
+        # print(percentage)
+        # response['success']=True
+        # return JsonResponse(response)
+
+
+
+        id=StudentData.objects.get(id=sid)
         print(id)
-        print(roll_no)
-        print(math)
-        print(science)
-        print(socal)
-        print(english)
-        print(hindi)
-        print(sanskrit)
-        print(total)
-        print(percentage)
-        response['success']=True
-        return JsonResponse(response)
+        marks = Marks.objects.create(id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage)
+        if marks:
+            response['success']=True
+            return JsonResponse(response)
+        else:
+            response['success']=False
+            return JsonResponse(response)
+    else:
+        return HttpResponseRedirect('/dashboard/')
 
 
 

@@ -234,7 +234,7 @@ function formValidation(){
                email:$('.email').val(),
                mobile:$('.mobile').val(),
                password:$('.password').val(),
-               dob:$('.dob').val(),
+               dob:$('.dob1').val(),
                  address:$('.address').val(),
              },
              success:function (data) {

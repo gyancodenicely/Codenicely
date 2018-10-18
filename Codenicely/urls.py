@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^add_marks/$',views.add_Marks),
     url(r'^marks/$',views.marks),
     url(r'^update_marks/$',views.update_marks),
+    url(r'^imageuploadpage/$',views.imageuploadpage),
+    url(r'^imageupload/$',views.imageupload),
 
 
 
@@ -54,4 +56,4 @@ urlpatterns = [
 
 
 
-]
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

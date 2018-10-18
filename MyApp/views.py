@@ -281,6 +281,7 @@ def add_Marks(request):
         sanskrit = request.POST.get('sanskrit')
         obtain = request.POST.get('obtain')
         percentage=request.POST.get('percentage')
+        result=request.POST.get('result')
 
         # print(sid)
         # print(roll_no)
@@ -299,7 +300,7 @@ def add_Marks(request):
 
         id=StudentData.objects.get(id=sid)
         print(id)
-        marks = Marks.objects.create(id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage)
+        marks = Marks.objects.create(id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
         if marks:
             response['success']=True
             return JsonResponse(response)
@@ -319,27 +320,63 @@ def marks(request):
 
 @csrf_exempt
 def update_marks(request):
+    if request.method == "POST":
+        response = {}
+        sid = request.POST.get('sid')
+        roll_no = request.POST.get('roll_no')
+        math = request.POST.get('math')
+        science = request.POST.get('science')
+        socal = request.POST.get('socal')
+        english = request.POST.get('english')
+        hindi = request.POST.get('hindi')
+        sanskrit = request.POST.get('sanskrit')
+        obtain = request.POST.get('obtain')
+        percentage = request.POST.get('percentage')
+        result=request.POST.get('result')
+        # print(sid)
+        # print(roll_no)
+        # print(math)
+        # print(science)
+        # print(socal)
+        # print(english)
+        # print(hindi)
+        # print(sanskrit)
+        # print(obtain)
+        # print(percentage)
+        # print(result)
+        # response['success'] = True
+        # return JsonResponse(response)
+        marks = Marks.objects.filter(id_id=sid,roll_no=roll_no).update(math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
+        #print(marks)
+        if marks:
+            response['success']=True
+            return JsonResponse(response)
+        else:
+            response['success']=False
+            return JsonResponse(response)
+
+#image upload
+@csrf_exempt
+def imageuploadpage(request):
+    return  render(request,'imageupload.html')
+
+@csrf_exempt
+def imageupload(request):
     response={}
-    sid = request.POST.get('sid')
-    roll_no = request.POST.get('roll_no')
-    math = request.POST.get('math')
-    science = request.POST.get('science')
-    socal = request.POST.get('socal')
-    english = request.POST.get('english')
-    sanskrit = request.POST.get('sanskrit')
-    obtain = request.POST.get('obtain')
-    percentage = request.POST.get('percentage')
-    print(sid)
-    print(roll_no)
-    print(math)
-    print(science)
-    print(socal)
-    print(english)
-    print(sanskrit)
-    print(obtain)
-    print(percentage)
-    response['success']=True
+    if request.method == "POST":
+        name = request.POST.get('name')
+        mobile=request.POST.get('mobile')
+        photo = request.FILES('photo')
+        reg = ImageUpload.objects.create(name=name,mobile=mobile,image=photo)
+        if reg:
+            response['success']=True
+            return JsonResponse(response)
     return JsonResponse(response)
+
+
+
+
+
 
 
 

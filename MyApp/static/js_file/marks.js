@@ -1,3 +1,8 @@
+
+//form validation
+var obtain="";
+var percentage="";
+var result="";
 function update_marks() {
         var math = document.getElementById('math').value;
         var science = document.getElementById('science').value;
@@ -5,7 +10,21 @@ function update_marks() {
         var hindi = document.getElementById('hindi').value;
         var sanskrit = document.getElementById('sanskrit').value;
         var english = document.getElementById('english').value;
-        
+        obtain = (parseFloat(math)+parseFloat(science)+parseFloat(socal)+parseFloat(hindi)+parseFloat(sanskrit)+parseFloat(english));
+        percentage= ((parseFloat(math)+parseFloat(science)+parseFloat(socal)+parseFloat(hindi)+parseFloat(sanskrit)+parseFloat(english))*100)/600;
+        if(math > 29 && science > 29 && socal >= 30 && english >= 30 && hindi >= 30 && sanskrit >= 30)
+        {
+            result="Pass"
+        }
+        else{
+            result="Fail"
+        }
+        //  alert(obtain);
+        //  alert(percentage);
+        // alert(result);
+        document.getElementById('obtain').value=obtain;
+        document.getElementById('percentage').value=percentage;
+        document.getElementById('result').value=result;
 
         if(math == ""){
             Materialize.toast("Enter Mathematic Marks",2000,'rounded');
@@ -67,7 +86,6 @@ function update_marks() {
             socal.focus();
             return false;
         }
-
          update_ajaxMarks()
 
     }
@@ -87,6 +105,7 @@ function update_marks() {
                     sanskrit:$('.sanskrit').val(),
                     obtain:$('.obtain').val(),
                     percentage:$('.percentage').val(),
+                    result:$('.result').val(),
 
                 },
                 success:function (data) {
@@ -101,3 +120,56 @@ function update_marks() {
             })
 
 }
+
+
+
+//auto update obtain marks
+//calculate total marks
+//  $(function () {
+//      $('#math').keyup('input', function() {
+//       calculate();
+//     });
+//     $('#science').keyup('input', function() {
+//      calculate();
+//     });
+//     $('#socal').keyup('input', function() {
+//       calculate();
+//     });
+//     $('#english').keyup('input', function() {
+//      calculate();
+//     });
+//     $('#hindi').keyup('input', function() {
+//       calculate();
+//     });
+//     $('#sanskrit').keyup('input', function() {
+//      calculate();
+//     });
+//     function calculate() {
+//         var math = parseFloat($('#math').val());
+//         var science = parseFloat($('#science').val());
+//         var socal = parseFloat($('#socal').val());
+//         var english = parseFloat($('#english').val());
+//         var hindi = parseFloat($('#hindi').val());
+//         var sanskrit = parseFloat($('#sanskrit').val());
+//         var percentage = "";
+//         var obtain = "";
+//
+//
+//         if (isNaN(math) || isNaN(science) || isNaN(socal) || isNaN(english) || isNaN(hindi) || isNaN(sanskrit)) {
+//             obtain = " ";
+//         } else {
+//             obtain = (math + science + socal + english + hindi + sanskrit);
+//         }
+//         if (isNaN(math) || isNaN(science) || isNaN(socal) || isNaN(english) || isNaN(hindi) || isNaN(sanskrit)) {
+//             percentage = " ";
+//         } else {
+//             percentage = (((math + science + socal + english + hindi + sanskrit) * 100) / 600);
+//         }
+//
+//
+//         $('#obtain').val(obtain);
+//         $('#percentage').val(percentage);
+//
+//     }
+//
+//    });

@@ -201,6 +201,7 @@
                     sanskrit:$('.sanskrit').val(),
                     obtain:$('.obtain').val(),
                     percentage:$('.percentage').val(),
+                    result:$('.result').val(),
 
                 },
                 success:function (data) {
@@ -253,13 +254,13 @@
         if (isNaN(math) || isNaN(science) || isNaN(socal) || isNaN(english) || isNaN(hindi) || isNaN(sanskrit)) {
             percentage = " ";
         } else {
-            percentage = (((math + science + socal + english + hindi + sanskrit) * 100) / 600);
+            percentage = ((math + science + socal + english + hindi + sanskrit)  / 6);
         }
-        if(percentage >= 30  ){
-            result="Pass"
+        if(math > 29 && science > 29 && socal >= 30 && english >= 30 && hindi >= 30 && sanskrit >= 30){
+            result="Pass";
         }
         else{
-            result="Fail"
+            result="Fail";
         }
 
         $('#obtain').val(obtain);

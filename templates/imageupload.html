@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Upload</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+</head>
+<body>
+   <div class="container">
+       <div class="row">
+           <div class="col s12 l12 m12 m-auto" style="margin-top: 6%;">
+               <div class="card z-depth-4">
+                   <div class="card-content teal white-text center-align">
+                           <h3>Image Upload</h3>
+                   </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="input-field  ">
+                              <input   type="text" name="name" style="width: 78%;margin-left: 10%" class="name" id="name"  autocomplete="off">
+                              <label for="name" style="margin-left: 12%;">Name </label>
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="input-field  ">
+                              <input type="text" name="mobile" style="width: 78%;margin-left: 10%" class="mobile" id="mobile" maxlength="10" autocomplete="off">
+                              <label for="mobile" style="margin-left: 12%;">Mobile </label>
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="input-field  ">
+                              <input type="file" name="photo" style="width: 78%;margin-left: 25%" class="photo" id="photo" >
+                              <label for="photo" style="margin-left: 12%;">Select Image </label>
+                            </div>
+                      </div>
+                      <div class="row">
+                            <div class="input-field center-align ">
+                              <input type="submit" value="upload" class="btn waves-effect waves-light btn-large" onclick="return upload_image()">
+
+                            </div>
+                      </div><br>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+<script type="text/javascript">
+    function upload_image() {
+        var name = document.getElementById('name').value;
+        var mobile = document.getElementById('mobile').value;
+        if(name == ""){
+            Materialize.toast("Enter Name..",2000,'rounded');
+            name.focus();
+            return false;
+            }
+        else if(mobile == ""){
+            Materialize.toast("Enter Mobile No....",2000,'rounded');
+            mobile.focus();
+            return false;
+        }
+        ajax_method()
+    }
+    function ajax_method() {
+        $.ajax({
+            type:'POST',
+            url:/imageupload/,
+            data:{
+                name:$('.name').val(),
+                mobile:$('.mobile').val(),
+                photo:$('.photo').val()
+            },
+            success:function () {
+                if(data.success == true){
+                    Materialize.toast("Upload SuccessFull....",2000,'rounded');
+                    window.location=/dashboard/
+                }else{
+                    Materialize.toast("Upload Failed..",2000,'rounded')
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

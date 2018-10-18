@@ -7,7 +7,7 @@
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <link rel="stylesheet" href="{% static 'css_file/dashboard.css' %}">
-     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -61,7 +61,7 @@
 
 
      <div class="row">
-       <div class="col s12 l3 m6" style="margin-top: 30px;">
+       <div class="col s12 l2 m6" style="margin-top: 30px;">
       <!-- Create Toggle-->
        <span class="custom_toggle">
          <button type="button" class="btn waves-effect" style="border-radius: 10px;" name="form_button" id="form_button"> Update Login Profile</button>
@@ -118,13 +118,13 @@
            </div>
        </div>
 
-            <div class="col s12 l9 m7">
+            <div class="col s12 l10 m12">
              <span style="float: right;padding: 7px;">
            <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span></a>
 
        </span>
                 <div class="flow-text white green-text center-align"><h3>Student Records</h3></div>
-             {% if not student %}
+             {% if not students %}
                       <p class="flow-text red-text center-align ">Not Student Record In Database</p>
                  {% else %}
                 <table class="bordered highlight display" id="table_data"  >
@@ -138,45 +138,46 @@
                         <th>Gender</th>
                         <th>Date Of Birth</th>
                         <th>Address</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                        <th>Add Marks</th>
+                        <th>Profile</th>
+                        <th>Marks</th>
                       </tr>
                     </thead>
-                    {% for y in student %}
+                    <tbody>
+                    {% for student  in students %}
 
-                     <tbody>
                      <tr align="center">
                      <td class="counterCell"></td>
-                     <td>{{ y.roll_no }}</td>
-                     <td>{{ y.name }}</td>
-                     <td>{{ y.email }}</td>
-                     <td>{{ y.mobile }}</td>
-                     <td>{{ y.gender }}</td>
-                     <td>{{y.dob|date:"d-m-Y" }}</td>
-                     <td>{{ y.address }}</td>
+                     <td>{{ student.roll_no }}</td>
+                     <td>{{ student.name }}</td>
+                     <td>{{ student.email }}</td>
+                     <td>{{ student.mobile }}</td>
+                     <td>{{ student.gender }}</td>
+                     <td>{{student.dob|date:"d-m-Y" }}</td>
+                     <td>{{ student.address }}</td>
                      <td>
-                       <a href="/studentpage/?id={{y.id }}"  class="green-text"><i class="material-icons" style="font-size: 40px;">edit</i></a>
+                       <a href="/studentpage/?id={{student.id }}"  class="btn waves-effect waves-light green" style="width: 19%">Edit</a>
 
-                     </td>
-                     <td>
+
 {#                         <a href="/student_data_delete/?id={{ y.id }}" onclick="return confirm('Are You sure  Delete Record..?')" class="red-text"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>#}
 
 
-             <!-- create Model--->
-                         <a class="waves-effect waves-light modal-trigger red-text"  data-toggle="modal" data-target="modal1" id="delete_id" onclick="return delete_Data({{ y.id }})"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>
+             <!-- create Model for delete record--->
+                         <a class="waves-effect waves-light modal-trigger red btn"  data-toggle="modal" data-target="modal1" id="delete_id" onclick="delete_Data({{ student.id }})" style="width: 19%">Delete</a>
              <!--close Model-->
                      </td>
                          <td>
-                         <a class="waves-effect waves-light modal-trigger green-text" data-toggle="modal" data-target="modal2" id="add_marks" onclick="return add_marks({{ y.id }},{{ y.roll_no }})"><i class="material-icons" style="font-size: 40px;">add_circle</i> </a>
+                             <!-- create modal for add Marks -->
+                         <a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks({{ student.id }},{{ student.roll_no }})" style="width: 32%">Add Marks </a>
+                         <a class="waves-effect waves-light green btn" href="/marks/?sid={{ student.id }}" >Update</a>
                          </td>
                      </tr>
-                     </tbody>
+
                     {% endfor %}
 
-                        {% endif %}
+                </tbody>
 
                 </table>
+            {% endif %}
                   <!--Model Content for delete Record-->
                           <div id="modal1" class="modal white">
                             <div class="modal-content">
@@ -205,6 +206,7 @@
                                    <div class="row">
                                            <input type="hidden" name="sid" id="sid" class="sid">
                                            <input type="hidden" name="roll_no" id="roll_no" class="roll_no">
+{#                                           <input type="text" name="sname" id="sname" class="sname">#}
 
                                    </div>
                                        <div class="row">
@@ -214,7 +216,7 @@
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input id="science"  type="number" name="science"  class="science" id="science" style="width: 45%;" >
+                                              <input  type="number" name="science"  class="science" id="science" style="width: 45%;" >
                                               <label for="science" style="margin-left: 2%;">Science</label>
                                             </span>
                                       </div>
@@ -272,7 +274,7 @@
 
                             <div class="modal-footer while">
 
-                                <button type="button" class="waves-effect btn waves-light" style="border-radius: 7px;" onclick="return save_marks()">Save</button>
+                                <button type="button" class="waves-effect btn waves-light green" style="border-radius: 7px;" onclick="return save_marks()">Save</button>
                                <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;">Cancel</a>
                             </div><br>
                       </div>
@@ -296,8 +298,10 @@
 function add_marks(id,roll) {
             //alert(id);
             //alert(roll);
+            //alert(name);
             document.getElementById('sid').value=id;
             document.getElementById('roll_no').value=roll;
+            //document.getElementById('sname').value=name;
 
 }
 </script>

@@ -31,7 +31,7 @@ def dashboard(request):
         if id:
             student = StudentData.objects.all()
             data = Registration.objects.filter(id=id).all()
-            return render(request,'dashboard.html',{"data": data, 'student': student})
+            return render(request,'dashboard.html',{"data": data, 'students': student})
         else:
             return HttpResponseRedirect('/login/')
 
@@ -308,6 +308,39 @@ def add_Marks(request):
             return JsonResponse(response)
     else:
         return HttpResponseRedirect('/dashboard/')
+
+
+def marks(request):
+    id = request.session['id']
+    sid = request.GET.get('sid')
+    data = Registration.objects.filter(id=id).all()
+    marks = Marks.objects.filter(id=sid).all()
+    return render(request,'marks.html',context={'mark':marks,'data':data})
+
+@csrf_exempt
+def update_marks(request):
+    response={}
+    sid = request.POST.get('sid')
+    roll_no = request.POST.get('roll_no')
+    math = request.POST.get('math')
+    science = request.POST.get('science')
+    socal = request.POST.get('socal')
+    english = request.POST.get('english')
+    sanskrit = request.POST.get('sanskrit')
+    obtain = request.POST.get('obtain')
+    percentage = request.POST.get('percentage')
+    print(sid)
+    print(roll_no)
+    print(math)
+    print(science)
+    print(socal)
+    print(english)
+    print(sanskrit)
+    print(obtain)
+    print(percentage)
+    response['success']=True
+    return JsonResponse(response)
+
 
 
 

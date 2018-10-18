@@ -192,6 +192,7 @@
                 data:{
                     sid:$('.sid').val(),
                     roll_no:$('.roll_no').val(),
+                    //name:$('.name').val(),
                     math:$('.math').val(),
                     science:$('.science').val(),
                     socal:$('.socal').val(),

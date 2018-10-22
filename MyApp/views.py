@@ -25,21 +25,57 @@ def registration(request):
 #@login_required(login_url='/login/')
 @csrf_exempt
 def dashboard(request):
-    result = request.POST.get('result')
-    print(result)
-    try:
-        id = request.session['id']
-        print(id)
-        if id:
-            student = StudentData.objects.all()
-            data = Registration.objects.filter(id=id).all()
-            return render(request, 'dashboard.html', {"data": data, 'students': student})
+    response ={}
+    if request.session['id']:
+        if request.method == "GET":
+            id = request.session['id']
+            login_user = Registration.objects.filter(id=id)
+            return render(request,'dashboard.html',{'data':login_user})
         else:
-            return HttpResponseRedirect('/login/')
+            records =[]
+            result = request.POST.get('result')
+            students = StudentData.objects.filter(marks__result=result)
+            for student in students:
+                student_rec={
+                   "roll_no":student.roll_no,
+                    "name":student.name,
+                    "email":student.email,
+                    "mobile":student.mobile,
+                    "gender":student.gender,
+                    "dob":student.dob,
+                    "address":student.address
+                }
+                records.append(student_rec)
+            response['success']=True
+            response['student_records']=records
+           # pickup_records = {"record":records}
+            return JsonResponse(response)
 
 
-    except KeyError as e:
+
+    else:
         return HttpResponseRedirect('/login/')
+
+
+
+
+
+
+
+
+    # try:
+    #     id = request.session['id']
+    #     #print(id)
+    #     if id:
+    #         student = StudentData.objects.all()
+    #         data = Registration.objects.filter(id=id).all()
+    #         return render(request, 'dashboard.html', {"data": data, 'students': student})
+    #     else:
+    #         return HttpResponseRedirect('/login/')
+    #
+    #
+    # except KeyError as e:
+    #     return HttpResponseRedirect('/login/')
 
 
 
@@ -306,7 +342,7 @@ def add_Marks(request):
 
 
         id=StudentData.objects.get(id=sid)
-        print(id)
+        #print(id)
         marks = Marks.objects.create(id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
         if marks:
             response['success']=True

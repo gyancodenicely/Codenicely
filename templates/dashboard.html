@@ -108,7 +108,7 @@
                               </div>
                    </div>
                    <div class='row ' align="center" style="position: relative;bottom: 10px;">
-                              <button type="submit" class="btn waves-effect waves-light" onclick="return updateLogedUser()"><span>Update</span>
+                              <button type="submit" class="btn waves-effect waves-light " onclick="return updateLogedUser()"><span>Update</span>
                                </button>
                    </div>
 
@@ -129,7 +129,7 @@
                       <p class="flow-text red-text center-align ">Not Student Record In Database</p>
                  {% else %}
 
-                 <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;float: right">
+                 <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;margin-left: 40%;margin-top: 7%;">
                    <option value="" selected >Select Student </option>
                   <option value="all">All Students</option>
                   <option value="pass">Pass</option>
@@ -154,36 +154,36 @@
                       </tr>
                     </thead>
                     <tbody>
-                    {% for student  in students %}
-
-                     <tr align="center">
-                     <td class="counterCell"></td>
-                     <td>{{ student.roll_no }}</td>
-                     <td>{{ student.name }}</td>
-                     <td>{{ student.email }}</td>
-                     <td>{{ student.mobile }}</td>
-                     <td>{{ student.gender }}</td>
-                     <td>{{student.dob|date:"d-m-Y" }}</td>
-                     <td>{{ student.address }}</td>
-                     <td>
-                       <a href="/studentpage/?id={{student.id }}"  class="btn waves-effect waves-light green" style="width: 19%">Edit</a>
-
-
+{#                    {% for student  in students %}#}
+{##}
+{#                     <tr align="center">#}
+{#                     <td class="counterCell"></td>#}
+{#                     <td>{{ student.roll_no }}</td>#}
+{#                     <td>{{ student.name }}</td>#}
+{#                     <td>{{ student.email }}</td>#}
+{#                     <td>{{ student.mobile }}</td>#}
+{#                     <td>{{ student.gender }}</td>#}
+{#                     <td>{{student.dob|date:"d-m-Y" }}</td>#}
+{#                     <td>{{ student.address }}</td>#}
+{#                     <td>#}
+{#                       <a href="/studentpage/?id={{student.id }}"  class="btn waves-effect waves-light green" style="width: 19%">Edit</a>#}
+{##}
+{##}
 {#                         <a href="/student_data_delete/?id={{ y.id }}" onclick="return confirm('Are You sure  Delete Record..?')" class="red-text"><i class="material-icons" style="font-size: 40px;">delete_forever</i></a>#}
-
-
-             <!-- create Model for delete record--->
-                         <a class="waves-effect waves-light modal-trigger red btn"  data-toggle="modal" data-target="modal1" id="delete_id" onclick="delete_Data({{ student.id }})" style="width: 19%">Delete</a>
-             <!--close Model-->
-                     </td>
-                         <td>
-                             <!-- create modal for add Marks -->
-                         <a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks({{ student.id }},{{ student.roll_no }})" style="width: 32%">Add Marks </a>
-                         <a class="waves-effect waves-light green btn" href="/marks/?sid={{ student.id }}" >Update</a>
-                         </td>
-                     </tr>
-
-                    {% endfor %}
+{##}
+{##}
+{#             <!-- create Model for delete record--->#}
+{#                         <a class="waves-effect waves-light modal-trigger red btn"  data-toggle="modal" data-target="modal1" id="delete_id" onclick="delete_Data({{ student.id }})" style="width: 19%">Delete</a>#}
+{#             <!--close Model-->#}
+{#                     </td>#}
+{#                         <td>#}
+{#                             <!-- create modal for add Marks -->#}
+{#                         <a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks({{ student.id }},{{ student.roll_no }})" style="width: 32%">Add Marks </a>#}
+{#                         <a class="waves-effect waves-light green btn" href="/marks/?sid={{ student.id }}" >Update</a>#}
+{#                         </td>#}
+{#                     </tr>#}
+{##}
+{#                    {% endfor %}#}
 
                 </tbody>
 
@@ -317,7 +317,7 @@ function add_marks(id,roll) {
 }
 function student_record() {
      var result = $('#select_student option:selected').val();
-     alert(result);
+     //alert(result);
     $.ajax({
         type:'POST',
         url:/dashboard/,
@@ -325,11 +325,12 @@ function student_record() {
             result:result
         },
         success:function (data) {
-            if(data.response=true){
-                Materialize.toast("Students Find",2000,'rounded')
-            }else{
-                Materialize.toast("Student Not Find",2000,'rounded')
+            if(data.success){
+                for(var){
+
+                }
             }
+
         }
     })
 }

@@ -124,9 +124,20 @@
 
        </span>
                 <div class="flow-text white green-text center-align"><h3>Student Records</h3></div>
+
              {% if not students %}
                       <p class="flow-text red-text center-align ">Not Student Record In Database</p>
                  {% else %}
+
+                 <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;float: right">
+                   <option value="" selected >Select Student </option>
+                  <option value="all">All Students</option>
+                  <option value="pass">Pass</option>
+                  <option value="fail">Fail</option>
+                 </select>
+
+
+
                 <table class="bordered highlight display" id="table_data"  >
                     <thead>
                       <tr align="center">
@@ -304,6 +315,24 @@ function add_marks(id,roll) {
             //document.getElementById('sname').value=name;
 
 }
+function student_record() {
+     var result = $('#select_student option:selected').val();
+     alert(result);
+    $.ajax({
+        type:'POST',
+        url:/dashboard/,
+        data:{
+            result:result
+        },
+        success:function (data) {
+            if(data.response=true){
+                Materialize.toast("Students Find",2000,'rounded')
+            }else{
+                Materialize.toast("Student Not Find",2000,'rounded')
+            }
+        }
+    })
+}
 </script>
 
 
@@ -314,13 +343,11 @@ function add_marks(id,roll) {
 <script type="text/javascript">
     $(document).ready(function () {
        $('#table_data').DataTable();
+       $('.modal').modal();
+
     });
 </script>
-<script type="text/javascript">
-    $(document).ready(function () {
-       $('.modal').modal();
-    })
-</script>
+
 
 </body>
 </html>

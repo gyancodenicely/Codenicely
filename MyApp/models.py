@@ -5,9 +5,9 @@ from PIL import Image
 class Registration(models.Model):
 
     name = models.CharField(max_length=20)
-    email = models.EmailField()
+    email = models.EmailField(max_length=25)
     mobile = models.CharField(max_length=10)
-    gender = models.CharField(max_length=6)
+    gender = models.CharField(max_length=7)
     password = models.CharField(max_length=20)
 
 
@@ -15,20 +15,20 @@ class Registration(models.Model):
 class StudentData(models.Model):
 
     roll_no = models.CharField(max_length=5)
-    name = models.CharField(max_length=20)
-    email = models.EmailField()
+    name = models.CharField(max_length=30)
+    email = models.EmailField(max_length=25)
     mobile = models.CharField(max_length=10)
     password = models.CharField(max_length=20)
-    gender = models.CharField(max_length=10)
+    gender = models.CharField(max_length=7)
     dob = models.DateField()
     address = models.CharField(max_length=100)
 
 
 #create marks table
-class Marks(models.Model):
 
+class Marks(models.Model):
     id = models.OneToOneField(StudentData,primary_key=True,on_delete=models.CASCADE)
-    roll_no = models.CharField(max_length=5)
+    roll_no = models.CharField(max_length=7)
     math = models.CharField(max_length=3)
     science = models.CharField(max_length=3)
     socal = models.CharField(max_length=3)
@@ -40,11 +40,10 @@ class Marks(models.Model):
     result = models.CharField(max_length=5)
 
 #image upload
-class ImageUpload(models.Model):
-    name = models.CharField(max_length=20)
-    mobile = models.CharField(max_length=10)
-    image = models.ImageField(upload_to='photo')
 
+class Image(models.Model):
+    mobile = models.CharField(max_length=10)
+    image = models.ImageField(upload_to='photo/',null=True,verbose_name="")
 
 
 

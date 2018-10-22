@@ -23,21 +23,28 @@ def registration(request):
     reg = Registration.objects.all()
     return render(request,'Registration.html',{'reg':reg})
 #@login_required(login_url='/login/')
-
+@csrf_exempt
 def dashboard(request):
-
+    result = request.POST.get('result')
+    print(result)
     try:
         id = request.session['id']
+        print(id)
         if id:
             student = StudentData.objects.all()
             data = Registration.objects.filter(id=id).all()
-            return render(request,'dashboard.html',{"data": data, 'students': student})
+            return render(request, 'dashboard.html', {"data": data, 'students': student})
         else:
             return HttpResponseRedirect('/login/')
 
 
     except KeyError as e:
         return HttpResponseRedirect('/login/')
+
+
+
+
+
 
 
 
@@ -364,14 +371,27 @@ def imageuploadpage(request):
 def imageupload(request):
     response={}
     if request.method == "POST":
-        name = request.POST.get('name')
-        mobile=request.POST.get('mobile')
-        photo = request.FILES('photo')
-        reg = ImageUpload.objects.create(name=name,mobile=mobile,image=photo)
-        if reg:
+        image = request.FILES.get('file')
+        mobile = request.POST.get('mobile')
+        res = Image(mobile=mobile,image=image)
+        if res:
+            res.save()
             response['success']=True
             return JsonResponse(response)
-    return JsonResponse(response)
+        else:
+            response['success']=False
+            return JsonResponse(response)
+
+
+
+
+
+
+
+@csrf_exempt
+def imageshowpage(request):
+    data = Image.objects.all()
+    return render(request, 'imageshow.html',{'data':data})
 
 
 

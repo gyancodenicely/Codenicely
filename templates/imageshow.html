@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>Show Profile</title>
+</head>
+<body>
+ <table class="centered">
+   <thead>
+     <tr>
+         <th>Mobile </th>
+         <th>Image</th>
+     </tr>
+   </thead>
+   <tbody>
+  {% for image in data %}
+      <tr>
+          <td>{{ image.mobile }}</td>
+          <td><img src="{{ image.image.url }}" width="100" height="100"></td>
+      </tr>
+
+
+
+
+{% endfor %}
+   </tbody>
+ </table>
+</body>
+</html>

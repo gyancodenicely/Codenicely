@@ -5,7 +5,7 @@
             });
             $('.form_page').hide();
 
-
+            student_record();
 
 
         });
@@ -269,9 +269,85 @@
     }
        
    });
+        //call DataTable and modal
+        var table;
+        $(document).ready(function () {
+          table =  $('#table_rec').DataTable();
+            $('.modal').modal();
+        });
 
 
 
 
 
+ function student_record() {
+     var table_data="";
+     var result = $('#select_student option:selected').val();
+     //alert(result);
+    $.ajax({
+        type:'POST',
+        url:/dashboard/,
+        data:{
+            result:result
+        },
+        success:function(data) {
+            if(data.success){
+                 table.destroy();
+                if(data.student_records.length>0) {
+                    $('#table_body').html("");
+                    $.each(data.student_records, function (i, item) {
+                        //console.log(data.student_records[i].roll_no);
+                        table_data ='<tr>'+
+                            '<td class="counterCell"></td>' +
+                            '<td>' + data.student_records[i].roll_no + '</td>' +
+                            '<td>' + data.student_records[i].name + '</td>' +
+                            '<td>' + data.student_records[i].email + '</td>' +
+                            '<td>' + data.student_records[i].mobile + '</td>' +
+                            '<td>' + data.student_records[i].gender + '</td>' +
+                            '<td>' + data.student_records[i].dob + '</td>' +
+                            '<td>' + data.student_records[i].address + '</td>' +
+                            // '<td>'+ data.student_records[i].id +'</td>'
+                            '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green">Edit</a>'
+                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin-left: 4%;width: 37px;padding-left: inherit;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
 
+                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 50px;">Add Marks </a>' +
+                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin-left: 1%" >Update</a>' + '</td>'
+
+                            + '</tr>';
+                        $('#table_body').append(table_data)
+
+                    });
+                    table = $('#table_rec').DataTable();
+
+                }
+
+
+                }
+
+
+        }
+    })
+}
+
+
+
+
+
+function delete_Data(id) {
+       //var id = document.getElementById('sid').value;
+
+       //alert(id);
+       document.getElementById('s_id').value=id;
+    }
+
+
+
+function add_marks(id,roll) {
+            //alert(id);
+            //alert(roll);
+            //alert(name);
+            document.getElementById('sid').value=id;
+            document.getElementById('roll_no').value=roll;
+            //document.getElementById('sname').value=name;
+
+}

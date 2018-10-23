@@ -27,7 +27,7 @@ class StudentData(models.Model):
 #create marks table
 
 class Marks(models.Model):
-    id = models.OneToOneField(StudentData,primary_key=True,on_delete=models.CASCADE)
+    student = models.OneToOneField(StudentData,primary_key=True,on_delete=models.CASCADE)
     roll_no = models.CharField(max_length=7)
     math = models.CharField(max_length=3)
     science = models.CharField(max_length=3)

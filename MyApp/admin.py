@@ -5,10 +5,22 @@ from MyApp.models import *
 
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('name','email','mobile')
+    list_display = ('name','email','mobile','gender','password')
     search_fields = ['name']
 
 admin.site.register(Registration,RegistrationAdmin)
-admin.site.register(StudentData)
-admin.site.register(Marks)
-admin.site.register(Image)
+
+class StudentDataAdmin(admin.ModelAdmin):
+    list_display = ('id','roll_no','name','email','mobile','password','gender','address')
+    search_fields = ['name']
+admin.site.register(StudentData,StudentDataAdmin)
+
+class MarksAdmin(admin.ModelAdmin):
+    list_display = ('student','roll_no','math','science','socal','english','hindi','sanskrit','obtain','percentage','result')
+    search_fields = ['roll_no','result']
+admin.site.register(Marks,MarksAdmin)
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('mobile','image')
+    search_fields = ['mobile']
+admin.site.register(Image,ImageAdmin)

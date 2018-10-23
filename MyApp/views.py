@@ -26,31 +26,41 @@ def registration(request):
 @csrf_exempt
 def dashboard(request):
     response ={}
-    if request.session['id']:
+    #if request.session['id']:
+    id = request.session['id']
+    if id:
+        #print(id)
         if request.method == "GET":
-            id = request.session['id']
             login_user = Registration.objects.filter(id=id)
             return render(request,'dashboard.html',{'data':login_user})
         else:
             records =[]
             result = request.POST.get('result')
-            students = StudentData.objects.filter(marks__result=result)
+            #print(result)
+            #students = StudentData.objects.filter(marks__result=result)
+            student=""
+            if result == "all":
+                students = Marks.objects.all()
+            else:
+                students = Marks.objects.filter(result__iexact=result)
+            #print(students)
             for student in students:
                 student_rec={
-                   "roll_no":student.roll_no,
-                    "name":student.name,
-                    "email":student.email,
-                    "mobile":student.mobile,
-                    "gender":student.gender,
-                    "dob":student.dob,
-                    "address":student.address
+                    "id":student.student.id,
+                    "roll_no":student.student.roll_no,
+                    "name":student.student.name,
+                    "email":student.student.email,
+                    "mobile":student.student.mobile,
+                    "gender":student.student.gender,
+                    "dob":student.student.dob,
+                    "address":student.student.address
                 }
                 records.append(student_rec)
             response['success']=True
             response['student_records']=records
+            #print(response)
            # pickup_records = {"record":records}
             return JsonResponse(response)
-
 
 
     else:
@@ -358,7 +368,7 @@ def marks(request):
     id = request.session['id']
     sid = request.GET.get('sid')
     data = Registration.objects.filter(id=id).all()
-    marks = Marks.objects.filter(id=sid).all()
+    marks = Marks.objects.filter(student_id=sid).all()
     return render(request,'marks.html',context={'mark':marks,'data':data})
 
 @csrf_exempt
@@ -389,7 +399,7 @@ def update_marks(request):
         # print(result)
         # response['success'] = True
         # return JsonResponse(response)
-        marks = Marks.objects.filter(id_id=sid,roll_no=roll_no).update(math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
+        marks = Marks.objects.filter(student_id=sid,roll_no=roll_no).update(math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
         #print(marks)
         if marks:
             response['success']=True

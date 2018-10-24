@@ -274,6 +274,7 @@
         $(document).ready(function () {
           table =  $('#table_rec').DataTable();
             $('.modal').modal();
+
         });
 
 
@@ -299,19 +300,19 @@
                         //console.log(data.student_records[i].roll_no);
                         table_data ='<tr>'+
                             '<td class="counterCell"></td>' +
-                            '<td>' + data.student_records[i].roll_no + '</td>' +
-                            '<td>' + data.student_records[i].name + '</td>' +
-                            '<td>' + data.student_records[i].email + '</td>' +
-                            '<td>' + data.student_records[i].mobile + '</td>' +
-                            '<td>' + data.student_records[i].gender + '</td>' +
-                            '<td>' + data.student_records[i].dob + '</td>' +
-                            '<td>' + data.student_records[i].address + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].roll_no + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].name + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].email + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].mobile + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].gender + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].dob + '</td>' +
+                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
                             // '<td>'+ data.student_records[i].id +'</td>'
-                            '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green">Edit</a>'
-                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin-left: 4%;width: 37px;padding-left: inherit;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
+                            '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px">Edit</a>'
+                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin-left: 3%;width: 30px;padding-left: inherit;border-radius: 5px;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
 
-                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 50px;">Add Marks </a>' +
-                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin-left: 1%" >Update</a>' + '</td>'
+                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 10px;padding-left: inherit;border-radius: 5px;">Add Marks </a>' +
+                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin-left: 2%;width: 32px;padding-left: inherit;border-radius: 5px;" >Update</a>' + '</td>'
 
                             + '</tr>';
                         $('#table_body').append(table_data)
@@ -349,5 +350,28 @@ function add_marks(id,roll) {
             document.getElementById('sid').value=id;
             document.getElementById('roll_no').value=roll;
             //document.getElementById('sname').value=name;
+
+}
+
+function show_student_record(id) {
+     var sid = id;
+     console.log(sid);
+     $.ajax({
+         type:'POST',
+         url:/student_profile/,
+         data:{
+             id:sid
+         },
+         success:function (data) {
+             if(data.success){
+                 Materialize.toast("Student Profile Showing",1000,'rounded');
+             }else{
+                 Materialize.toast("Student Profile Not Showing",2000,'rounded');
+             }
+         }
+
+     })
+
+
 
 }

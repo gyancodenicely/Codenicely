@@ -14,29 +14,6 @@
     <script src="{% static 'js_file/dashboard.js' %}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-
-<style>
-    table {
-    counter-reset: tableCount;
-}
-.counterCell:before {
-    content: counter(tableCount);
-    counter-increment: tableCount;
-}
-  .dataTables_length label select{
-      display: inline-block;
-      width: 42%;
-
-  }
-    .dataTables_length label{
-        color: black;
-    }
-    .dataTables_filter label input[type=search]{
-        border: 1px solid;
-    }
-
-</style>
-
 </head>
 
 <body>
@@ -74,7 +51,7 @@
                {% for x in data %}
                 <div class="card profile">
                    <div class="card-content green white-text center-align">
-                           <h4>Update Login User</h4>
+                           <h6>Update Login User</h6>
                    </div>
 
 
@@ -86,26 +63,26 @@
                    </div>
                     <div class='row '>
                               <div class='input-field'>
-                                  <label for="mobile" style="position: absolute;top:31%; margin-left: 6%" >Mobile  </label>
-                                  <input  type='text' class="validate mobile" value="{{ x.mobile }}" id="mobile" maxlength="10" autocomplete="off" style="width:58%;margin-left: 27%;font-size: 20px; " onkeypress="return numberCheck(event)"/>
+                                  <label for="mobile" id="custom_label">Mobile  </label>
+                                  <input  type='text' class="validate mobile" value="{{ x.mobile }}" id="mobile" maxlength="10" autocomplete="off"  onkeypress="return numberCheck(event)"/>
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="name" style="position: absolute;top:31%; margin-left: 6%">Name  </label>
-                                  <input  type='text' name='name' id="name" class="name" value="{{ x.name }}" style="width:58%;margin-left: 27%;font-size: 20px; " />
+                                  <label for="name" id="custom_label">Name  </label>
+                                  <input  type='text' name='name' id="name" class="name" value="{{ x.name }}"  />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="email" style="position: absolute;top:31%; margin-left: 6%">Email  </label>
-                                  <input  type='email' name='email' class="validate email" id="email" value="{{ x.email }}" style="width: 58%;margin-left: 27%;font-size: 20px; " />
+                                  <label for="email" id="custom_label">Email  </label>
+                                  <input  type='email' name='email' class="validate email " id="email" value="{{ x.email }}"  />
                               </div>
                    </div>
                    <div class='row '>
                               <div class='input-field'>
-                                  <label for="password" style="position: absolute;top:31%; margin-left: 6%"  >Password </label>
-                                  <input  type='password' name='password' id="password" class="password" value="{{ x.password }}" style="width: 58%;margin-left: 27%;font-size: 20px; "/>
+                                  <label for="password" id="custom_label">Password </label>
+                                  <input  type='password' name='password' id="password" class="password" value="{{ x.password }}" />
                               </div>
                    </div>
                    <div class='row ' align="center" style="position: relative;bottom: 10px;">
@@ -133,12 +110,12 @@
              <!-- Record present in the Table-->
 
 
-                 <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;margin-left: 40%;margin-top: 0%;">
+               <span>  <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;margin-left: auto;margin-top: 0%;">
 
                   <option value="all" selected>All Students</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
-                 </select>
+               </select></span>
 
 
 
@@ -258,19 +235,19 @@
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
-                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="obtain"  class="obtain" id="obtain" style="width: 35%; font-weight: bold" disabled>
+                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="obtain"  class="obtain" id="obtain" style="width: 30%; font-weight: bold" disabled>
 
                                             </span>
 
-                                            <span class="input-field">
-                                                Percentage :&nbsp;&nbsp;&nbsp;&nbsp;<input  type="text" name="percentage"  class="percentage" id="percentage" style="width: 35%;font-weight: bold" disabled >
+                                            <span class="input-field" style="margin-left: 14px;">
+                                                Percentage :&nbsp;&nbsp;&nbsp;&nbsp;<input  type="text" name="percentage"  class="percentage" id="percentage" style="width: 30%;font-weight: bold" disabled >
 
                                             </span>
                                       </div>
                                       <div class="row">
                                           <span class="input-field">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                              Result :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="result"  class="result" id="result" style="width: 35%;font-weight: bold" disabled >
+                                              Result :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="result"  class="result" id="result" style="width: 30%;font-weight: bold" disabled >
 
                                             </span>
                                             <span class="input-field">

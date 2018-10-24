@@ -13,7 +13,7 @@ class Registration(models.Model):
 
 #create Student Record
 class StudentData(models.Model):
-
+    student_img = models.ImageField(upload_to='photo/', null=True, verbose_name="")
     roll_no = models.CharField(max_length=5)
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=25)

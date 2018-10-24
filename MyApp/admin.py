@@ -11,7 +11,7 @@ class RegistrationAdmin(admin.ModelAdmin):
 admin.site.register(Registration,RegistrationAdmin)
 
 class StudentDataAdmin(admin.ModelAdmin):
-    list_display = ('id','roll_no','name','email','mobile','password','gender','address')
+    list_display = ('id','student_img','roll_no','name','email','mobile','password','gender','address')
     search_fields = ['name']
 admin.site.register(StudentData,StudentDataAdmin)
 

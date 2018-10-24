@@ -7,12 +7,12 @@ from django.contrib.auth.decorators import login_required
 
 def login(request):
     try:
-        mobile = request.session['mobile']
-        if mobile:
+        id = request.session['id']
+        if id:
             return HttpResponseRedirect('/dashboard/')
         else:
             return render(request, 'login.html')
-    except Exception:
+    except KeyError:
         return render(request,'login.html')
 
 def base(request):
@@ -27,44 +27,50 @@ def registration(request):
 def dashboard(request):
     response ={}
     #if request.session['id']:
-    id = request.session['id']
-    if id:
-        #print(id)
-        if request.method == "GET":
-            login_user = Registration.objects.filter(id=id)
-            return render(request,'dashboard.html',{'data':login_user})
-        else:
-            records =[]
-            result = request.POST.get('result')
-            #print(result)
-            #students = StudentData.objects.filter(marks__result=result)
-            student=""
-            if result == "all":
-                students = Marks.objects.all()
+    try:
+        id = request.session['id']
+        if id:
+            # print(id)
+            if request.method == "GET":
+                login_user = Registration.objects.filter(id=id)
+                #student_data=StudentData.objects.all()
+                return render(request, 'dashboard.html', {'data': login_user})
             else:
-                students = Marks.objects.filter(result__iexact=result)
-            #print(students)
-            for student in students:
-                student_rec={
-                    "id":student.student.id,
-                    "roll_no":student.student.roll_no,
-                    "name":student.student.name,
-                    "email":student.student.email,
-                    "mobile":student.student.mobile,
-                    "gender":student.student.gender,
-                    "dob":student.student.dob,
-                    "address":student.student.address
-                }
-                records.append(student_rec)
-            response['success']=True
-            response['student_records']=records
-            #print(response)
-           # pickup_records = {"record":records}
-            return JsonResponse(response)
+                records = []
+                result = request.POST.get('result')
+                # print(result)
 
 
-    else:
+                if result == "all":
+                    students = Marks.objects.all()
+                else:
+                    students = Marks.objects.filter(result__iexact=result)
+                # print(students)
+                for student in students:
+                    student_rec = {
+                        "id": student.student.id,
+                        "roll_no": student.student.roll_no,
+                        "name": student.student.name,
+                        "email": student.student.email,
+                        "mobile": student.student.mobile,
+                        "gender": student.student.gender,
+                        "dob": student.student.dob,
+                        "address": student.student.address
+                    }
+                    records.append(student_rec)
+                response['success'] = True
+                response['student_records'] = records
+                # print(response)
+                # pickup_records = {"record":records}
+                return JsonResponse(response)
+
+
+        elif not id:
+            return HttpResponseRedirect('/login/')
+    except KeyError:
         return HttpResponseRedirect('/login/')
+
+
 
 
 
@@ -220,6 +226,7 @@ def studentpage(request):
 def student_data_store(request):
     response={}
     if request.method == "POST":
+        image = request.FILES.get('image')
         roll = request.POST.get('roll_no')
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -251,17 +258,23 @@ def student_data_store(request):
         # except Exception as ex:
         #     print(ex)
         #     return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
-        try:
-            obj = StudentData.objects.get(roll_no=roll)
-           # print(obj)
-        except StudentData.DoesNotExist:
-            obj = StudentData.objects.create(roll_no=roll,name=name,email=email,mobile=mobile,password=password,gender=gender,dob=dob,address=address)
-            if obj:
-                response['success'] = True
-                return JsonResponse(response)
-            else:
-                response['success'] = False
-                return JsonResponse(response)
+
+
+        obj = StudentData.objects.filter(roll_no=roll).exists()
+        print(obj)
+        if obj:
+            response['roll_exist']=True
+            response['success']=False
+            return JsonResponse(response)
+        else:
+            StudentData.objects.create(student_img=image,roll_no=roll, name=name, email=email, mobile=mobile, password=password,
+                                       gender=gender, dob=dob, address=address)
+            response['roll_exist']=False
+            response['success']=True
+            return JsonResponse(response)
+
+
+
 
 
     else:
@@ -290,18 +303,55 @@ def student_data_update(request):
         # print(dob)
         # response['success']=True
         # return JsonResponse(response)
-        try:
-            std = StudentData.objects.filter(id=id).update(roll_no=roll_no,name=name, email=email,mobile=mobile,
-                                                             password=password,dob=dob, address=address)
-            #print(std)
-            if std:
-                response['success'] = True
-                return JsonResponse(response)
-            else:
-                response['success'] = False
-                return JsonResponse(response)
-        except Exception as e:
-            print(e)
+
+        std = StudentData.objects.filter(id=id).update(roll_no=roll_no, name=name, email=email, mobile=mobile,
+                                                        password=password, dob=dob, address=address)
+        # print(std)
+        #std = StudentData.objects.filter(roll_no=roll_no).exists()
+
+        if std:
+            response['success'] = True
+            return JsonResponse(response)
+        else:
+            response['success'] = False
+            return JsonResponse(response)
+
+@csrf_exempt
+def student_profile(request):
+    response={}
+    records = []
+    sid = request.POST.get('id')
+    #print(sid)
+    student = StudentData.objects.filter(id=sid)
+
+    #print(marks)
+    for student in student:
+        marks = Marks.objects.get(student=student)
+        if student.student_img == None:
+            student.student_img = ""
+        student_record={
+            "roll_no":student.roll_no,
+            "image":'student.student_img',
+            "name":student.name,
+            "email":student.email,
+            "mobile":student.mobile,
+            "gender":student.gender,
+            "dob":student.dob,
+            "address":student.address,
+            "marks":marks.result,
+
+        }
+        records.append(student_record)
+
+    response['success']=True
+    response['student_rec']=records
+    print(response)
+    return JsonResponse(response)
+
+
+
+
+
 
 
 
@@ -346,14 +396,16 @@ def add_Marks(request):
         # print(sanskrit)
         # print(obtain)
         # print(percentage)
+        # print(result)
         # response['success']=True
         # return JsonResponse(response)
 
 
 
         id=StudentData.objects.get(id=sid)
-        #print(id)
-        marks = Marks.objects.create(id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
+        print(id)
+        marks = Marks.objects.create(student_id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
+        print(marks)
         if marks:
             response['success']=True
             return JsonResponse(response)

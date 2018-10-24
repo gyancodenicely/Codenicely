@@ -119,21 +119,41 @@ function formValidation(){
 
      }
      function  studentRegistration() {
+    var formdata = new FormData();
+       var image = $('#image')[0].files[0];
+       var roll_no = $('.roll_no').val();
+       var name = $('.name').val();
+       var email = $('.email').val();
+       var mobile = $('.mobile').val();
+       var password = $('.password').val();
+       var gender = $('.gender').val();
+       var dob = $('.dob').val();
+       var address = $('.address').val();
+       formdata.append("image",image);
+       formdata.append("roll_no",roll_no);
+       formdata.append("name",name);
+       formdata.append("email",email);
+       formdata.append("mobile",mobile);
+       formdata.append("password",password);
+       formdata.append("gender",gender);
+       formdata.append("dob",dob);
+       formdata.append("address",address);
+
+
          $.ajax({
              type:'POST',
              url:/student_data_store/,
-             data:{
-                 roll_no:$('.roll_no').val(),
-                 name:$('.name').val(),
-                 email:$('.email').val(),
-                 mobile:$('.mobile').val(),
-                 password:$('.password').val(),
-                 gender :$('.gender').val(),
-                 dob:$('.dob').val(),
-                 address:$('.address').val()
-             },
+             data:formdata,
+             catch: false,
+             processData: false,
+             contentType: false,
              success:function (data) {
-                 if(data.success == true){
+                 console.log(data);
+                 if(data.roll_exist === true){
+                     Materialize.toast("Roll No. Already Exist",2000,'rounded');
+                     return false;
+                 }
+                 if(data.success){
                      Materialize.toast("Registration Success..!",4000,'rounded');
                      window.location='/dashboard/'
                  }else{

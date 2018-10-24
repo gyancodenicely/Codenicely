@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^student_data_store/$',views.student_data_store),
     url(r'^student_data_update/$',views.student_data_update),
     url(r'^student_data_delete/$',views.student_data_delete),
+    url(r'^student_profile/$',views.student_profile),
     url(r'^add_marks/$',views.add_Marks),
     url(r'^marks/$',views.marks),
     url(r'^update_marks/$',views.update_marks),

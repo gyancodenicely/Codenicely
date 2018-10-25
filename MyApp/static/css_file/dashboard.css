@@ -60,14 +60,17 @@
 
         }
         .dataTables_filter label input[type=search]{
-            border: 1px solid;
+
             width: 175px;
             height: 35px;
             font-weight: bold;
+            margin-left: 5px;
+            padding-left: 5px;
         }
         .dataTables_filter label{
             font-weight: bold;
         }
+
 
 
 
@@ -80,7 +83,22 @@
 
 
     #name,#mobile,#email,#password{
-        width: 139px;
+        width: 66%;
         margin-left: 32%;
         font-size: 14px;
     }
+#select_student{
+    width: 184px;
+    margin-left: 40%;
+    float: right;
+}
+#roll_no,#student_name,#student_email,#student_mobile,#student_gender,#student_dob,#student_address,#student_result{
+    width: 35%;
+    margin-left: 5%;
+    color: black;
+    font-weight: bold;
+}
+span{
+    margin-left: 3%;
+    font-weight: bold;
+}

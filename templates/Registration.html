@@ -66,19 +66,6 @@
                             </div>
 
                             </div>
-                              {% for x in reg %}
-                                <input type="hidden" name="dublicate" id="dublicate" value="{{ x.mobile }}">
-                                <input type="hidden" name="demail" id="demail" value="{{ x.email }}">
-
-                            {% endfor %}
-                          {% if not reg %}
-                              <input type="hidden" name="dublicate" id="dublicate" value="0">
-                              <input type="hidden" name="demail" id="demail" value="abc@gmail.com">
-                          {% endif %}
-
-
-
-
                                   <div  class="input-field " align="center" >
                                     <button type='submit' name='btn_login' class='btn waves-effect teal medium' style="border-radius: 10px;font-size: 20px;position: relative;bottom: 10px; " onclick="return formValidation()">Register
                                        </button><br>

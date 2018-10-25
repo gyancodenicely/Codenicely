@@ -191,7 +191,7 @@
                 url:/add_marks/,
                 data:{
                     sid:$('.sid').val(),
-                    roll_no:$('.roll_no').val(),
+                    roll_no:$('.student_roll_no').val(),
                     //name:$('.name').val(),
                     math:$('.math').val(),
                     science:$('.science').val(),
@@ -299,14 +299,15 @@
                     $.each(data.student_records, function (i, item) {
                         //console.log(data.student_records[i].roll_no);
                         table_data ='<tr>'+
+                           // <a class=" modal-trigger " data-toggle="modal" data-target="modal4" id="add_marks">Test</a>
                             '<td class="counterCell"></td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].roll_no + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].name + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].email + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].mobile + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].gender + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].dob + '</td>' +
-                            '<td   onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].roll_no + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].name + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].email + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].mobile + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].gender + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].dob + '</td>' +
+                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
                             // '<td>'+ data.student_records[i].id +'</td>'
                             '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px">Edit</a>'
                             + '<a class="waves-effect waves-light modal-trigger red btn" style="margin-left: 3%;width: 30px;padding-left: inherit;border-radius: 5px;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
@@ -348,14 +349,16 @@ function add_marks(id,roll) {
             //alert(roll);
             //alert(name);
             document.getElementById('sid').value=id;
-            document.getElementById('roll_no').value=roll;
+            document.getElementById('student_roll_no').value=roll;
             //document.getElementById('sname').value=name;
 
 }
 
 function show_student_record(id) {
+     //document.getElementById('s_id').value=id;
+     var table_data="";
      var sid = id;
-     console.log(sid);
+     //console.log(sid);
      $.ajax({
          type:'POST',
          url:/student_profile/,
@@ -364,13 +367,30 @@ function show_student_record(id) {
          },
          success:function (data) {
              if(data.success){
-                 Materialize.toast("Student Profile Showing",1000,'rounded');
-             }else{
-                 Materialize.toast("Student Profile Not Showing",2000,'rounded');
+             //console.log(data);
+             //      table_data=
+             //         "Image :"+data.student_rec.image+
+             //         "Roll No :"+data.student_rec.roll_no+
+             //         "name :"+data.student_rec.name;
+             //
+             //     $('#student_body').append(table_data)
+
+                 document.getElementById('roll_no').value = data.student_rec.roll_no;
+                 document.getElementById('student_name').value=data.student_rec.name;
+                 document.getElementById('student_email').value = data.student_rec.email;
+                 document.getElementById('student_mobile').value=data.student_rec.mobile;
+                 document.getElementById('student_gender').value = data.student_rec.gender;
+                 document.getElementById('student_dob').value=data.student_rec.dob;
+                 document.getElementById('student_address').value = data.student_rec.address;
+                 document.getElementById('student_result').value=data.student_rec.result;
+
+
+
+
              }
          }
 
-     })
+     });
 
 
 

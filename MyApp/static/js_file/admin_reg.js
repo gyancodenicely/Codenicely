@@ -3,9 +3,7 @@
 
                 var name = document.getElementById('name');
                 var email = document.getElementById('email');
-                var demail = document.getElementById('demail');
                 var mobile = document.getElementById('mobile');
-                var dublicate = document.getElementById('dublicate');
                 var gender1 = document.getElementById("male").checked;
                 var gender2 = document.getElementById("female").checked;
                 var pass1 = document.getElementById('password');
@@ -19,7 +17,7 @@
                     return false;
                 }
                 else if(!isNaN(name.value)){
-                    Materialize.toast('Enter Only Character...','2000','rounded')
+                    Materialize.toast('Enter Only Character...','2000','rounded');
                    return false;
               }
                 else if(name.value.length < 4 || name.value.length >20)
@@ -29,7 +27,7 @@
                     name.focus();
                     return false;
                 }
-                else if(email.value == ""){
+                else if(email.value ==""){
                     Materialize.toast('Please Enter a Valid Email', 2000,'rounded');
                     email.focus();
                     return false;
@@ -46,14 +44,8 @@
                         email.focus();
                         return false;
                     }
-                else if(email.value == ((demail.value) || (demail.value== "")) ){
-                     Materialize.toast('This Email Already Exist', 2000,'rounded');
-                     email.focus();
-                     return false;
-                }
-                else if(mobile.value==""){
+                else if(mobile.value===""){
                    Materialize.toast('Please enter Mobile No.', 2000,'rounded');
-                    mobile.focus();
                     return false;
                 }
                 else if(mob.test(mobile.value) == false){
@@ -67,18 +59,12 @@
                    return false;
               }
 
-
-                else if(mobile.value == ((dublicate.value)|| (dublicate.value ==""))){
-                    Materialize.toast('This Mobile Already Exist',2000,'rounded');
-                    mobile.focus();
-                    return false;
-                }
                 else if((gender1=="")&&(gender2=="")){
                     Materialize.toast('Select either Male or Female', 2000,'rounded');
                     return false;
                 }
 
-                else if(pass1.value == "") {
+                else if(pass1.value === "") {
                     Materialize.toast('Enter a Password...!', 2000,'rounded');
                     pass1.focus();
                     return false;
@@ -121,13 +107,22 @@
                       password:$('.password').val(),
                   },
                   success:function (data) {
-                      if(data.success == true){
-                          Materialize.toast("Registration Successfully..",3000,'rounded')
+                      if(data.mobile_exist){
+                          Materialize.toast("Mobile No. Already Exist",2000,'rounded');
+                          return false;
+                      }
+                      else if(data.email_exist){
+                           Materialize.toast("Email Already Exist",2000,'rounded');
+                           return false;
+
+                      }
+                      else if(data.success){
+                          Materialize.toast("Registration Successfully..",3000,'rounded');
                           window.location='/login/'
 
                       }
                       else{
-                          Materialize.toast("Registration Failed..",3000,'rounded')
+                          Materialize.toast("Your are Already Register..",3000,'rounded');
                       }
                       $('input[type="text"],input[type="email"],input[type="radio"],input[type="password"]').val('');
 

@@ -20,8 +20,7 @@ def base(request):
 
 
 def registration(request):
-    reg = Registration.objects.all()
-    return render(request,'Registration.html',{'reg':reg})
+    return render(request,'Registration.html')
 #@login_required(login_url='/login/')
 @csrf_exempt
 def dashboard(request):
@@ -42,25 +41,26 @@ def dashboard(request):
 
 
                 if result == "all":
-                    students = Marks.objects.all()
+                    students = StudentData.objects.all()
+
                 else:
                     students = Marks.objects.filter(result__iexact=result)
                 # print(students)
                 for student in students:
                     student_rec = {
-                        "id": student.student.id,
-                        "roll_no": student.student.roll_no,
-                        "name": student.student.name,
-                        "email": student.student.email,
-                        "mobile": student.student.mobile,
-                        "gender": student.student.gender,
-                        "dob": student.student.dob,
-                        "address": student.student.address
+                        "id": student.id,
+                        "roll_no": student.roll_no,
+                        "name": student.name,
+                        "email": student.email,
+                        "mobile":student.mobile,
+                        "gender": student.gender,
+                        "dob": student.dob,
+                        "address": student.address
                     }
                     records.append(student_rec)
                 response['success'] = True
                 response['student_records'] = records
-                # print(response)
+                #print(response)
                 # pickup_records = {"record":records}
                 return JsonResponse(response)
 
@@ -164,13 +164,26 @@ def register_data_store(request):
         # print(gender)
         # print(password)
         # return JsonResponse(response)
+        # reg = Registration.objects.create(name=name,email=email,mobile=mobile,gender=gender,password=password)
 
-        reg = Registration.objects.create(name=name,email=email,mobile=mobile,gender=gender,password=password)
-        if reg:
-            response['success']=True
+        mobile_exist = Registration.objects.filter(mobile=mobile).exists()
+        email_exist = Registration.objects.filter(email=email).exists()
+        # print(mobile_exist)
+        # print(email_exist)
+        if mobile_exist == True:
+            print(mobile_exist)
+            response['mobile_exist']=mobile_exist
+            response['success'] = False
             return JsonResponse(response)
+        elif email_exist == True:
+            print(email_exist)
+            response['email_exist'] = email_exist
+            response['success'] = False
+            return JsonResponse(response)
+
         else:
-            response['success']=False
+            Registration.objects.create(name=name, email=email, mobile=mobile, gender=gender, password=password)
+            response['success']=True
             return JsonResponse(response)
 
 
@@ -320,32 +333,37 @@ def student_data_update(request):
 def student_profile(request):
     response={}
     records = []
+    result=""
     sid = request.POST.get('id')
     #print(sid)
-    student = StudentData.objects.filter(id=sid)
+    student = StudentData.objects.get(id=sid)
 
     #print(marks)
-    for student in student:
-        marks = Marks.objects.get(student=student)
-        if student.student_img == None:
-            student.student_img = ""
-        student_record={
-            "roll_no":student.roll_no,
-            "image":'student.student_img',
-            "name":student.name,
-            "email":student.email,
-            "mobile":student.mobile,
-            "gender":student.gender,
-            "dob":student.dob,
-            "address":student.address,
-            "marks":marks.result,
+    # for student in student:
+    marks = Marks.objects.get(student=student)
+    # print(marks.result)
+    # print(student.name)
+    if student.student_img == None:
+        student_img = ""
+    if marks.result == None:
+        result="Not Assign"
+    else:
+        result=marks.result
 
-        }
-        records.append(student_record)
-
+    records={
+        "image":student_img,
+        "roll_no":student.roll_no,
+        "name":student.name,
+        "email":student.email,
+        "mobile":student.mobile,
+        "gender":student.gender,
+        "dob":student.dob,
+        "address":student.address,
+        "result":result,
+    }
     response['success']=True
     response['student_rec']=records
-    print(response)
+    #print(response)
     return JsonResponse(response)
 
 
@@ -403,9 +421,9 @@ def add_Marks(request):
 
 
         id=StudentData.objects.get(id=sid)
-        print(id)
-        marks = Marks.objects.create(student_id=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
-        print(marks)
+        #print(id)
+        marks = Marks.objects.create(student=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
+        #print(marks)
         if marks:
             response['success']=True
             return JsonResponse(response)

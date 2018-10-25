@@ -97,11 +97,11 @@
        </div>
 
             <div class="col s12 l10 m12">
-             <span style="float: right;padding: 7px;">
+             <span style="float: right;padding-top: 2%;">
            <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span></a>
 
        </span>
-                <div class="flow-text white green-text center-align"><h3>Student Records</h3></div>
+                <div class="flow-text white green-text center-align"><h3>Student Records</h3></div><br>
 
               <!-- Student Table is Blank-->
 
@@ -110,24 +110,24 @@
              <!-- Record present in the Table-->
 
 
-               <span>  <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student" style="width: 300px;margin-left: auto;margin-top: 0%;">
+                <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student">
 
                   <option value="all" selected>All Students</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
-               </select></span>
+               </select>
 
 
 
                 <table class="bordered highlight" id="table_rec" style="border-collapse: collapse;"  >
                     <thead>
-                      <tr align="center">
+                      <tr  align="center">
                         <th width="33px">SNo.</th>
                         <th width="48px">Roll No.</th>
                         <th width="150">Name</th>
                         <th>Email</th>
                         <th width="98px">Mobile</th>
-                        <th width="60px">Gender</th>
+                        <th width="8%">Gender</th>
                         <th width="86px">Date Of Birth</th>
                         <th width="100px">Address</th>
                         <th width="164px">Profile</th>
@@ -135,6 +135,7 @@
                       </tr>
                     </thead>
                     <tbody id="table_body"></tbody>
+                     </table>
 {#                    {% for student  in students %}#}
 {##}
 {#                     <tr align="center">#}
@@ -167,7 +168,64 @@
 {#                    {% endfor %}#}
 
 
-                </table>
+
+
+
+                 <!--Student Details Modal-->
+                 <div id="modal4" class="modal white" style="width: 80%;">
+                            <div class="modal-content">
+                              <div class="card green  " style="margin: -25px;padding: 5px;">
+                               <div class="card-content">
+                                   <h4  class="center-align white-text">Student Details</h4>
+                               </div>
+                              </div><br><br>
+
+
+{#                            <p id="student_body"></p>#}
+                                <div class="container-fluid">
+                                  <div class="row">
+                                      <span style="position: absolute;top: 5px;left: -34px;"> <img src="{% static 'image/a.jpg' %}" width="100" height="100"></span>
+                                  </div>
+
+                                  <div class="row">
+                                      <span> Roll No. <input id="roll_no" disabled></span>
+
+                                      <span>Name <input id="student_name" disabled></span>
+                                  </div>
+                                    <div class="row">
+                                        <span>Email <input id="student_email"  disabled></span>
+
+                                        <span>Mobile <input id="student_mobile"  disabled></span>
+                                  </div>
+                                    <div class="row">
+                                        <span>Gender <input id="student_gender"  disabled></span>
+
+                                        <span>Date Of Birth <input id="student_dob"  disabled style="margin-left: 2%;"></span>
+                                  </div>
+                                  <div class="row">
+                                      <span>Address <input id="student_address"  disabled></span>
+
+                                      <span>Result <input id="student_result"  disabled></span>
+                                  </div>
+
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+                            <div class="modal-footer while">
+
+
+                               <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
+                            </div>
+                      </div>
+
+
 
                   <!--Model Content for delete Record-->
                           <div id="modal1" class="modal white">
@@ -185,7 +243,7 @@
                       </div>
             <!-- End Model COntent -->
               <!--Model Content for Add Marks-->
-                          <div id="modal2" class="modal white">
+                          <div id="modal2" class="modal white" style="width: 80%">
                             <div class="modal-content">
                               <div class="card green  " style="margin: -24px;padding: 0px;">
                                <div class="card-content">
@@ -195,42 +253,44 @@
 
                                <div class="container-fluid">
                                    <div class="row">
-                                           <input type="hidden" name="sid" id="sid" class="sid">
-                                           <input type="hidden" name="roll_no" id="roll_no" class="roll_no">
+                                           <input type="hidden" name="sid" id="sid" class="sid" disabled><br>
+                                           <label for="student_roll_no" >Roll No.</label>
+                                           <input type="text" name="student_roll_no" id="student_roll_no" class="student_roll_no" disabled style="width: 44%;margin-left: 0%">
+
 {#                                           <input type="text" name="sname" id="sname" class="sname">#}
 
                                    </div>
-                                       <div class="row" style="padding: 2%;">
+                                       <div class="row" style="padding: 0px;">
                                             <span class="input-field  ">
-                                              <input type="number" name="math"  class="math" id="math" style="width: 45%;margin-left: -1%">
-                                              <label for="math" style="margin-left: 2%;">Math</label>
+                                              <input type="number" name="math"  class="math" id="math" style="width: 44%;margin-left: 0%">
+                                              <label for="math" >Math</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
                                               <input  type="number" name="science"  class="science" id="science" style="width: 47%;margin-left: 0%" >
-                                              <label for="science" style="margin-left: 2%;">Science</label>
+                                              <label for="science" >Science</label>
                                             </span>
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
                                               <input   type="number" name="socal"  class="socal" id="socal" style="width: 45%;">
-                                              <label for="socal" style="margin-left: 2%;">Socal Science</label>
+                                              <label for="socal" >Socal Science</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
                                               <input  type="number" name="english"  class="english" id="english" style="width: 45%;" >
-                                              <label for="english" style="margin-left: 2%;">English</label>
+                                              <label for="english" >English</label>
                                             </span>
                                       </div>
                                       <div class="row">
                                             <span class="input-field  ">
                                               <input   type="number" name="hindi"  class="hindi" id="hindi" style="width: 45%;">
-                                              <label for="hindi" style="margin-left: 2%;">Hindi</label>
+                                              <label for="hindi">Hindi</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
                                               <input type="number" name="sanskrit"  class="sanskrit" id="sanskrit" style="width: 45%;" >
-                                              <label for="sanskrit" style="margin-left: 2%;">Sanskrit</label>
+                                              <label for="sanskrit" >Sanskrit</label>
                                             </span>
                                       </div>
                                       <div class="row">

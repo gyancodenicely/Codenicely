@@ -54,7 +54,7 @@
 
 
 
-            if(mobile ==""){
+            if(mobile ===""){
                 Materialize.toast('Enter a Mobile Number...!', 2000,'rounded');
                 mobile.focus();
                 return false;
@@ -66,21 +66,21 @@
                 return false;
             }
             else if(mobile.match(mobile_pattern)){
-                Materialize.toast("Mobile No. Not Start 0",2000,'rounded')
+                Materialize.toast("Mobile No. Enter Fisrt Digit[7-9]",2000,'rounded');
                 return false;
             }
 
-            else if(password == ""){
+            else if(password === ""){
                 Materialize.toast('Fill The Password.', 3000,'rounded');
                 password.focus();
                 return false;
             }
-            else if(password1 == ""){
+            else if(password1 === ""){
                 Materialize.toast("Fill The Re_Enter Password",2000,'rounded');
                 return false;
             }
             else if(password != password1){
-                Materialize.toast("Password Not Match",2000,'rounded')
+                Materialize.toast("Password Not Match",2000,'rounded');
                 return false;
             }
             else{

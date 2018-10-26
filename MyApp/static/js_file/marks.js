@@ -1,4 +1,3 @@
-
 //form validation
 var obtain="";
 var percentage="";

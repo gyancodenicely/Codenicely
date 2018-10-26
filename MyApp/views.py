@@ -13,54 +13,63 @@ def login(request):
         else:
             return render(request, 'login.html')
     except KeyError:
-        return render(request,'login.html')
+        return render(request, 'login.html')
+
 
 def base(request):
-    return render(request,'base.html')
+    return render(request, 'base.html')
 
 
 def registration(request):
-    return render(request,'Registration.html')
-#@login_required(login_url='/login/')
+    return render(request, 'Registration.html')
+
+
+# @login_required(login_url='/login/')
 @csrf_exempt
 def dashboard(request):
-    response ={}
-    #if request.session['id']:
+    response = {}
+    # if request.session['id']:
     try:
         id = request.session['id']
         if id:
             # print(id)
             if request.method == "GET":
                 login_user = Registration.objects.filter(id=id)
-                #student_data=StudentData.objects.all()
+                # student_data=StudentData.objects.all()
                 return render(request, 'dashboard.html', {'data': login_user})
             else:
                 records = []
+                roll=[]
                 result = request.POST.get('result')
-                # print(result)
+                #print(result)
 
-
-                if result == "all":
+                if str(result) == "all":
                     students = StudentData.objects.all()
-
                 else:
-                    students = Marks.objects.filter(result__iexact=result)
-                # print(students)
+                    #student = Marks.objects.filter(result__iexact=result)
+                    student = Marks.objects.filter(result__iexact=result)
+                    print(student)
+
+
+
+
+
+
                 for student in students:
                     student_rec = {
                         "id": student.id,
                         "roll_no": student.roll_no,
                         "name": student.name,
                         "email": student.email,
-                        "mobile":student.mobile,
+                        "mobile": student.mobile,
                         "gender": student.gender,
-                        "dob": student.dob,
+                        "dob": student.dob.strftime('%d-%m-%y'),
                         "address": student.address
                     }
                     records.append(student_rec)
                 response['success'] = True
                 response['student_records'] = records
-                #print(response)
+                # print(response)
                 # pickup_records = {"record":records}
                 return JsonResponse(response)
 
@@ -69,15 +78,6 @@ def dashboard(request):
             return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')
-
-
-
-
-
-
-
-
-
 
     # try:
     #     id = request.session['id']
@@ -92,14 +92,6 @@ def dashboard(request):
     #
     # except KeyError as e:
     #     return HttpResponseRedirect('/login/')
-
-
-
-
-
-
-
-
 
 
 # def dashboard(request):
@@ -118,10 +110,7 @@ def dashboard(request):
 #         return HttpResponseRedirect('/login/')
 
 
-
-
-
-#@login_required(login_url='/login/')
+# @login_required(login_url='/login/')
 @csrf_exempt
 def loginUser(request):
     response = {}
@@ -130,28 +119,24 @@ def loginUser(request):
         mobile = request.POST['mobile']
         password = request.POST['password']
         try:
-            login = Registration.objects.get(mobile=mobile,password=password)
+            login = Registration.objects.get(mobile=mobile, password=password)
             request.session['id'] = login.id
             if login:
-                response['success']=True
+                response['success'] = True
                 return JsonResponse(response)
-                #return HttpResponseRedirect('/dashboard/')
+                # return HttpResponseRedirect('/dashboard/')
             else:
-                response['success']=False
+                response['success'] = False
                 return JsonResponse(response)
         except Exception as e:
             print("Login Error")
 
-
         return JsonResponse(response)
-
-
-
 
 
 @csrf_exempt
 def register_data_store(request):
-    response={}
+    response = {}
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -172,7 +157,7 @@ def register_data_store(request):
         # print(email_exist)
         if mobile_exist == True:
             print(mobile_exist)
-            response['mobile_exist']=mobile_exist
+            response['mobile_exist'] = mobile_exist
             response['success'] = False
             return JsonResponse(response)
         elif email_exist == True:
@@ -183,18 +168,18 @@ def register_data_store(request):
 
         else:
             Registration.objects.create(name=name, email=email, mobile=mobile, gender=gender, password=password)
-            response['success']=True
+            response['success'] = True
             return JsonResponse(response)
 
 
     else:
-        return render(request,'Registration.html',{'status':"Not Store Data In Database"})
+        return render(request, 'Registration.html', {'status': "Not Store Data In Database"})
 
 
 @csrf_exempt
 def profile_update(request):
-    #student = StudentData.objects.all()
-    response={}
+    # student = StudentData.objects.all()
+    response = {}
     if request.method == "POST":
         id = request.POST.get('id')
         name = request.POST.get('name')
@@ -209,35 +194,31 @@ def profile_update(request):
         # response['success']=True
         # return JsonResponse(response)
         try:
-            update = Registration.objects.filter(id=id).update(mobile=mobile,name=name,email=email,password=password)
+            update = Registration.objects.filter(id=id).update(mobile=mobile, name=name, email=email, password=password)
             if update:
-                response['success']=True
+                response['success'] = True
                 return JsonResponse(response)
             else:
-                response['success']=False
+                response['success'] = False
                 return JsonResponse(response)
         except Exception as e:
             raise Http404
 
 
-
-
-
-
 def material(request):
-    return render(request,'material.html')
-
+    return render(request, 'material.html')
 
 
 def studentpage(request):
     id = request.GET.get('id')
     # print(sid)
     student = StudentData.objects.filter(id=id)
-    return render(request, 'studentpage.html',{'student':student})
+    return render(request, 'studentpage.html', {'student': student})
+
 
 @csrf_exempt
 def student_data_store(request):
-    response={}
+    response = {}
     if request.method == "POST":
         image = request.FILES.get('image')
         roll = request.POST.get('roll_no')
@@ -272,18 +253,18 @@ def student_data_store(request):
         #     print(ex)
         #     return render(request,'studentpage.html',{'msg':"This ID Already Exist"})
 
-
         obj = StudentData.objects.filter(roll_no=roll).exists()
         print(obj)
         if obj:
-            response['roll_exist']=True
-            response['success']=False
+            response['roll_exist'] = True
+            response['success'] = False
             return JsonResponse(response)
         else:
-            StudentData.objects.create(student_img=image,roll_no=roll, name=name, email=email, mobile=mobile, password=password,
+            StudentData.objects.create(student_img=image, roll_no=roll, name=name, email=email, mobile=mobile,
+                                       password=password,
                                        gender=gender, dob=dob, address=address)
-            response['roll_exist']=False
-            response['success']=True
+            response['roll_exist'] = False
+            response['success'] = True
             return JsonResponse(response)
 
 
@@ -291,16 +272,15 @@ def student_data_store(request):
 
 
     else:
-        return render(request,'studentpage.html',{'status1':"Record Not Store"})
-
+        return render(request, 'studentpage.html', {'status1': "Record Not Store"})
 
 
 @csrf_exempt
 def student_data_update(request):
-    response={}
+    response = {}
     if request.method == "POST":
         id = request.POST.get('id')
-        roll_no= request.POST.get('roll_no')
+        roll_no = request.POST.get('roll_no')
         name = request.POST.get('name')
         email = request.POST.get('email')
         mobile = request.POST.get('mobile')
@@ -318,9 +298,9 @@ def student_data_update(request):
         # return JsonResponse(response)
 
         std = StudentData.objects.filter(id=id).update(roll_no=roll_no, name=name, email=email, mobile=mobile,
-                                                        password=password, dob=dob, address=address)
+                                                       password=password, dob=dob, address=address)
         # print(std)
-        #std = StudentData.objects.filter(roll_no=roll_no).exists()
+        # std = StudentData.objects.filter(roll_no=roll_no).exists()
 
         if std:
             response['success'] = True
@@ -329,68 +309,62 @@ def student_data_update(request):
             response['success'] = False
             return JsonResponse(response)
 
+
 @csrf_exempt
 def student_profile(request):
-    response={}
+    response = {}
     records = []
-    result=""
+    result = ""
     sid = request.POST.get('id')
-    #print(sid)
     student = StudentData.objects.get(id=sid)
-
-    #print(marks)
-    # for student in student:
     marks = Marks.objects.get(student=student)
     # print(marks.result)
     # print(student.name)
+    student_img = ""
     if student.student_img == None:
         student_img = ""
-    if marks.result == None:
-        result="Not Assign"
+        #print('image',student.student_img)
     else:
-        result=marks.result
+        student_img = student.student_img
 
-    records={
-        "image":student_img,
-        "roll_no":student.roll_no,
-        "name":student.name,
-        "email":student.email,
-        "mobile":student.mobile,
-        "gender":student.gender,
-        "dob":student.dob,
-        "address":student.address,
-        "result":result,
+    if marks.result == None:
+        result = "Not Assign"
+    else:
+        result = marks.result
+
+    records = {
+        "image": student_img,
+        "roll_no": student.roll_no,
+        "name": student.name,
+        "email": student.email,
+        "mobile": student.mobile,
+        "gender": student.gender,
+        "dob": student.dob.strftime('%d-%m-%y'),
+        "address": student.address,
+        "result": result,
     }
-    response['success']=True
-    response['student_rec']=records
-    #print(response)
+    response['success'] = True
+    response['student_rec'] = records
+    # print(response)
     return JsonResponse(response)
-
-
-
-
-
-
 
 
 @csrf_exempt
 def student_data_delete(request):
-    response={}
+    response = {}
     if request.method == "POST":
         id = request.POST.get('sid')
-        #print(id)
+        # print(id)
         StudentData.objects.filter(id=id).delete()
-        response['success']=True
+        response['success'] = True
         return JsonResponse(response)
-    #StudentData.objects.filter(id=id).delete()
-    #return HttpResponseRedirect('/dashboard/')
-
-
+    # StudentData.objects.filter(id=id).delete()
+    # return HttpResponseRedirect('/dashboard/')
 
 
 @csrf_exempt
 def add_Marks(request):
-    response={}
+    response = {}
     if request.method == "POST":
         sid = request.POST.get('sid')
         roll_no = request.POST.get('roll_no')
@@ -401,8 +375,8 @@ def add_Marks(request):
         hindi = request.POST.get('hindi')
         sanskrit = request.POST.get('sanskrit')
         obtain = request.POST.get('obtain')
-        percentage=request.POST.get('percentage')
-        result=request.POST.get('result')
+        percentage = request.POST.get('percentage')
+        result = request.POST.get('result')
 
         # print(sid)
         # print(roll_no)
@@ -418,17 +392,17 @@ def add_Marks(request):
         # response['success']=True
         # return JsonResponse(response)
 
-
-
-        id=StudentData.objects.get(id=sid)
-        #print(id)
-        marks = Marks.objects.create(student=id ,roll_no=roll_no,math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
-        #print(marks)
+        id = StudentData.objects.get(id=sid)
+        # print(id)
+        marks = Marks.objects.create(student=id, roll_no=roll_no, math=math, science=science, socal=socal,
+                                     english=english, hindi=hindi, sanskrit=sanskrit, obtain=obtain,
+                                     percentage=percentage, result=result)
+        # print(marks)
         if marks:
-            response['success']=True
+            response['success'] = True
             return JsonResponse(response)
         else:
-            response['success']=False
+            response['success'] = False
             return JsonResponse(response)
     else:
         return HttpResponseRedirect('/dashboard/')
@@ -439,7 +413,8 @@ def marks(request):
     sid = request.GET.get('sid')
     data = Registration.objects.filter(id=id).all()
     marks = Marks.objects.filter(student_id=sid).all()
-    return render(request,'marks.html',context={'mark':marks,'data':data})
+    return render(request, 'marks.html', context={'mark': marks, 'data': data})
+
 
 @csrf_exempt
 def update_marks(request):
@@ -455,7 +430,7 @@ def update_marks(request):
         sanskrit = request.POST.get('sanskrit')
         obtain = request.POST.get('obtain')
         percentage = request.POST.get('percentage')
-        result=request.POST.get('result')
+        result = request.POST.get('result')
         # print(sid)
         # print(roll_no)
         # print(math)
@@ -469,63 +444,55 @@ def update_marks(request):
         # print(result)
         # response['success'] = True
         # return JsonResponse(response)
-        marks = Marks.objects.filter(student_id=sid,roll_no=roll_no).update(math=math,science=science,socal=socal,english=english,hindi=hindi,sanskrit=sanskrit,obtain=obtain,percentage=percentage,result=result)
-        #print(marks)
+        marks = Marks.objects.filter(student_id=sid, roll_no=roll_no).update(math=math, science=science, socal=socal,
+                                                                             english=english, hindi=hindi,
+                                                                             sanskrit=sanskrit, obtain=obtain,
+                                                                             percentage=percentage, result=result)
+        # print(marks)
         if marks:
-            response['success']=True
+            response['success'] = True
             return JsonResponse(response)
         else:
-            response['success']=False
+            response['success'] = False
             return JsonResponse(response)
 
-#image upload
+
+# image upload
 @csrf_exempt
 def imageuploadpage(request):
-    return  render(request,'imageupload.html')
+    return render(request, 'imageupload.html')
+
 
 @csrf_exempt
 def imageupload(request):
-    response={}
+    response = {}
     if request.method == "POST":
         image = request.FILES.get('file')
         mobile = request.POST.get('mobile')
-        res = Image(mobile=mobile,image=image)
+        res = Image(mobile=mobile, image=image)
         if res:
             res.save()
-            response['success']=True
+            response['success'] = True
             return JsonResponse(response)
         else:
-            response['success']=False
+            response['success'] = False
             return JsonResponse(response)
-
-
-
-
-
 
 
 @csrf_exempt
 def imageshowpage(request):
     data = Image.objects.all()
-    return render(request, 'imageshow.html',{'data':data})
-
-
-
-
-
-
-
-
-
+    return render(request, 'imageshow.html', {'data': data})
 
 
 def resetpage(request):
     reg = Registration.objects.all()
-    return render(request,'forget.html',{'reg':reg})
+    return render(request, 'forget.html', {'reg': reg})
+
 
 @csrf_exempt
 def reset_password(request):
-    response={}
+    response = {}
     if request.method == "POST":
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
@@ -534,18 +501,17 @@ def reset_password(request):
         try:
             reg = Registration.objects.filter(mobile=mobile).update(password=password)
             if reg:
-                response['success']=True
+                response['success'] = True
                 return JsonResponse(response)
             else:
-                response['success']=False
+                response['success'] = False
                 return JsonResponse(response)
         except Exception as e:
             raise Http404
 
 
     else:
-        return render(request,'forget.html')
-
+        return render(request, 'forget.html')
 
 
 @csrf_exempt
@@ -555,10 +521,3 @@ def logout(request):
         return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')
-
-
-
-
-
-
-

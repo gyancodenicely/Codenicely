@@ -1,16 +1,28 @@
+$(document).ready(function () {
+    $('#password').keypress(function(e) {
+        if (e.keyCode === 13) {
+            formValidation();
+        }
+    });
 
+    $(document).ajaxStart(function(){
+                $.LoadingOverlay("show");
+                });
+                $(window).load(function () {
+                   $(document).ajaxStop(function(){
+                    $.LoadingOverlay("hide");
+                });
+                });
 
+});
 
-
-
-
-        function formValidation() {
+function formValidation() {
             var mobile = document.getElementById('mobile').value;
             var user_pass = document.getElementById('password').value;
 
             if(mobile ==""){
                 Materialize.toast('Enter a Mobile Number...!', 2000,'rounded');
-                mobile.focus();
+
                 return false;
             }
             else if(isNaN(mobile)){
@@ -29,8 +41,10 @@
                 return false;
             }
             else{
-                ajaxSubmit();
-            }
+
+                    ajaxSubmit();
+                }
+
 
 
         }
@@ -54,6 +68,18 @@
                },
 
                });
+                 // Show full page LoadingOverlay
+                 //    $.LoadingOverlay("show");
+
+                // Hide it after 3 seconds
+                // setTimeout(function(){
+                //     $.LoadingOverlay("hide");
+                // }, 2000);
+
+
+
+
+
             }
             ///Allow only Enteger Value
 

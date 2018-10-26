@@ -6,6 +6,13 @@
             $('.form_page').hide();
 
             student_record();
+            //pre loader every ajax calling
+            $(document).ajaxStart(function(){
+                $.LoadingOverlay("show");
+                });
+                $(document).ajaxStop(function(){
+                    $.LoadingOverlay("hide");
+                });
 
 
         });
@@ -121,66 +128,42 @@
         var sanskrit = document.getElementById('sanskrit').value;
         var english = document.getElementById('english').value;
 
-        if(math == ""){
+        if(math === ""){
             Materialize.toast("Enter Mathematic Marks",2000,'rounded');
             math.focus();
             return false;
         }
-        else if(math > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            math.focus();
-            return false;
-        }
-        if(science == ""){
+
+        if(science === ""){
             Materialize.toast("Enter science Marks",2000,'rounded');
             science.focus();
             return false;
         }
-        else if(science > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            science.focus();
-            return false;
-        }
-        if(socal == ""){
+
+        if(socal === ""){
             Materialize.toast("Enter socal Science Marks",2000,'rounded');
             socal.focus();
             return false;
         }
-        else if(socal > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            socal.focus();
-            return false;
-        }
-        if(english == ""){
+
+        if(english === ""){
             Materialize.toast("Enter English Marks",2000,'rounded');
             english.focus();
             return false;
         }
-        else if(english > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            english.focus();
-            return false;
-        }
-        if(hindi == ""){
+
+        if(hindi === ""){
             Materialize.toast("Enter Hindi Marks",2000,'rounded');
             hindi.focus();
             return false;
         }
-        else if(hindi > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            hindi.focus();
-            return false;
-        }
-        if(sanskrit == ""){
+
+        if(sanskrit === ""){
             Materialize.toast("Enter Sanskrit Marks",2000,'rounded');
             socal.focus();
             return false;
         }
-        else if(sanskrit > 100){
-            Materialize.toast("Enter Marks Maximum 100",2000,'rounded');
-            socal.focus();
-            return false;
-        }
+
 
          add_ajaxMarks()
 
@@ -310,10 +293,10 @@
                             '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
                             // '<td>'+ data.student_records[i].id +'</td>'
                             '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px">Edit</a>'
-                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin-left: 3%;width: 30px;padding-left: inherit;border-radius: 5px;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
+                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin: 4%;width: 30px;padding-left: inherit;border-radius: 5px;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
 
                             '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 10px;padding-left: inherit;border-radius: 5px;">Add Marks </a>' +
-                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin-left: 2%;width: 32px;padding-left: inherit;border-radius: 5px;" >Update</a>' + '</td>'
+                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin: 4%;width: 32px;padding-left: inherit;border-radius: 5px;" >Update</a>' + '</td>'
 
                             + '</tr>';
                         $('#table_body').append(table_data)
@@ -358,7 +341,7 @@ function show_student_record(id) {
      //document.getElementById('s_id').value=id;
      var table_data="";
      var sid = id;
-     //console.log(sid);
+     console.log(sid);
      $.ajax({
          type:'POST',
          url:/student_profile/,
@@ -375,6 +358,7 @@ function show_student_record(id) {
              //
              //     $('#student_body').append(table_data)
 
+                 document.getElementById('image').src="/media/photo/p.jpg";
                  document.getElementById('roll_no').value = data.student_rec.roll_no;
                  document.getElementById('student_name').value=data.student_rec.name;
                  document.getElementById('student_email').value = data.student_rec.email;
@@ -394,4 +378,46 @@ function show_student_record(id) {
 
 
 
+
 }
+
+
+
+
+
+    function marks_check() {
+        var math = $('#math').val();
+        var science = $('#science').val();
+        var socal = $('#socal').val();
+        var english = $('#english').val();
+        var hindi = $('#hindi').val();
+        var sanskrit = $('#sanskrit').val();
+
+
+        if(math > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }
+        if(science > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }
+        if(socal > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }
+        if(english > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }
+        if(hindi > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }if(sanskrit > 100){
+            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
+            return false;
+        }
+        return true;
+
+    }
+

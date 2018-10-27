@@ -385,39 +385,59 @@ function show_student_record(id) {
 
 
 
-    function marks_check() {
+    function marks_math() {
         var math = $('#math').val();
+        if (math > 100) {
+            document.getElementById('math').value = 100;
+        }
+        else if (math < 0) {
+            document.getElementById('math').value = 0;
+        }
+    }
+    function marks_science() {
         var science = $('#science').val();
-        var socal = $('#socal').val();
-        var english = $('#english').val();
-        var hindi = $('#hindi').val();
-        var sanskrit = $('#sanskrit').val();
-
-
-        if(math > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
+        if (science > 100) {
+            document.getElementById('science').value = 100;
         }
-        if(science > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
+        else if (science < 0) {
+            document.getElementById('science').value = 0;
         }
-        if(socal > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
+    }
+    function marks_socal() {
+     var socal = $('#socal').val();
+        if (socal > 100) {
+            document.getElementById('socal').value = 100;
         }
-        if(english > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
+        else if (socal < 0) {
+            document.getElementById('socal').value = 0;
         }
-        if(hindi > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
-        }if(sanskrit > 100){
-            Materialize.toast("Enter Maximum 100 Marks",2000,'rounded');
-            return false;
+    }
+    function marks_english() {
+     var english = $('#english').val();
+        if (english > 100) {
+            document.getElementById('english').value = 100;
         }
-        return true;
-
+        else if (english < 0) {
+            document.getElementById('english').value = 0;
+        }
+    }
+    function marks_hindi() {
+     var hindi = $('#hindi').val();
+        if (hindi > 100) {
+            document.getElementById('hindi').value = 100;
+        }
+        else if (hindi < 0) {
+            document.getElementById('hindi').value = 0;
+        }
+    }
+    function marks_sanskrit() {
+      var sanskrit = $('#sanskrit').val();
+        if(sanskrit > 100){
+           document.getElementById('sanskrit').value = 100;
+        }
+        else if(sanskrit < 0)
+        {
+            document.getElementById('sanskrit').value = 0;
+        }
     }
 

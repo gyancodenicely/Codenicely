@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
 from django.views.decorators.csrf import *
+from setuptools.command.saveopts import saveopts
+
 from .models import *
 from django.contrib.auth.decorators import login_required
 
@@ -37,22 +39,20 @@ def dashboard(request):
                 login_user = Registration.objects.filter(id=id)
                 # student_data=StudentData.objects.all()
                 return render(request, 'dashboard.html', {'data': login_user})
+
+
             else:
                 records = []
-                roll=[]
+
                 result = request.POST.get('result')
                 #print(result)
 
-                if str(result) == "all":
+                if result == "all":
                     students = StudentData.objects.all()
+
                 else:
                     #student = Marks.objects.filter(result__iexact=result)
-                    student = Marks.objects.filter(result__iexact=result)
-                    print(student)
-
-
-
-
+                    students = StudentData.objects.filter(roll_no__in = [obj for obj in Marks.objects.filter(result__iexact=result).values_list('student__roll_no', flat=True)])
 
 
                 for student in students:

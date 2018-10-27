@@ -328,25 +328,19 @@ function delete_Data(id) {
 
 
 function add_marks(id,roll) {
-            //alert(id);
-            //alert(roll);
-            //alert(name);
             document.getElementById('sid').value=id;
             document.getElementById('student_roll_no').value=roll;
-            //document.getElementById('sname').value=name;
+
 
 }
 
 function show_student_record(id) {
      //document.getElementById('s_id').value=id;
-     var table_data="";
-     var sid = id;
-     console.log(sid);
      $.ajax({
          type:'POST',
          url:/student_profile/,
          data:{
-             id:sid
+             id:id
          },
          success:function (data) {
              if(data.success){

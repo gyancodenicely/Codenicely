@@ -284,19 +284,19 @@
                         table_data ='<tr>'+
                            // <a class=" modal-trigger " data-toggle="modal" data-target="modal4" id="add_marks">Test</a>
                             '<td class="counterCell"></td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].roll_no + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].name + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].email + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].mobile + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].gender + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].dob + '</td>' +
-                            '<td class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].roll_no + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].name + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].email + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4"  onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].mobile + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')"  >' + data.student_records[i].gender + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].dob + '</td>' +
+                            '<td style="cursor: pointer" class="modal-trigger" data-toggle="modal" data-target="modal4" onclick="show_student_record(' + data.student_records[i].id + ')" >' + data.student_records[i].address + '</td>' +
                             // '<td>'+ data.student_records[i].id +'</td>'
-                            '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px">Edit</a>'
-                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin: 4%;width: 30px;padding-left: inherit;border-radius: 5px;"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
+                            '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px;text-transform: none">Edit</a>'
+                            + '<a class="waves-effect waves-light modal-trigger red btn" style="margin: 4%;width: 30px;padding-left: inherit;border-radius: 5px; text-transform: none"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
 
-                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 10px;padding-left: inherit;border-radius: 5px;">Add Marks </a>' +
-                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin: 4%;width: 32px;padding-left: inherit;border-radius: 5px;" >Update</a>' + '</td>'
+                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 10px;padding-left: inherit;border-radius: 5px; text-transform: none">Add Marks </a>' +
+                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin: 4%;width: 32px;padding-left: inherit;border-radius: 5px;text-transform: none" >Update</a>' + '</td>'
 
                             + '</tr>';
                         $('#table_body').append(table_data)

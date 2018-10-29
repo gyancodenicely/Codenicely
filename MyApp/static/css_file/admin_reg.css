@@ -20,4 +20,12 @@
     .register input{
         font-size: 20px !important;
     }
+.btn{
+    text-transform: none;
+
+}
+#submit{
+    background-color: teal !important;
+    color: white !important;
+}
 

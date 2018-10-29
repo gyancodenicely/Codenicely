@@ -27,14 +27,14 @@
           <img src="{% static 'image/logo.ico' %}" width="50" height="50">
          {% for z in data %}
              <!-- Create Student Record--->
-               <span style=" position: absolute;top: 14px; ">
-                 <span style="margin-left: 20px;" >{{ z.name }}</span>
+               <span style=" position: absolute;top: 14px; width: 11% ">
+                 <span>Welcome </span><span style="margin-left: 1%;" >{{ z.name }}</span>
                </span>
 
          {% endfor %}
-
+          <span style="margin-left: 45%; font-size: 20px;position: absolute;padding: 10px;">Admin Dashboard</span>
          <span style="float: right;padding: 7px; ">
-           <a href="/logout/" class="btn large " style="border-radius: 10px;"><span>Logout</span><i class="material-icons right">lock</i> </a>
+           <a href="/logout/" class="large white-text" style="border-radius: 10px;"><i class="material-icons right">power_settings_new</i> </a>
          </span>
           </div>
      </div>
@@ -104,7 +104,7 @@
         <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span></a>
 
        </span>
-                <div class="flow-text white green-text center-align"><h3>Student Records</h3></div><br>
+                <div class="flow-text white green-text center-align"><h4>Students Record</h4></div><br>
 
               <!-- Student Table is Blank-->
 
@@ -113,12 +113,12 @@
              <!-- Record present in the Table-->
 
 
-                <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student">
+           <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student">
 
                   <option value="all" selected>All Students</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
-               </select>
+                </select>
 
 
 

@@ -31,5 +31,8 @@
         label{
             margin-left: auto !important;
         }
+input[type=file],input[type=date]{
+    opacity: 0.5;
 
+}
 

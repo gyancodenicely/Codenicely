@@ -4,7 +4,16 @@ $(document).ready( function() {
             var now = new Date();
             var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
             $('.dob').val(today);
-        });
+});
+$(document).ready(function () {
+   $('#formData').keypress(function(e) {
+
+            if (e.keyCode === 13) {
+                alert("hi");
+                formValidation();
+            }
+    });
+});
 function formValidation(){
          var roll_no = document.getElementById('roll_no').value;
          var name = document.getElementById('name').value;
@@ -109,6 +118,11 @@ function formValidation(){
          if(address==""){
              Materialize.toast('** Please Fill the Student Address', 2000,'rounded');
              return false;
+         }
+         else if(!isNaN(address)){
+             Materialize.toast("Enter Proper Address..",2000,'rounded');
+             return false;
+
          }
 
 

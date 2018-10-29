@@ -32,6 +32,8 @@ urlpatterns = [
     url(r'^dashboard/$',views.dashboard),
     url(r'^register_data_store/$',views.register_data_store),
     url(r'^profile_update/$',views.profile_update),
+    url(r'^admin_reg_success/$',views.admin_reg_success),
+    url(r'^admin_reg_failure/$',views.admin_reg_failure),
     url(r'^material/$',views.material),
     url(r'^studentpage/$',views.studentpage),
     url(r'^student_data_store/$',views.student_data_store),

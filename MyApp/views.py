@@ -204,6 +204,10 @@ def profile_update(request):
         except Exception as e:
             raise Http404
 
+def admin_reg_success(request):
+    return render(request,'admin_reg_success.html')
+def admin_reg_failure(request):
+    return render(request,'admin_reg_failure.html')
 
 def material(request):
     return render(request, 'material.html')

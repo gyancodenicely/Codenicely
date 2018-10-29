@@ -1,3 +1,11 @@
+$(document).ready(function () {
+   $('#register').keypress(function(e) {
+        if (e.keyCode === 13) {
+            formValidation();
+        }
+    });
+});
+
 
             function formValidation() {
 
@@ -117,12 +125,11 @@
 
                       }
                       else if(data.success){
-                          Materialize.toast("Registration Successfully..",3000,'rounded');
-                          window.location='/login/'
+                          window.location='/admin_reg_success/'
 
                       }
                       else{
-                          Materialize.toast("Your are Already Register..",3000,'rounded');
+                          window.location='/admin_reg_failure/'
                       }
                       $('input[type="text"],input[type="email"],input[type="radio"],input[type="password"]').val('');
 

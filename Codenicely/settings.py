@@ -126,3 +126,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
 MEDIA_URL="/media/"
 
+
+#mail Setting
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+MAIL_DRIVER='smtp'
+#EMAIL_HOST_USER='nentertainmentbahar@gmail.com'
+EMAIL_HOST_USER='nentertainmentbahar@gmail.com'
+EMAIL_HOST_PASSWORD='gyan12!@'
+EMAIL_USE_TLS=True

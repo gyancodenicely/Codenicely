@@ -29,4 +29,8 @@
   .btn{
       text-transform: none;
   }
+  .card-content{
+    height: 12%;
+    padding: 5%;
+}
 

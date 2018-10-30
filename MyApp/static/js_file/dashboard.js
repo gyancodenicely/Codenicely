@@ -1,9 +1,9 @@
 
         $(document).ready(function () {
-            $('#form_button').click(function () {
-              $('.form_page').toggle();
-            });
-            $('.form_page').hide();
+            // $('#form_button').click(function () {
+            //   $('.form_page').toggle();
+            // });
+            // $('.form_page').hide();
 
             student_record();
             //pre loader every ajax calling
@@ -27,7 +27,7 @@
 
 
             if(mobile == ""){
-                Materialize.toast("** Fill The Mobile No....",2000,'rounded');
+                Materialize.toast("Fill The Mobile No....",2000,'rounded');
                 return false;
             }
             else if(mob.test(mobile) == false){
@@ -41,7 +41,7 @@
             }
 
             if(name == ""){
-                Materialize.toast("**Fill The Name...!",2000,'rounded');
+                Materialize.toast("Fill The Name...!",2000,'rounded');
                 return false;
             }
             else if(email == ""){
@@ -50,15 +50,15 @@
          }
          else if(email.indexOf('@')<=0)
          {
-             Materialize.toast('** Please Fill the Email Id Proper Formate @', 2000,'rounded');
+             Materialize.toast('Please Fill the Email Id Proper Formate @', 2000,'rounded');
              return false;
          }
          else if((email.charAt(email.length-4) != '.') && (email.charAt(email.length-3)!='.')){
-           Materialize.toast('** Please Fill the Email Id Proper Formate .', 2000,'rounded');
+           Materialize.toast('Please Fill the Email Id Proper Formate .', 2000,'rounded');
              return false;
          }
          else if(password == ""){
-             Materialize.toast('** Please Fill the Password .', 2000,'rounded');
+             Materialize.toast('Please Fill the Password .', 2000,'rounded');
              return false;
             }
             logedUser()

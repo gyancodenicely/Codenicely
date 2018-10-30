@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    {% load staticfiles %}
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="{% static 'js_file/generate_otp.js' %}"></script>
+
+
+
+<style>
+
+    .login{
+        margin: 100px;
+    }
+    body{
+        background-color: honeydew;
+    }
+    .login label{
+            font-size: 16px;
+            color: #ccc;
+        }
+        .login input{
+            font-size: 20px !important;
+
+        }
+       /* .login button:hover{
+            padding: 0px 40px;
+        }
+      input::placeholder{
+          opacity: 0.4;
+          color: black;
+
+
+      }*/
+     .login button:hover{
+            color: white;
+            background-color: green;
+        }
+
+</style>
+
+</head>
+
+
+
+
+
+<body>
+
+
+<center>
+    <div class="container">
+       <div class="row">
+          <div class="col s12 m8 l8 offset-l2 offset-m2">
+
+               <div class="login">
+               <div class="card z-depth-4">
+
+                       <div class="card-content teal white-text center-align">
+                           <h4>Reset Password</h4>
+                       </div>
+
+
+                   <div class="row">
+                        <div class="input-field  ">
+                          <i class="material-icons prefix " style="margin-left: -2%;">email</i>
+                          <input id="email"  type="email" name="email" style="width: 83%;margin-left: 5%" class="validate email" id="mobile">
+                            <label for="email" style="margin-left: 12%;">Email</label>
+                        </div>
+                   </div>
+                   <input type="hidden" value="{{ otp }}" id="otp" class="otp">
+                  <div class="form-field center-align">
+                           <button class="btn-large btn-success  waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;text-transform: none" onclick="return formValidation()"><span>Check Mail</span> </button>
+                  </div><br>
+
+
+                   </div>
+
+               </div>
+
+
+
+          </div>
+
+       </div>
+   </div>
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+</center>
+</body>
+
+</html>

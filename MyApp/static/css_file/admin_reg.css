@@ -24,8 +24,9 @@
     text-transform: none;
 
 }
-#submit{
-    background-color: teal !important;
-    color: white !important;
+  .card-content{
+    height: 12%;
+    padding: 5%;
 }
+
 

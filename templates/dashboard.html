@@ -14,97 +14,82 @@
     <script src="{% static 'js_file/dashboard.js' %}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
-
-
 </head>
-
 <body>
  <div class="container-fluid">
-
-
-       <div class="custom">
+<div class="custom">
           <div class="col s12 m12 l12" style="padding: 2px;">
           <img src="{% static 'image/logo.ico' %}" width="50" height="50">
-         {% for z in data %}
              <!-- Create Student Record--->
-               <span style=" position: absolute;top: 14px; width: 11% ">
-                 <span>Welcome </span><span style="margin-left: 1%;" >{{ z.name }}</span>
+               <span style=" position: absolute;top:32%;margin-left: 1%;width: 15%; ">
+                 <span>Welcome </span><span style="margin-left: 1%;" >{{ login_user.name }}</span>
                </span>
 
-         {% endfor %}
+
           <span style="margin-left: 45%; font-size: 20px;position: absolute;padding: 10px;">Admin Dashboard</span>
-         <span style="float: right;padding: 7px; ">
-           <a href="/logout/" class="large white-text" style="border-radius: 10px;"><i class="material-icons right">power_settings_new</i> </a>
+
+         <p style="border-radius: 10px;position: absolute;top: 3%;right: 10%;cursor: pointer"  class="modal-trigger" data-toggle="modal" data-target="login_user"> Update Login Profile</p>
+        </span>
+         <span style="float: right;padding: 1% ">
+           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a>
          </span>
           </div>
      </div>
 
+      <!--Create Modal for login profile Update-->
+      <div id="login_user" class="modal white col s6 m6" style="width: 41%;">
+                            <div class="modal-content">
+                              <div class="card green  " style="margin:-5% !important;">
+                               <div class="card-content">
+                                   <h4  class="center-align white-text">Update Login User</h4>
+                               </div>
+                               </div>
 
+                                 <div class='row '>
+                                   <div class='input-field'>
+                                      <input  type='hidden' name='id' id="id" class="id" value="{{ login_user.id }}" style="width:70%;margin-left: 27%;font-size: 20px; " />
+                                   </div>
+                                 </div>
+                                 <div class='row '>
+                                    <div class='input-field'>
+                                      <label for="mobile" id="custom_label">Mobile  </label>
+                                      <input  type='text' class="validate mobile" value="{{ login_user.mobile }}" id="mobile" maxlength="10" autocomplete="off"  onkeypress="return numberCheck(event)"/>
+                                    </div>
+                                 </div>
+                                 <div class='row '>
+                                    <div class='input-field'>
+                                       <label for="name" id="custom_label">Name  </label>
+                                       <input  type='text' name='name' id="name" class="name" value="{{ login_user.name }}"  />
+                                    </div>
+                                 </div>
+                                 <div class='row '>
+                                    <div class='input-field'>
+                                        <label for="email" id="custom_label">Email  </label>
+                                        <input  type='email' name='email' class="validate email " id="email" value="{{ login_user.email }}"  />
+                                    </div>
+                                 </div>
+                                 <div class='row '>
+                                    <div class='input-field'>
+                                        <label for="password" id="custom_label">Password </label>
+                                        <input  type='password' name='password' id="password" class="password" value="{{ login_user.password }}" />
+                                    </div>
+                                 </div>
+                                 <div class='row ' align="center" style="position: relative;bottom: 10px;">
+                                     <button type="submit" class="btn waves-effect waves-light " style="border-radius: 5px;text-transform: none" onclick="return updateLogedUser()"><span>Update</span></button>
+                                     <button class="btn waves-effect waves-light modal-close " style="border-radius: 5px;text-transform: none"><span>Close</span><i class="material-icons right">close</i></button>
+                                 </div>
+                               </div>
 
-     <div class="row">
-       <div class="col s12 l2 m3 offset-m3" style="margin-top: 30px;">
-      <!-- Create Toggle-->
-       <span class="custom_toggle">
-         <button type="button" class="btn waves-effect" style="border-radius: 10px;" name="form_button" id="form_button"> Update Login Profile</button>
-        </span>
-       <!-- End Toggle-->
+                            </div><br>
 
-           <div id="form_page" class="form_page">
+      </div>
 
-               {% for x in data %}
-                <div class="card profile" style="position: absolute;top: 28%;width: 16%;">
-                   <div class="card-content green white-text center-align">
-                           <h6>Update Login User</h6>
-                   </div>
-
-
-                    <div class='row '>
-                              <div class='input-field'>
-
-                                  <input  type='hidden' name='id' id="id" class="id" value="{{ x.id }}" style="width:70%;margin-left: 27%;font-size: 20px; " />
-                              </div>
-                   </div>
-                    <div class='row '>
-                              <div class='input-field'>
-                                  <label for="mobile" id="custom_label">Mobile  </label>
-                                  <input  type='text' class="validate mobile" value="{{ x.mobile }}" id="mobile" maxlength="10" autocomplete="off"  onkeypress="return numberCheck(event)"/>
-                              </div>
-                   </div>
-                   <div class='row '>
-                              <div class='input-field'>
-                                  <label for="name" id="custom_label">Name  </label>
-                                  <input  type='text' name='name' id="name" class="name" value="{{ x.name }}"  />
-                              </div>
-                   </div>
-                   <div class='row '>
-                              <div class='input-field'>
-                                  <label for="email" id="custom_label">Email  </label>
-                                  <input  type='email' name='email' class="validate email " id="email" value="{{ x.email }}"  />
-                              </div>
-                   </div>
-                   <div class='row '>
-                              <div class='input-field'>
-                                  <label for="password" id="custom_label">Password </label>
-                                  <input  type='password' name='password' id="password" class="password" value="{{ x.password }}" />
-                              </div>
-                   </div>
-                   <div class='row ' align="center" style="position: relative;bottom: 10px;">
-                              <button type="submit" class="btn waves-effect waves-light " onclick="return updateLogedUser()"><span>Update</span>
-                               </button>
-                   </div>
-
-                </div>
-               {% endfor %}
-
-           </div>
-       </div>
-
-       <div class="col s12 m9 l10">
-        <span style="float: right;padding-top: 2%;">
-        <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;"><span>Create Student Record</span></a>
+       <div class="col s12 m12 l12" style="padding: 1%">
+        <span style="padding-top: 2%;">
+        <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;text-transform: none"><span>Create Student Record</span></a>
 
        </span>
-                <div class="flow-text white green-text center-align"><h4>Students Record</h4></div><br>
+                <span class="flow-text white green-text" style="font-size: 25px;font-weight:bold;margin-left: 32%">Students Record</span>
 
               <!-- Student Table is Blank-->
 
@@ -112,9 +97,8 @@
 
              <!-- Record present in the Table-->
 
-
-           <select class="browser-default select_student" id="select_student" onchange="student_record()" name="select_student">
-
+                <label for="select_student" style="font-weight: bold;margin-left: 88%">Filter</label>
+                <select class="browser-default select_student select_field" id="select_student" onchange="student_record()" name="select_student">
                   <option value="all" selected>All Students</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
@@ -122,7 +106,9 @@
 
 
 
-                <table class="bordered highlight" id="table_rec" style="border-collapse: collapse;"  >
+
+
+                <table class="bordered highlight" id="table_rec" style="border-collapse: collapse;padding: 1%"  >
                     <thead>
                       <tr  align="center">
                         <th width="33px">SNo.</th>
@@ -175,7 +161,7 @@
 
 
                  <!--Student Details Modal-->
-                 <div id="modal4" class="modal white" style="width: 80%;">
+                 <div id="modal4" class="modal white" style="width: 40%;">
                             <div class="modal-content">
                               <div class="card green  " style="margin: -25px;padding: 5px;">
                                <div class="card-content">
@@ -187,51 +173,41 @@
 {#                            <p id="student_body"></p>#}
                                 <div class="container-fluid">
                                   <div class="row">
-                                      <span style="position: absolute;top: 5px;left: -34px;"> <img id="image" src="{% static 'image/a.jpg' %}" width="100" height="100"></span>
+                                      <span style="position: absolute;top: 5px;left: -4px;"> <img id="image" src="{% static 'image/a.jpg' %}" width="100" height="100"></span>
                                   </div>
 
                                   <div class="row">
                                       <span> Roll No. <input id="roll_no" disabled></span>
 
-                                      <span>Name <input id="student_name" disabled></span>
+                                      <span style="margin-left: 8%">Name <input id="student_name" disabled></span>
                                   </div>
                                     <div class="row">
                                         <span>Email <input id="student_email"  disabled></span>
 
-                                        <span>Mobile <input id="student_mobile"  disabled></span>
+                                        <span style="margin-left: 7%">Mobile <input id="student_mobile"  disabled></span>
                                   </div>
                                     <div class="row">
                                         <span>Gender <input id="student_gender"  disabled></span>
 
-                                        <span>Date Of Birth <input id="student_dob"  disabled style="margin-left: 2%;"></span>
+                                        <span style="margin-left: 2%">Date Of Birth <input id="student_dob"  disabled></span>
                                   </div>
                                   <div class="row">
                                       <span>Address <input id="student_address"  disabled></span>
 
-                                      <span>Result <input id="student_result"  disabled></span>
+                                      <span style="margin-left: 8%">Result <input id="student_result"  disabled></span>
                                   </div>
-
-
-
                                 </div>
-
-
-
-
-
-                            </div>
+                              </div>
 
                             <div class="modal-footer while">
-
-
-                               <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
+                              <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;text-transform: none"><i class="material-icons right">cancel</i> Close</a>
                             </div>
                       </div>
 
 
 
                   <!--Model Content for delete Record-->
-                          <div id="modal1" class="modal white">
+                          <div id="modal1" class="modal white" style="width: 50%">
                             <div class="modal-content">
                               <h4  class="left-align">Delete Record</h4>
                               <p class="left-align">Are You Sure to delete this Student Record   ?</p>
@@ -241,101 +217,99 @@
 {#                           <a href="/student_data_delete/?id={{ y.id }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">#}
                                 <input type="hidden" name="s_id" id="s_id" class="s_id">
                                 <button type="button" class="modal-close waves-effect btn waves-light" onclick="ajaxCalling()" style="border-radius: 7px;"><i class="material-icons right">delete</i> Delete</button>
-                               <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;"><i class="material-icons right">cancel</i> Cancel</a>
+                               <a class="modal-close waves-effect btn waves-light " style="border-radius: 7px;text-transform: none"><i class="material-icons right">cancel</i> Cancel</a>
                             </div>
                       </div>
             <!-- End Model COntent -->
               <!--Model Content for Add Marks-->
-                          <div id="modal2" class="modal white" style="width: 80%">
-                            <div class="modal-content">
-                              <div class="card green  " style="margin: -24px;padding: 0px;">
-                               <div class="card-content">
+                          <div id="modal2" class="modal white" style="width: 40%">
+                              <div class="card green" style="margin: -24px;padding: 0px;">
+                               <div class="card-content" style="margin-top: 2%;">
                                    <h4  class="center-align white-text">Add Marks</h4>
                                </div>
                               </div>
-
-                               <div class="container-fluid">
-                                   <div class="row">
+                              <div class="container-fluid">
+                                   <div class="row" style="margin-bottom: 6px;margin-left: 7%">
                                            <input type="hidden" name="sid" id="sid" class="sid" disabled><br>
                                            <label for="student_roll_no" >Roll No.</label>
-                                           <input type="text" name="student_roll_no" id="student_roll_no" class="student_roll_no" disabled style="width: 44%;margin-left: 0%">
-
+                                           <input type="text" name="student_roll_no" id="student_roll_no" class="student_roll_no" disabled style="width: 30%;margin-left: 0%">
 {#                                           <input type="text" name="sname" id="sname" class="sname">#}
-
                                    </div>
-                                       <div class="row" style="padding: 0px;">
+                                       <div class="row" style="margin-bottom: 6px;margin-left: 7%">
                                             <span class="input-field  ">
-                                              <input type="number" name="math"   class="math" id="math" style="width: 44%;margin-left: 0%" onkeyup="return marks_math()">
+                                              <input type="number" name="math"   class="math" id="math" style="width: 40%;margin-left: 0%" onkeyup="return marks_math()">
                                               <label for="math" >Math</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input  type="number" name="science"  class="science" id="science" style="width: 46%;margin-left: 0%"onkeyup="return marks_science()" >
+                                              <input  type="number" name="science"  class="science" id="science" style="width: 40%;margin-left: 0%"onkeyup="return marks_science()" >
                                               <label for="science" >Science</label>
                                             </span>
                                       </div>
-                                      <div class="row">
+                                      <div class="row" style="margin-bottom: 6px;margin-left: 7%">
                                             <span class="input-field  ">
-                                              <input   type="number" name="socal"  class="socal" id="socal" style="width: 45%;" onkeyup="return marks_socal()">
+                                              <input   type="number" name="socal"  class="socal" id="socal" style="width: 40%;" onkeyup="return marks_socal()">
                                               <label for="socal" >Socal Science</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input  type="number" name="english"  class="english" id="english" style="width: 45%;" onkeyup="return marks_english()" >
+                                              <input  type="number" name="english"  class="english" id="english" style="width: 40%;" onkeyup="return marks_english()" >
                                               <label for="english" >English</label>
                                             </span>
                                       </div>
-                                      <div class="row">
+                                      <div class="row" style="margin-bottom: 6px;margin-left: 7%">
                                             <span class="input-field  ">
-                                              <input   type="number" name="hindi"  class="hindi" id="hindi" style="width: 45%;" onkeyup="return marks_hindi()">
+                                              <input   type="number" name="hindi"  class="hindi" id="hindi" style="width: 40%;" onkeyup="return marks_hindi()">
                                               <label for="hindi">Hindi</label>
                                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                             <span class="input-field">
-                                              <input type="number" name="sanskrit" class="sanskrit" id="sanskrit" style="width: 45%;" onkeyup="return marks_sanskrit()">
+                                              <input type="number" name="sanskrit" class="sanskrit" id="sanskrit" style="width: 40%;" onkeyup="return marks_sanskrit()">
                                               <label for="sanskrit" >Sanskrit</label>
                                             </span>
                                       </div>
-                                      <div class="row">
+                                      <div class="row" style="margin-bottom: 6px;margin-left: 7%">
                                             <span class="input-field  ">
-                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="obtain"  class="obtain" id="obtain" style="width: 30%; font-weight: bold" disabled>
+{#                                                Obtained Marks :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="obtain"  class="obtain" id="obtain" style="width: 30%; font-weight: bold" disabled>#}
+                                                <label for="obtain" >Obtain Marks</label><br>
+                                               <input type="text" id="obtain" style="width: 40%;" class="obtain" disabled>
 
                                             </span>
-
-                                            <span class="input-field" style="margin-left: 14px;">
-                                                Percentage :&nbsp;&nbsp;&nbsp;&nbsp;<input  type="text" name="percentage"  class="percentage" id="percentage" style="width: 30%;font-weight: bold" disabled >
-
-                                            </span>
-                                      </div>
-                                      <div class="row">
-                                          <span class="input-field">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                              Result :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="result"  class="result" id="result" style="width: 30%;font-weight: bold" disabled >
-
-                                            </span>
-                                            <span class="input-field">
+                                           <span class="input-field">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <span>Total Marks :</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>600</span>
 
-                                            </span><br>
+                                            </span>
                                       </div>
+                                      <div class="row" style="margin-bottom: 6px;margin-left: 7%">
+                                            <span class="input-field">
+                                                 <label for="result" >Result</label><br>
+                                                 <input type="text" id="result" style="width: 40%;" class="result" disabled>
+                                            </span>
+                                            <span class="input-field" style="margin-left: 9%">
+                                                 <input type="text" id="percentage" class="percentage" style="width: 40%" disabled>
+                                            </span>
+
+
+                                      </div>
+
 
                                </div>
 
 
 
-                            </div>
+
+
 
                             <div class="modal-footer while">
+                               <button type="button" class="waves-effect btn waves-light green" style="border-radius: 7px;text-transform: none;" onclick="return save_marks()">Save</button>
+                               <a class="modal-close waves-effect btn waves-light green " style="border-radius: 7px;text-transform: none">Cancel</a>
+                            </div>
+                          </div>
+            <!-- End Model Content -->
 
-                                <button type="button" class="waves-effect btn waves-light green" style="border-radius: 7px;" onclick="return save_marks()">Save</button>
-                               <a class="modal-close waves-effect btn waves-light green " style="border-radius: 7px;">Cancel</a>
-                            </div><br>
-                      </div>
-            <!-- End Model COntent -->
-            </div>
 
-        </div>
+
     </div>
 </body>
 </html>

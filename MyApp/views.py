@@ -1,7 +1,11 @@
+from random import randint
+
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
 from django.views.decorators.csrf import *
 from setuptools.command.saveopts import saveopts
+from django.core.mail import send_mail
+from Codenicely import settings as em
 
 from .models import *
 from django.contrib.auth.decorators import login_required
@@ -10,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 def login(request):
     try:
         id = request.session['id']
+        print(id)
         if id:
             return HttpResponseRedirect('/dashboard/')
         else:
@@ -19,7 +24,15 @@ def login(request):
 
 
 def base(request):
-    return render(request, 'base.html')
+    if request.method == "GET":
+        try:
+            id = request.session['id']
+            #print(id)
+            login_user = Registration.objects.get(id=id)
+            #print(login_user)
+            return render(request, 'base.html',{"login_user":login_user})
+        except:
+            raise Http404("No Login Id Available")
 
 
 def registration(request):
@@ -36,9 +49,10 @@ def dashboard(request):
         if id:
             # print(id)
             if request.method == "GET":
-                login_user = Registration.objects.filter(id=id)
+                login_user = Registration.objects.get(id=id)
+                #print(login_user)
                 # student_data=StudentData.objects.all()
-                return render(request, 'dashboard.html', {'data': login_user})
+                return render(request, 'dashboard.html', {"login_user": login_user})
 
 
             else:
@@ -215,9 +229,12 @@ def material(request):
 
 def studentpage(request):
     id = request.GET.get('id')
+    login_user_id = request.session['id']
+    login_user = Registration.objects.get(id=login_user_id)
+
     # print(sid)
     student = StudentData.objects.filter(id=id)
-    return render(request, 'studentpage.html', {'student': student})
+    return render(request, 'studentpage.html', {'student': student,'login_user':login_user})
 
 
 @csrf_exempt
@@ -414,10 +431,22 @@ def add_Marks(request):
 
 def marks(request):
     id = request.session['id']
-    sid = request.GET.get('sid')
-    data = Registration.objects.filter(id=id).all()
-    marks = Marks.objects.filter(student_id=sid).all()
-    return render(request, 'marks.html', context={'mark': marks, 'data': data})
+    #print(id)
+    if not id:
+        try:
+            return HttpResponseRedirect('/login/')
+        except KeyError:
+            return HttpResponseRedirect('/login/')
+    else:
+        try:
+            sid = request.GET.get('sid')
+            login_user = Registration.objects.get(id=id)
+            marks = Marks.objects.filter(student_id=sid)
+            return render(request, 'marks.html', context={'mark': marks, 'login_user': login_user})
+        except KeyError:
+            return HttpResponseRedirect('/login/')
+
+
 
 
 @csrf_exempt
@@ -490,38 +519,83 @@ def imageshowpage(request):
 
 
 def resetpage(request):
-    reg = Registration.objects.all()
-    return render(request, 'forget.html', {'reg': reg})
+    n = 6
+    range_start = 10 ** (n - 1)
+    range_end = (10 ** n) - 1
+    otp = randint(range_start, range_end)
+    return render(request, 'generate_otp.html', {'otp':otp})
 
 
 @csrf_exempt
-def reset_password(request):
+def generate_otp(request):
     response = {}
     if request.method == "POST":
-        mobile = request.POST.get('mobile')
-        password = request.POST.get('password')
-        # print(mobile)
-        # print(password)
-        try:
-            reg = Registration.objects.filter(mobile=mobile).update(password=password)
-            if reg:
-                response['success'] = True
-                return JsonResponse(response)
-            else:
-                response['success'] = False
-                return JsonResponse(response)
-        except Exception as e:
-            raise Http404
+        email = request.POST.get('email')
+        otp = request.POST.get('otp')
+        print(email)
+        print(otp)
+        login_user = Registration.objects.filter(email=email).exists()
+        print(login_user)
+        if login_user:
+            request.session['email']=email
+            Registration.objects.filter(email=email).update(otp=otp)
+            send_mail("Otp Data", otp, em.EMAIL_HOST_USER, [email], fail_silently=False)
+            response['success']=True
+            return JsonResponse(response)
+        else:
+            response['success']=False
+            return JsonResponse(response)
+        # try:
+        #     reg = Registration.objects.filter(mobile=mobile).update(password=password)
+        #     if reg:
+        #         response['success'] = True
+        #         return JsonResponse(response)
+        #     else:
+        #         response['success'] = False
+        #         return JsonResponse(response)
+        # except Exception as e:
+        #     raise Http404
 
 
     else:
-        return render(request, 'forget.html')
+        return render(request, 'generate_otp.html')
+
+
+def verify_password_page(request):
+    return render(request,'verify_password.html')
+
+
+
+@csrf_exempt
+def verify_password(request):
+    response={}
+    if request.method == "POST":
+        email = request.session['email']
+        otp = request.POST.get('otp')
+        password = request.POST.get('password')
+        print(email)
+        print(otp)
+        print(password)
+        login_otp = Registration.objects.filter(otp=otp).exists()
+        if login_otp:
+            Registration.objects.filter(email=email).update(password=password)
+            response['success'] = True
+            return JsonResponse(response)
+        else:
+            response['success']=False
+            return JsonResponse(response)
+    else:
+        return render(request,'verify_password.html')
+
+
+
 
 
 @csrf_exempt
 def logout(request):
     try:
         del request.session['id']
+        del request.session['email']
         return HttpResponseRedirect('/login/')
     except KeyError:
         return HttpResponseRedirect('/login/')

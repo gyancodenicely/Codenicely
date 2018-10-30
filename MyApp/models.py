@@ -9,6 +9,7 @@ class Registration(models.Model):
     mobile = models.CharField(max_length=10)
     gender = models.CharField(max_length=7)
     password = models.CharField(max_length=20)
+    otp = models.CharField(max_length=7)
 
 
 #create Student Record

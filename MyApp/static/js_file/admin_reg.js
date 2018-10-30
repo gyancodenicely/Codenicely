@@ -68,7 +68,7 @@ $(document).ready(function () {
               }
 
                 else if((gender1=="")&&(gender2=="")){
-                    Materialize.toast('Select either Male or Female', 2000,'rounded');
+                    Materialize.toast('Select Gender', 2000,'rounded');
                     return false;
                 }
 

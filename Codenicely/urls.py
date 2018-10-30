@@ -53,7 +53,9 @@ urlpatterns = [
 
 
     url(r'^resetPage/$',views.resetpage),
-    url(r'^reset_password/$',views.reset_password),
+    url(r'^generate_otp/$',views.generate_otp),
+    url(r'^verify_password_page/$',views.verify_password_page),
+    url(r'^verify_password/$',views.verify_password),
 
 
     url(r'^logout/$',views.logout),

@@ -26,7 +26,7 @@
 
 
         .custom{
-            border: 2px solid;
+
             background-color: green;
             color: white;
             width: 100%;
@@ -34,6 +34,7 @@
             margin-top: 0px;
             position: relative;
             left: 0px;
+            right: 0px;
 
         }
         .profile label{
@@ -87,18 +88,21 @@
         margin-left: 32%;
         font-size: 14px;
     }
-#select_student{
+.select_field{
     width: 184px;
     margin-left: 40%;
     float: right;
 }
 #roll_no,#student_name,#student_email,#student_mobile,#student_gender,#student_dob,#student_address,#student_result{
-    width: 35%;
+    width: 31%;
     margin-left: 5%;
     color: black;
-    font-weight: bold;
+
 }
-span{
-    margin-left: 1%;
-    font-weight: bold;
+
+
+#student_email{
+    margin-left: 8%;
 }
+
+

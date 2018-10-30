@@ -5,7 +5,7 @@ from MyApp.models import *
 
 
 class RegistrationAdmin(admin.ModelAdmin):
-    list_display = ('name','email','mobile','gender','password')
+    list_display = ('name','email','mobile','otp','gender','password')
     search_fields = ['name']
 
 admin.site.register(Registration,RegistrationAdmin)

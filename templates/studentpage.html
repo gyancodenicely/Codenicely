@@ -17,14 +17,24 @@
 <body>
 
  <div class="container-fluid">
-   <div class="custom">
-         <span style="float:left;padding: 7px;">
-           <a href="/dashboard/" class="btn waves-effect" style="border-radius: 10px;"><span>Home</span><i class="material-icons right">home</i> </a>
 
-       </span>
-         <span style="float: right;padding: 7px; ">
-           <a href="/logout/" class="white-text" style="border-radius: 10px;"><i class="material-icons right">power_settings_new</i> </a>
+ <div class="custom">
+          <div class="col s12 m12 l12" style="padding: 2px;">
+          <img src="{% static 'image/logo.ico' %}" width="50" height="50">
+
+             <!-- Create Student Record--->
+               <span style=" position: absolute;top:23%;margin-left: 1%;width: 15%; ">
+                 <span style="margin-left: 1%; font-size: 18px;" >Welcome {{ login_user.name }}</span>
+               </span>
+
+          <span style="margin-left: 45%; font-size: 20px;position: absolute;padding: 10px;">Admin Dashboard</span>
+
+
+        </span>
+         <span style="float: right;padding-top: 10px; ">
+           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;padding-top: 4%">power_settings_new</i> </a>
          </span>
+          </div>
      </div>
      <div class="row register">
 
@@ -35,7 +45,7 @@
              <!--=============================Create Student Record=====================-->
                 <div id="formData">
                    <div class="card-content green white-text center-align">
-                       <h4>Student Registration</h4>
+                       <h4>Student Registration </h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
 
@@ -78,18 +88,19 @@
 
                         </div>
 
-                        <div style="padding-left: 20px">
+                        <div class="input-field col s12" style="padding:0px">
                                   <input class="with-gap gender" name="gender" type="radio" id="male"  value="male" />
-                                  <label for="male">Male</label>
+                                  <label for="male" style="padding-top: 0px;padding-left: 4%;">Male</label>
                                   <input class="with-gap gender" name="gender" type="radio" id="female" value="female"  />
-                                  <label for="female">Female</label>
+                                  <label for="female" style="padding-top: 0px;padding-left: 4%;">Female</label>
 
-                        </div>
+                        </div><br>
 
 
-                       <div class="input-field col s12">
+
+                       <div class="input-field col s12" style="padding-top: 3%">
                           <input id="dob" type="date" name="dob" value="" class="dob" max="2015-01-01" >
-                          <label class="active" for="dob">Date Of Birth</label>
+                          <label class="active" for="dob" style="margin-top: 3%;">Date Of Birth</label>
 
                         </div>
 
@@ -102,11 +113,11 @@
 
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
-                          <button type="submit" class="btn waves-effect  green submit" id="submit" onclick="return formValidation()" style="padding: 0px;margin: 10px;padding-left: 13px;padding-right: 13px;border-radius: 5px;">
+                          <button type="submit" class="btn waves-effect  green submit" id="submit" onclick="return formValidation()" style="text-transform:none;padding: 0px;margin: 10px;padding-left: 13px;padding-right: 13px;border-radius: 5px;">
                               <span>Register</span>
 
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect  green" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;border-radius: 5px;"><span>Cancel</span>
+                          <a href="/dashboard/" class="btn waves-effect  green" style="padding: 0px;padding-left: 13px;padding-right: 13px;text-transform:none;margin: 10px;border-radius: 5px;"><span>Cancel</span>
                            </a>
                       </div>
                       <div class="flow-text red-text">{{ msg }}</div>
@@ -121,7 +132,7 @@
                 <!--==============================Update Student Record================-->
                    <div class="updateForm">
                      <div class="card-content green white-text center-align">
-                       <h4>Student Updatation Page....!</h4>
+                       <h4>Student Profile Update</h4>
                    </div>
                       <div class="row register" style="margin-top: 20px;margin-left: 2%;margin-right: 2%;">
 
@@ -187,11 +198,11 @@
 
                       </div>
                       <div class="btn-group center-align" style="position: relative; bottom: 10px;">
-                          <button type="submit" class="btn waves-effect  green" onclick="return updateValidation()" style="padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;border-radius: 5px;">
+                          <button type="submit" class="btn waves-effect  green" onclick="return updateValidation()" style="text-transform:none;padding: 0px;padding-left: 13px;padding-right: 13px;margin: 10px;border-radius: 5px;">
                               <span>Update</span>
 
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect  green" style="padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;border-radius: 5px;"><span>Cancel</span></a>
+                          <a href="/dashboard/" class="btn waves-effect  green" style="text-transform:none;padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;border-radius: 5px;"><span>Cancel</span></a>
                       </div>
 
 

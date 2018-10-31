@@ -28,5 +28,9 @@
     height: 12%;
     padding: 5%;
 }
+  .card .card-content{
+      padding: 1px !important;
+  }
+
 
 

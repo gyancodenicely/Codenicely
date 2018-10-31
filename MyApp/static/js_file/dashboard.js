@@ -249,6 +249,10 @@
         $('#obtain').val(obtain);
         $('#percentage').val(percentage);
         $('#result').val(result);
+        console.log(obtain);
+        console.log(percentage);
+        console.log(result)
+
     }
        
    });
@@ -257,7 +261,6 @@
         $(document).ready(function () {
           table =  $('#table_rec').DataTable();
             $('.modal').modal();
-
         });
 
 
@@ -328,8 +331,10 @@ function delete_Data(id) {
 
 
 function add_marks(id,roll) {
+            var roll = roll;
             document.getElementById('sid').value=id;
-            document.getElementById('student_roll_no').value=roll;
+            document.getElementById("student_roll_no").innerHTML=roll;
+
 
 
 }

@@ -6,7 +6,7 @@
     <title>Marks Table</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static 'css_file/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css_file/marks.css' %}">
     <script type="text/javascript" src="{% static 'js_file/marks.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -35,9 +35,9 @@
           </div>
      </div>
    <div class="container">
-       <div class="row">
-           <div class="col s12 l12 m12 m-auto" style="margin-top: 6%;">
-           <div class="card z-depth-3">
+       <div class="row" align="center">
+           <div class="col s12 l12 m12 " style="margin-top: 6%;">
+           <div class="card z-depth-3" style="width: 55%">
                     {% if not mark %}
 
                            <div class="card-content teal red-text center-align">
@@ -52,73 +52,67 @@
 
 
 
-                         <div class="row" style="padding: 2%;">
+                         <div class="row" style="padding: 2%;margin-left: 0%">
                              <span class="input-field  ">
-                                  <input type="number" name="sid"  class="sid" id="sid" value="{{ m.student_id }}" style="width: 40%; margin-left: 5%;" disabled>
+                                  <input type="number" name="sid"  class="sid" id="sid" value="{{ m.student_id }}"  disabled>
                                   <label for="sid" style="margin-left: 11%;">ID</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field">
-                                   <input  type="number" name="roll_no"  class="roll_no" id="roll_no" value="{{ m.roll_no }}" style="width: 40%; margin-left: 3%" disabled >
+                                   <input  type="number" name="roll_no"  class="roll_no" id="roll_no" value="{{ m.roll_no }}" disabled >
                                    <label for="science" style="margin-left: 7%;">Roll No.</label>
                              </span>
 
                          </div>
-                         <div class="row" >
+                         <div class="row"  style="margin-left: 0%">
                              <span class="input-field  ">
-                                  <input type="number" name="math"  class="math" id="math" value="{{ m.math }}" style="width: 40%; margin-left: 6%;">
+                                  <input type="number" name="math"  class="math" id="math" value="{{ m.math }}" >
                                   <label for="math" style="margin-left: 13%;">Mathematics</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field">
-                                   <input  type="number" name="science"  class="science" id="science" value="{{ m.science }}" style="width: 40%; margin-left: 2%" >
+                                   <input  type="number" name="science"  class="science" id="science" value="{{ m.science }}"  >
                                    <label for="science" style="margin-left: 5%;">Science</label>
-                             </span>
-
-                         </div>
-                         <div class="row" >
-                             <span class="input-field  ">
-                                  <input type="number" name="socal"  class="socal" id="socal" value="{{ m.socal }}" style="width: 40%; margin-left: 6%;">
-                                  <label for="socal" style="margin-left: 13%;">Socal Science</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             <span class="input-field">
-                                   <input  type="number" name="english"  class="english" id="english" value="{{ m.english }}" style="width: 40%; margin-left: 2%" >
-                                   <label for="english" style="margin-left: 5%;">English</label>
+                             <span class="input-field  ">
+                                  <input type="number" name="socal"  class="socal" id="socal" value="{{ m.socal }}" >
+                                  <label for="socal" style="margin-left: 13%;">Socal Science</label>
                              </span>
 
                          </div>
-                         <div class="row" >
+                         <div class="row" style="margin-left: 0%">
+                             <span class="input-field">
+                                   <input  type="number" name="english"  class="english" id="english" value="{{ m.english }}">
+                                   <label for="english" style="margin-left: 5%;">English</label>
+                             </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field  ">
-                                  <input type="number" name="hindi"  class="hindi" id="hindi" value="{{ m.hindi }}" style="width: 40%; margin-left: 6%;">
+                                  <input type="number" name="hindi"  class="hindi" id="hindi" value="{{ m.hindi }}">
                                   <label for="hindi" style="margin-left: 13%;">Hindi</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field">
-                                   <input  type="number" name="sanskrit"  class="sanskrit" id="sanskrit" value="{{ m.sanskrit }}" style="width: 40%; margin-left: 2%" >
+                                   <input  type="number" name="sanskrit"  class="sanskrit" id="sanskrit" value="{{ m.sanskrit }}" >
                                    <label for="sanskrit" style="margin-left: 5%;">Sanskrit</label>
                              </span>
 
                          </div>
-                         <div class="row" >
+                         <div class="row" style="margin-left: 0%">
                              <span class="input-field  ">
-                                  <input type="number" name="obtain"  class="obtain" id="obtain" value="{{ m.obtain }}" style="width: 40%; margin-left: 6%;" disabled>
-                                  <label for="obtain" style="margin-left: 13%;">Obtained Marks</label>
+                                  <input type="number" name="obtain"  class="obtain" id="obtain" value="{{ m.obtain }}" disabled>
+                                  <label for="obtain" style="margin-left: 13%;">Obtained</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field">
-                                   <input  type="number" name="percentage"  class="percentage" id="percentage" value="{{ m.percentage }}" style="width: 40%; margin-left: 2%"  disabled>
+                                   <input  type="number" name="percentage"  class="percentage" id="percentage" value="{{ m.percentage }}"   disabled>
                                    <label for="percentage" style="margin-left: 5%;">Percentage %</label>
-                             </span>
-
-                         </div>
-                         <div class="row" >
-                             <span class="input-field  ">
-                                  <input type="text" name="result"  class="result" id="result" value="{{ m.result }}" style="width: 40%; margin-left: 6%;" disabled>
-                                  <label for="obtain" style="margin-left: 13%;">Result</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             <span class="input-field  ">
+                                  <input type="text" name="result"  class="result" id="result" value="{{ m.result }}"  disabled>
+                                  <label for="obtain" style="margin-left: 13%;">Result</label>
+                             </span>
 
 
                          </div>
                          <div class="row" >
                              <span class="input-field  ">
                                   <button type="button" class="btn waves-effect waves-light" onclick="return update_marks()" style="margin-left: 40%;text-transform: none">Update</button>
-                                  <a href="/dashboard/" class="btn waves-effect waves-light " style="text-transform: none">Cancel</a>
+                                  <a href="/dashboard/" class="btn-flat waves-effect waves-light " style="border:1px solid;text-transform: none">Cancel</a>
                              </span><br><br>
                          </div>
 

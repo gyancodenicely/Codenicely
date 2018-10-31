@@ -1,23 +1,10 @@
 
-        .register label{
-            font-size: 15px;
-            margin-left: 10px;
-            padding-top: 10px;
 
-        }
-            .register{
-            margin: 0px;
-        }
         body{
             background-color: honeydew;
         }
-         .register input{
-            font-size: 20px !important;
-             padding-left: 10px;
-
-        }
         span{
-            font-size: 20px;
+            font-size: 15px;
         }
         .custom{
              background-color: green;
@@ -29,15 +16,11 @@
             left: 0px;
             right: 0px;
         }
-        label{
+        label {
             margin-left: auto !important;
         }
-input[type=file]{
-    opacity: 0.5;
+.card .card-content{
+    padding: 9px !important;
+}
 
-}
-.card-content{
-    height: 12%;
-    padding: 5%;
-}
 

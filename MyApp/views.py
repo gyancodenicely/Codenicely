@@ -1,4 +1,5 @@
 from random import randint
+from urllib.request import Request
 
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
@@ -229,12 +230,19 @@ def material(request):
 
 def studentpage(request):
     id = request.GET.get('id')
-    login_user_id = request.session['id']
-    login_user = Registration.objects.get(id=login_user_id)
+    try:
+        login_user_id = request.session['id']
+        login_user = Registration.objects.get(id=login_user_id)
+        # print(sid)
+        student = StudentData.objects.filter(id=id)
+        return render(request, 'studentpage.html', {'student': student, 'login_user': login_user})
+    except KeyError:
+        return HttpResponseRedirect('/login/')
 
-    # print(sid)
-    student = StudentData.objects.filter(id=id)
-    return render(request, 'studentpage.html', {'student': student,'login_user':login_user})
+
+
+
+
 
 
 @csrf_exempt
@@ -430,21 +438,17 @@ def add_Marks(request):
 
 
 def marks(request):
-    id = request.session['id']
-    #print(id)
-    if not id:
-        try:
-            return HttpResponseRedirect('/login/')
-        except KeyError:
-            return HttpResponseRedirect('/login/')
-    else:
-        try:
-            sid = request.GET.get('sid')
-            login_user = Registration.objects.get(id=id)
-            marks = Marks.objects.filter(student_id=sid)
-            return render(request, 'marks.html', context={'mark': marks, 'login_user': login_user})
-        except KeyError:
-            return HttpResponseRedirect('/login/')
+    try:
+        id = request.session['id']
+        sid = request.GET.get('sid')
+        login_user = Registration.objects.get(id=id)
+        marks = Marks.objects.filter(student_id=sid)
+        return render(request, 'marks.html', context={'mark': marks, 'login_user': login_user})
+    except KeyError:
+        return HttpResponseRedirect('/login/')
+
+
+
 
 
 
@@ -539,7 +543,7 @@ def generate_otp(request):
         if login_user:
             request.session['email']=email
             Registration.objects.filter(email=email).update(otp=otp)
-            send_mail("Otp Data", otp, em.EMAIL_HOST_USER, [email], fail_silently=False)
+            send_mail("Otp Data,Your one time password", otp, em.EMAIL_HOST_USER, [email], fail_silently=False)
             response['success']=True
             return JsonResponse(response)
         else:

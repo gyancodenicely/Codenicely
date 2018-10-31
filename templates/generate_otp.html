@@ -40,6 +40,13 @@
             color: white;
             background-color: green;
         }
+     .card-content{
+    height: 11%;
+}
+    .card .card-content{
+        padding: 1px !important;
+    }
+
 
 </style>
 
@@ -74,7 +81,8 @@
                    </div>
                    <input type="hidden" value="{{ otp }}" id="otp" class="otp">
                   <div class="form-field center-align">
-                           <button class="btn-large btn-success  waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;text-transform: none" onclick="return formValidation()"><span>Check Mail</span> </button>
+                      <span><button class="btn waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;text-transform: none" onclick="return formValidation()"><span>Check Mail</span> </button></span>
+                           <a href="/login/" class="btn-flat waves-light waves-effect" style="text-transform:none;border: 1px solid;border-radius: 5px;position: relative;bottom: 5px;">Login</a>
                   </div><br>
 
 

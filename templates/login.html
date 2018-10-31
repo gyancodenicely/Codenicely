@@ -12,6 +12,11 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
         <script type="text/javascript" src="{% static 'js_file/loginpage.js'%}"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+    <style>
+        .card .card-content{
+         padding: 9px;
+     }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -19,28 +24,28 @@
                <div class="login col s10 m6 l6 offset-l3 offset-s1 offset-m3">
                <div class="card z-depth-3">
                        <div class="card-content teal white-text center-align">
-                           <h4>Admin-Login</h4>
+                           <h5>Admin Login</h5>
                        </div>
-                   <div class="row" style="padding-left: 2%;padding-right: 2%">
+                   <div class="row">
                         <div class="input-field" style="padding-top: 3%">
-                          <i class="material-icons prefix " style="margin-left: 4%;">phone</i>
+                          <i class="material-icons prefix " style="margin-left: 6%;">phone</i>
                           <input type="text" name="mobile" style="width: 78%;margin-left: 12%" class="validate mobile" id="mobile" maxlength="10" autocomplete="off" onkeypress="return numberCheck(event)">
                           <label for="mobile" style="margin-left: 12%;padding-top: 3%">Mobile</label>
                         </div>
                    </div>
-                   <div class="row" style="padding-left: 2%;padding-right: 2%">
+                   <div class="row" >
                         <div class="input-field ">
-                          <i class="material-icons prefix" style="margin-left: 4%;">lock</i>
+                          <i class="material-icons prefix" style="margin-left: 6%;">lock</i>
                           <input id="password" type="password" name="password" class="validate password" style="width: 78%;margin-left: 12%" >
                           <label for="password" style="margin-left: 12%;">Password</label>
                       </div>
                    </div>
-                  <div class="form-field center-align">
+                  <center><div class="form-field center-align">
                            <button class=" btn waves-effect waves-light " id="submit" style="border-radius: 5px; position: relative;bottom: 5px;" onclick="return formValidation()"><span>Login</span> </button>
                        </div>
-                   <span style="margin-left: 40%"><a href="/resetPage/">Forget Password ?</a> </span>
+                   <span style="font-weight: 300;"><a href="/resetPage/">Forget Password ?</a> </span></center>
                    <div class="flow-text center-align">
-                       <span style="font-size: 15px;">Don't have an account <strong>?</strong></span> <a href="/registration/" style="font-size: 15px;">Signup Now </a>
+                       <span style="font-size: 15px;padding-bottom: 2%">Don't have an account ?</span> <a href="/registration/" style="font-size: 15px;">Signup Now </a>
                         <br><br>
                    </div>
                    </div>

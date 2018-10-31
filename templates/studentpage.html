@@ -32,13 +32,15 @@
 
         </span>
          <span style="float: right;padding-top: 10px; ">
-           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;padding-top: 4%">power_settings_new</i> </a>
+             <a href="/logout/" class="  white-text" style="border-radius: 10px;"><span style="position: absolute;right: 30px;top: 14px;">Logout</span><i class="material-icons right" style="margin-left: 0px;padding-top: 4%">power_settings_new</i> </a>
          </span>
           </div>
      </div>
-     <div class="row register">
+ </div>
+ <div class="container">
+     <div class="row">
 
-         <div class="col s12 m8 l5 offset-l3  offset-m3 ">
+         <div class="col s12 m8 l6 offset-l3 offset-m3 ">
            <div class="card z-depth-3">
 
                {% if not student %}
@@ -51,10 +53,10 @@
 
                         <div class="input-field col s12">
 
-                          <input id="image" type="file" name="image" class="image" title="" onchange="document.getElementById('student_image').src=
-                            window.URL.createObjectURL(this.files[0])">
+                          <input id="image" alt="" style="padding-left: 0px;" type="file" name="image" class="image" onchange="document.getElementById('student_image').src=
+                            window.URL.createObjectURL(this.files[0]);document.getElementById('student_image').style.display='block' " >
                           <label class="active" for="image" style="position: absolute;top: -47%">Select Student Image </label>
-                            <img id="student_image"  width="100" height="100" style="position: absolute;top: -119%;right: 2%;">
+                            <img id="student_image" alt="" width="100" height="100" style="position: absolute;top: -119%;right: 2%;display: none">
 
                         </div>
 
@@ -88,13 +90,12 @@
 
                         </div>
 
-                        <div class="input-field col s12" style="padding:0px">
-                                  <input class="with-gap gender" name="gender" type="radio" id="male"  value="male" />
-                                  <label for="male" style="padding-top: 0px;padding-left: 4%;">Male</label>
-                                  <input class="with-gap gender" name="gender" type="radio" id="female" value="female"  />
-                                  <label for="female" style="padding-top: 0px;padding-left: 4%;">Female</label>
-
-                        </div><br>
+                        <div style="padding-left: 3%;margin-left: -2%" >
+                                          <input name="gender" type="radio" class="gender" id="male" value="male" />
+                                          <label for="male" style="padding-left: 24px;">Male</label>
+                                          <input name="gender" type="radio" class="gender" id="female" value="female" />
+                                          <label for="female" style="padding-left: 24px;">Female</label>
+                       </div>
 
 
 
@@ -117,7 +118,7 @@
                               <span>Register</span>
 
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect  green" style="padding: 0px;padding-left: 13px;padding-right: 13px;text-transform:none;margin: 10px;border-radius: 5px;"><span>Cancel</span>
+                          <a href="/dashboard/" class="btn-flat waves-effect waves-light" style="border:1px solid;padding: 0px;padding-left: 13px;padding-right: 13px;text-transform:none;margin: 10px;border-radius: 5px;"><span>Cancel</span>
                            </a>
                       </div>
                       <div class="flow-text red-text">{{ msg }}</div>
@@ -202,7 +203,7 @@
                               <span>Update</span>
 
                           </button>
-                          <a href="/dashboard/" class="btn waves-effect  green" style="text-transform:none;padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;border-radius: 5px;"><span>Cancel</span></a>
+                          <a href="/dashboard/" class="btn-flat waves-effect waves-light" style="border:1px solid;text-transform:none;padding:0px;padding-left: 13px;padding-right: 13px; margin: 10px;border-radius: 5px;"><span>Cancel</span></a>
                       </div>
 
 
@@ -217,6 +218,7 @@
          </div>
 
      </div>
+ </div>
  </div>
 </body>
 </html>

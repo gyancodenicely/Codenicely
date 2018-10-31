@@ -7,7 +7,7 @@ $(document).ready( function() {
 });
 $(document).ready(function () {
    $('#formData').keypress(function(e) {
-
+       alert("hi");
             if (e.keyCode === 13) {
                 alert("hi");
                 formValidation();
@@ -97,7 +97,7 @@ function formValidation(){
          }
          //Gender validation
          if((gender1=="")&&(gender2=="")){
-             Materialize.toast('Please select Either Male or Female', 2000,'rounded');
+             Materialize.toast('Please select Gender', 2000,'rounded');
              return false;
          }
          /*if((genderdata != "male") || (genderdata!="female"))
@@ -294,4 +294,6 @@ function formValidation(){
         }
 
 
+
+    ;
 

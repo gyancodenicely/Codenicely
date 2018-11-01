@@ -1,3 +1,16 @@
+
+$(document).ready(function () {
+     $(document).ajaxStart(function(){
+                $.LoadingOverlay("show");
+                });
+                $(window).load(function () {
+                   $(document).ajaxStop(function(){
+                    $.LoadingOverlay("hide");
+                });
+     });
+});
+
+
  function formValidation() {
             //alert("hi");
             var email = document.getElementById('email').value;
@@ -14,11 +27,7 @@
                  return false;
              }
                 ajaxRest();
-
-
-
         }
-
         function ajaxRest() {
             $.ajax({
                type:'POST',

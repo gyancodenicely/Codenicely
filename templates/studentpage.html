@@ -38,8 +38,7 @@
      </div>
  </div>
  <div class="container">
-     <div class="row">
-
+     <div class="row" id="student_form" style="display: block;">
          <div class="col s12 m8 l6 offset-l3 offset-m3 ">
            <div class="card z-depth-3">
 
@@ -61,7 +60,7 @@
                         </div>
 
                         <div class="input-field col s12" >
-                          <input id="roll_no" type="number" name="roll_no" class="roll_no" style="margin-top: inherit">
+                          <input id="roll_no" type="text" name="roll_no" maxlength="6" class="roll_no" style="margin-top: inherit" onkeypress="return numberCheck(event)">
                           <label class="active" for="roll_no" style="margin-top: inherit">Student Roll No.</label>
 
                         </div>
@@ -131,7 +130,7 @@
 
 
                 <!--==============================Update Student Record================-->
-                   <div class="updateForm">
+                   <div class="updateForm" id="updateForm" style="display: block">
                      <div class="card-content green white-text center-align">
                        <h4>Student Profile Update</h4>
                    </div>
@@ -218,7 +217,67 @@
          </div>
 
      </div>
- </div>
+      <!-- Registration Confirmation Message -->
+      <div class="row" id="student_success" style="display: none;">
+         <div class="col s12 m8 l6 offset-l3 offset-m3 ">
+           <div class="card z-depth-3">
+                <div id="formData">
+                   <div class="card-content green white-text center-align">
+                       <h4>Student Registration Confirmation</h4>
+                   </div>
+                      <div class="center-align green-text" style="font-size: 20px;">Your Registration is Success</div>
+                      <a href="/dashboard" class="btn-flat waves-effect waves-light " style="margin-left: 30%">GoTo Dashboard</a>
+
+                    </div>
+                   </div>
+
+
+
+
+
+         </div>
+
+     </div>
+      <!-- Registration Failure Message-->
+      <div class="row" id="student_fail" style="display: none;">
+         <div class="col s12 m8 l6 offset-l3 offset-m3 ">
+           <div class="card z-depth-3">
+                <div id="formData">
+                   <div class="card-content green white-text center-align">
+                       <h4>Student Registration Confirmation</h4>
+                   </div>
+                      <div class="center-align red-text" style="font-size: 20px;">Your Registration is Failed,Try Again ?</div>
+                      <a href="/studentpage" class="btn-flat waves-effect waves-light " style="margin-left: 30%">Registration</a>
+
+                    </div>
+                   </div>
+
+
+
+
+
+         </div>
+
+     </div>
+      <!-- Updation Confirmation Message -->
+      <div class="row" id="student_update_success" style="display: none;">
+         <div class="col s12 m8 l6 offset-l3 offset-m3 ">
+           <div class="card z-depth-3">
+                <div id="formData">
+                   <div class="card-content green white-text center-align">
+                       <h4>Student Profile Update </h4>
+                   </div>
+                      <div class="center-align green-text" style="font-size: 20px;">Update Successfully</div>
+                          <a href="/dashboard" class="btn-flat waves-effect waves-light " style="margin-left: 30%">GoTo Dashboard</a>
+                </div>
+           </div>
+         </div>
+
+     </div>
+
+
+
+
  </div>
 </body>
 </html>

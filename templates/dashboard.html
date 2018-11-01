@@ -39,7 +39,7 @@
      </div>
 
       <!--Create Modal for login profile Update-->
-      <div id="login_user" class="modal white col s6 m6" style="width: 36%;">
+        <div id="login_user" class="modal white col s6 m6" style="width: 36%;">
                             <div class="modal-content">
                               <div class="card green  " style="margin:-6% !important;padding-top: 3% !important;">
                                <div class="card-content">
@@ -78,7 +78,7 @@
                                  </div>
                                  <div class='row ' align="center" style="position: relative;bottom: 10px;">
                                      <button type="submit" class="btn waves-effect waves-light " style="border-radius: 5px;text-transform: none" onclick="return updateLogedUser()"><span>Update</span></button>
-                                     <button class="btn-flat waves-effect waves-light modal-close " style="border-radius: 5px;border:1px solid;text-transform: none"><span>Close</span><i class="material-icons right">close</i></button>
+                                     <button class="btn-flat waves-effect waves-light modal-close " style="border-radius: 5px;border:1px solid;text-transform: none"><span>Close</span></button>
                                  </div>
                                </div>
 
@@ -102,6 +102,7 @@
                 <label for="select_student" style="font-weight: bold;position: absolute;right: 210px;top:177px;">Filter :</label>
                 <select class="browser-default select_student select_field" id="select_student" onchange="student_record()" name="select_student">
                   <option value="all" selected>All Students</option>
+                  <option value="absent">Absent</option>
                   <option value="pass">Pass</option>
                   <option value="fail">Fail</option>
                 </select>
@@ -203,7 +204,7 @@
                               </div>
 
                             <div class="modal-footer while">
-                              <a class="modal-close waves-effect btn-flat waves-light " style="border:1px solid;border-radius: 7px;text-transform: none"><i class="material-icons right">cancel</i> Close</a>
+                              <a class="modal-close waves-effect btn-flat waves-light " style="border:1px solid;border-radius: 7px;text-transform: none"> Close</a>
                             </div>
                       </div>
 
@@ -219,8 +220,8 @@
                             <div class="modal-footer while">
 {#                           <a href="/student_data_delete/?id={{ y.id }}" class="modal-close waves-effect btn waves-light" style="border-radius: 7px;">#}
                                 <input type="hidden" name="s_id" id="s_id" class="s_id">
-                                <button type="button" class="modal-close waves-effect btn waves-light" onclick="ajaxCalling()" style="border-radius: 7px;"><i class="material-icons right">delete</i> Delete</button>
-                               <a class="modal-close waves-effect btn-flat waves-light " style="border-radius: 7px;text-transform: none;border: 1px solid"><i class="material-icons right">cancel</i> Cancel</a>
+                                <button type="button" class="modal-close waves-effect btn waves-light" onclick="ajaxCalling()" style="border-radius: 7px;">Delete</button>
+                               <a class="modal-close waves-effect btn-flat waves-light " style="border-radius: 7px;text-transform: none;border: 1px solid">Cancel</a>
                             </div>
                       </div>
             <!-- End Model COntent -->

@@ -60,10 +60,13 @@ def dashboard(request):
                 records = []
 
                 result = request.POST.get('result')
-                #print(result)
+                print(result)
 
                 if result == "all":
                     students = StudentData.objects.all()
+                elif request == "absent":
+                    #students = StudentData.objects.filter(roll_no__in = [obj for obj in Marks.objects.filter(result__iexact=result).values_list('student__roll_no', flat=True)])
+                    pass
 
                 else:
                     #student = Marks.objects.filter(result__iexact=result)

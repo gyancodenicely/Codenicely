@@ -4,12 +4,13 @@ $(document).ready( function() {
             var now = new Date();
             var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
             $('.dob').val(today);
+
 });
 $(document).ready(function () {
    $('#formData').keypress(function(e) {
-       alert("hi");
+
             if (e.keyCode === 13) {
-                alert("hi");
+
                 formValidation();
             }
     });
@@ -168,10 +169,11 @@ function formValidation(){
                      return false;
                  }
                  if(data.success){
-                     Materialize.toast("Registration Success..!",4000,'rounded');
-                     window.location='/dashboard/'
+                     document.getElementById('student_form').style.display="none";
+                     document.getElementById('student_success').style.display="block";
                  }else{
-                     Materialize.toast("Registration Failed..!",2000,'rounded');
+                     document.getElementById('student_form').style.display="none";
+                     document.getElementById('student_fail').style.display="block";
                  }
                  $('input[type="text"],input[type="number"],input[type="email"],input[type="password"]').val('');
                  $("input:radio").removeAttr("checked");
@@ -272,9 +274,9 @@ function formValidation(){
                  address:$('.address').val(),
              },
              success:function (data) {
-                 if(data.success == true){
-                     Materialize.toast("Student Recore Update Successfully...!",3000,'rounded');
-                     window.location=/dashboard/
+                 if(data.success){
+                     document.getElementById('updateForm').style.display="none";
+                     document.getElementById('student_update_success').style.display="block";
                  }else{
                      Materialize.toast("Record Updat Failed...!",3000,'rounded')
                  }
@@ -295,5 +297,5 @@ function formValidation(){
 
 
 
-    ;
+
 

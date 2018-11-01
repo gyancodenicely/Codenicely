@@ -4,7 +4,7 @@
             var password = document.getElementById('password').value;
             var password1 = document.getElementById('password1').value;
             if(otp ==="") {
-                Materialize.toast('Enter OTP Number...!', 2000, 'rounded');
+                Materialize.toast('Enter OTP', 2000, 'rounded');
                 otp.focus();
                 return false;
             }
@@ -40,7 +40,7 @@
                         window.location=/login/
 
                     } else {
-                        Materialize.toast('Not Verify User', 3000, 'rounded');
+                        Materialize.toast('Enter Wrong OTP', 3000, 'rounded');
                         return false;
                     }
                 },

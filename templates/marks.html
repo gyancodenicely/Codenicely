@@ -16,24 +16,16 @@
 
 </head>
 <body>
-<div class="custom">
-          <div class="col s12 m12 l12" style="padding: 2px;">
-              <a href="/dashboard/"><img src="{% static 'image/logo.ico' %}" width="50" height="50"></a>
-             <!-- Create Student Record--->
-               <span style=" position: absolute;top:32%;margin-left: 1%;width: 15%; ">
-                 <span>Welcome </span><span style="margin-left: 1%;" >{{ login_user.name }}</span>
-               </span>
-
-
-          <span style="margin-left: 45%; font-size: 20px;position: absolute;padding: 10px;">Admin Dashboard</span>
-
-
-        </span>
-         <span style="float: right;padding: 1% ">
-           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a>
-         </span>
-          </div>
-     </div>
+ <nav>
+         <div class="nav-wrapper green">
+             <ul class="">
+                 <li> <img src="{% static 'image/logo.ico' %}" width="50" height="50"></li>
+                 <li>&nbsp;&nbsp;Welcome {{ login_user.name }}</li>
+                 <li class="center" style="text-align: center"><strong style="position: absolute;left: 50% !important;">Admin Dashboard</strong></li>
+                 <li style="float: right"><a href="/logout/" class="white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a></li>
+             </ul>
+         </div>
+     </nav>
    <div class="container">
        <div class="row" align="center">
            <div class="col s12 l12 m12 " style="margin-top: 6%;">
@@ -64,17 +56,17 @@
 
                          </div>
                          <div class="row"  style="margin-left: 0%">
-                             <span class="input-field  ">
+                             <span class="input-field col-s4 ">
                                   <input type="number" name="math"  class="math" id="math" value="{{ m.math }}" >
                                   <label for="math" style="margin-left: 13%;">Mathematics</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             <span class="input-field">
+                             <span class="input-field col-s4">
                                    <input  type="number" name="science"  class="science" id="science" value="{{ m.science }}"  >
                                    <label for="science" style="margin-left: 5%;">Science</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             <span class="input-field  ">
+                             <span class="input-field col-s4 ">
                                   <input type="number" name="socal"  class="socal" id="socal" value="{{ m.socal }}" >
-                                  <label for="socal" style="margin-left: 13%;">Socal Science</label>
+                                  <label for="socal" style="margin-left: 13%;">Socal</label>
                              </span>
 
                          </div>
@@ -100,7 +92,7 @@
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field">
                                    <input  type="number" name="percentage"  class="percentage" id="percentage" value="{{ m.percentage }}"   disabled>
-                                   <label for="percentage" style="margin-left: 5%;">Percentage %</label>
+                                   <label for="percentage" style="margin-left: 5%;">Percenatge</label>
                              </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                              <span class="input-field  ">
                                   <input type="text" name="result"  class="result" id="result" value="{{ m.result }}"  disabled>

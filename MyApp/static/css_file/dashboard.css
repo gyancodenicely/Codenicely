@@ -44,13 +44,13 @@
             color: black;
         }
 
-    table {
-        counter-reset: tableCount;
-       }
-    .counterCell:before {
-        content: counter(tableCount);
-        counter-increment: tableCount;
-    }
+        table {
+            counter-reset: tableCount;
+           }
+        .counterCell:before {
+            content: counter(tableCount);
+            counter-increment: tableCount;
+        }
       .dataTables_length label select{
           display: inline-block;
           width: 42%;
@@ -62,7 +62,7 @@
         }
         .dataTables_filter label input[type=search]{
 
-            width: 175px !important;
+            width: 171px !important;
             height: 35px;
             font-weight: bold;
             margin-left: 5px;

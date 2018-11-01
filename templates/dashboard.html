@@ -18,25 +18,37 @@
 </head>
 <body>
  <div class="container-fluid">
-<div class="custom">
-          <div class="col s12 m12 l12" style="padding: 2px;">
-          <img src="{% static 'image/logo.ico' %}" width="50" height="50">
-             <!-- Create Student Record--->
-               <span style=" position: absolute;top:32%;margin-left: 1%;width: 15%; ">
-                 <span>Welcome </span><span style="margin-left: 1%;" >{{ login_user.name }}</span>
-               </span>
+{#<div class="custom">#}
+{#          <div class="col s12 m12 l12" style="padding: 2px;">#}
+{#          <img src="{% static 'image/logo.ico' %}" width="50" height="50">#}
+{#             <!-- Create Student Record--->#}
+{#               <span style=" position: absolute;top:32%;margin-left: 1%;width: 15%; ">#}
+{#                 <span>Welcome </span><span style="margin-left: 1%;" >{{ login_user.name }}</span>#}
+{#               </span>#}
+{##}
+{##}
+{#          <span style="margin-left: 41%; font-size: 20px;position: absolute;padding: 10px;">#}
+{#              Admin Dashboard</span>#}
+{##}
+{#         <p style="border-radius: 10px;position: absolute;top: 3%;right: 10%;cursor: pointer"  class="modal-trigger" data-toggle="modal" data-target="login_user"> Update Login Profile</p>#}
+{#        </span>#}
+{#         <span style="float: right;padding: 1% ">#}
+{#           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a>#}
+{#         </span>#}
+{#          </div>#}
+{#     </div>#}
 
-
-          <span style="margin-left: 41%; font-size: 20px;position: absolute;padding: 10px;">
-              Admin Dashboard</span>
-
-         <p style="border-radius: 10px;position: absolute;top: 3%;right: 10%;cursor: pointer"  class="modal-trigger" data-toggle="modal" data-target="login_user"> Update Login Profile</p>
-        </span>
-         <span style="float: right;padding: 1% ">
-           <a href="/logout/" class="  white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a>
-         </span>
-          </div>
-     </div>
+     <nav>
+         <div class="nav-wrapper green">
+             <ul class="">
+                 <li> <img src="{% static 'image/logo.ico' %}" width="50" height="50"></li>
+                 <li>&nbsp;&nbsp;Welcome {{ login_user.name }}</li>
+                 <li class="center" style="text-align: center"><strong style="position: absolute;left: 50% !important;">Admin Dashboard</strong></li>
+                 <li class="modal-trigger" data-toggle="modal" data-target="login_user" style="cursor: pointer;margin-left: 1%;">Update Login Profile</li>
+                 <li style="float: right"><a href="/logout/" class="white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a></li>
+             </ul>
+         </div>
+     </nav>
 
       <!--Create Modal for login profile Update-->
         <div id="login_user" class="modal white col s6 m6" style="width: 36%;">
@@ -87,19 +99,19 @@
       </div>
 
        <div class="col s12 m12 l12" style="padding: 1%">
-        <span style="padding-top: 2%;">
-        <a href="/studentpage/" class="btn waves-effect" style="border-radius: 10px;text-transform: none"><span>Create Student Record</span></a>
+        <span style="position: absolute;top: 68px;left: 26px;">
+        <a href="/studentpage/" class="btn waves-effect green " style="border-radius: 10px;text-transform: none"><span>Create Student Record</span></a>
 
        </span>
 {#                <span class="flow-text white green-text" style="font-size: 20px;font-weight:bold;margin-left: 32%">Students Record</span>#}
-              <span style="font-size: 20px;color: #1e7e34;font-family: monospace;"><center>Students Record</center></span>
+              <span style="font-size: 20px;color: #1e7e34;font-family: monospace;position: absolute;left: 50% !important;">Students Record</span>
               <!-- Student Table is Blank-->
 
 {#                      <p class="flow-text red-text center-align ">Not Student Record In Database</p>#}
 
              <!-- Record present in the Table-->
 
-                <label for="select_student" style="font-weight: bold;position: absolute;right: 210px;top:177px;">Filter :</label>
+                <label for="select_student" style="font-weight:bold;position: absolute;right: 207px;top:117px;">Filter :</label>
                 <select class="browser-default select_student select_field" id="select_student" onchange="student_record()" name="select_student">
                   <option value="all" selected>All Students</option>
                   <option value="absent">Absent</option>
@@ -111,23 +123,29 @@
 
 
 
-                <table class="bordered highlight" id="table_rec" style="border-collapse: collapse;padding: 1%"  >
+                  <div class="row">
+                      <div class="col s12 l12 m12">
+                       <table class="responsive-table bordered highlight" id="table_rec" style="border-collapse: collapse;padding: 1%"  >
                     <thead>
                       <tr  align="center">
-                        <th width="33px">SNo.</th>
-                        <th width="48px">Roll No.</th>
-                        <th width="150">Name</th>
+                        <th>SNo.</th>
+                        <th>Roll No.</th>
+                        <th>Name</th>
                         <th>Email</th>
-                        <th width="98px">Mobile</th>
-                        <th width="8%">Gender</th>
-                        <th width="86px">Date Of Birth</th>
-                        <th width="75px">Address</th>
-                        <th width="222px">Profile</th>
-                        <th width="222px">Marks</th>
+                        <th>Mobile</th>
+                        <th>Gender</th>
+                        <th>Date Of Birth</th>
+                        <th>Address</th>
+                        <th>Profile</th>
+                        <th>Marks</th>
                       </tr>
                     </thead>
                     <tbody id="table_body"></tbody>
                      </table>
+
+                      </div>
+                  </div>
+
 {#                    {% for student  in students %}#}
 {##}
 {#                     <tr align="center">#}

@@ -76,11 +76,10 @@
                },
                success:function (data) {
                    if (data.success == true){
-                      Materialize.toast("Update Profile.",2000,'rounded') ;
-                      window.location=/dashboard/;
+                      Materialize.toast("Update Profile.",3000,'rounded') ;
 
                    }else {
-                       Materialize.toast('Update Failes.',2000,'rounded');
+                       Materialize.toast('Update Failes.',3000,'rounded');
 
                    }
                }

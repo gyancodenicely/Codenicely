@@ -15,31 +15,19 @@
       <script type="text/javascript" src="{% static 'js_file/student_reg.js' %}"></script>
 </head>
 <body>
-
- <div class="container-fluid">
-
- <div class="custom">
-          <div class="col s12 m12 l12" style="padding: 2px;">
-          <img src="{% static 'image/logo.ico' %}" width="50" height="50">
-
-             <!-- Create Student Record--->
-               <span style=" position: absolute;top:23%;margin-left: 1%;width: 15%; ">
-                 <span style="margin-left: 1%; font-size: 18px;" >Welcome {{ login_user.name }}</span>
-               </span>
-
-          <span style="margin-left: 45%; font-size: 20px;position: absolute;padding: 10px;">Admin Dashboard</span>
-
-
-        </span>
-         <span style="float: right;padding-top: 10px; ">
-             <a href="/logout/" class="  white-text" style="border-radius: 10px;"><span style="position: absolute;right: 30px;top: 14px;">Logout</span><i class="material-icons right" style="margin-left: 0px;padding-top: 4%">power_settings_new</i> </a>
-         </span>
-          </div>
-     </div>
- </div>
+ <nav>
+         <div class="nav-wrapper green">
+             <ul class="">
+                 <li> <img src="{% static 'image/logo.ico' %}" width="50" height="50"></li>
+                 <li>&nbsp;&nbsp;Welcome {{ login_user.name }}</li>
+                 <li class="center" style="text-align: center"><strong style="position: absolute;left: 50% !important;">Admin Dashboard</strong></li>
+                 <li style="float: right"><a href="/logout/" class="white-text" style="border-radius: 10px;">Logout<i class="material-icons right" style="margin-left: 0px;">power_settings_new</i> </a></li>
+             </ul>
+         </div>
+     </nav>
  <div class="container">
      <div class="row" id="student_form" style="display: block;">
-         <div class="col s12 m8 l6 offset-l3 offset-m3 ">
+         <div class="col s12 m8 l6 offset-l3 offset-m2 ">
            <div class="card z-depth-3">
 
                {% if not student %}

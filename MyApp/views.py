@@ -51,30 +51,20 @@ def dashboard(request):
             # print(id)
             if request.method == "GET":
                 login_user = Registration.objects.get(id=id)
-                #print(login_user)
-                # student_data=StudentData.objects.all()
                 return render(request, 'dashboard.html', {"login_user": login_user})
-
-
             else:
                 records = []
-
                 result = request.POST.get('result')
+
                 if result == "all":
                     students = StudentData.objects.all()
-                elif request == "absent":
-                    #students = StudentData.objects.filter(roll_no__in = [obj for obj in Marks.objects.filter(result__iexact =).values_list('student__roll_no', flat=True)])
-                    student = StudentData.objects.all()
-                    mark = Marks.objects.all()
-                    print(student)
-                    print(mark)
-                    print("hi")
-
+                    print("========================All==================================")
+                elif result == "absent":
+                    students = StudentData.objects.exclude(roll_no__in=Marks.objects.all().values_list('student__roll_no', flat=True))
+                    print("============absent================")
                 else:
-                    #student = Marks.objects.filter(result__iexact=result)
-                    students = StudentData.objects.filter(roll_no__in = [obj for obj in Marks.objects.filter(result__iexact=result).values_list('student__roll_no', flat=True)])
-
-
+                    students = StudentData.objects.filter(roll_no__in=Marks.objects.filter(result__iexact=result).values_list('student__roll_no', flat=True))
+                    print("=======================Pass================================")
                 for student in students:
                     student_rec = {
                         "id": student.id,
@@ -349,25 +339,31 @@ def student_profile(request):
     response = {}
     records = []
     result = ""
-    sid = request.POST.get('id')
+    sid = request.GET.get('id')
+    print(sid)
     student = StudentData.objects.get(id=sid)
-    marks = Marks.objects.get(student=student)
-    # print(marks.result)
-    # print(student.name)
-    student_img = ""
-    if student.student_img == None:
-        student_img = ""
-        #print('image',student.student_img)
-    else:
-        student_img = student.student_img
-
-    if marks.result == None:
-        result = "Not Assign"
-    else:
+    try:
+        marks = Marks.objects.get(student=student)
         result = marks.result
+    except:
+        result ="absent"
+    #print(marks.result)
+    student_img = ""
+    #print(student.student_img)
+    # if student.student_img == None:
+    #     student_img = ""
+    #     #print('image',student.student_img)
+    # else:
+    #     student_img = student.student_img
+
+    # if marks.result == None:
+    #     result = "Not Assign"
+    # else:
+    #     result = marks.result
 
     records = {
-        "image": student_img,
+       # "image": student.student_img,
+        "image":student_img,
         "roll_no": student.roll_no,
         "name": student.name,
         "email": student.email,
@@ -375,7 +371,7 @@ def student_profile(request):
         "gender": student.gender,
         "dob": student.dob.strftime('%d-%m-%y'),
         "address": student.address,
-        "result": result,
+        "result":result,
     }
     response['success'] = True
     response['student_rec'] = records

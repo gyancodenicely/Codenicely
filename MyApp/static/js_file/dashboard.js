@@ -297,8 +297,8 @@
                             '<td>' + '<a href="/studentpage/?id=' + data.student_records[i].id + ' " class="btn waves-effect waves-light green" style="width: 8px;padding-left: inherit;border-radius: 5px;text-transform: none">Edit</a>'
                             + '<a class="waves-effect waves-light modal-trigger red btn" style="margin: 4%;width: 30px;padding-left: inherit;border-radius: 5px; text-transform: none"  data-toggle="modal" data-target="modal1" id="delete_id"  onclick="delete_Data(' + data.student_records[i].id + ')">Delete</a> ' + '</td>' +
 
-                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 10px;padding-left: inherit;border-radius: 5px; text-transform: none">Add Marks </a>' +
-                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin: 4%;width: 32px;padding-left: inherit;border-radius: 5px;text-transform: none" >Update</a>' + '</td>'
+                            '<td>' + '<a class="waves-effect waves-light modal-trigger green btn" data-toggle="modal" data-target="modal2" id="add_marks" title="Add Marks" onclick="add_marks(' + data.student_records[i].id + ',' + data.student_records[i].roll_no + ')" style="width: 6px;padding-left: inherit;border-radius: 5px; text-transform: none">Add</a>' +
+                            '<a class="waves-effect waves-light green btn" href="/marks/?sid=' + data.student_records[i].id + ' " style="margin: 4%;width: 27px;padding-left: inherit;border-radius: 5px;text-transform: none" >Update</a>' + '</td>'
 
                             + '</tr>';
                         $('#table_body').append(table_data)
@@ -341,7 +341,7 @@ function add_marks(id,roll) {
 function show_student_record(id) {
      //document.getElementById('s_id').value=id;
      $.ajax({
-         type:'POST',
+         type:'GET',
          url:/student_profile/,
          data:{
              id:id
@@ -357,6 +357,7 @@ function show_student_record(id) {
              //     $('#student_body').append(table_data)
 
                  document.getElementById('image').src="/media/photo/p.jpg";
+                 //document.getElementById('image').src=data.student_rec.image;
                  document.getElementById('roll_no').value = data.student_rec.roll_no;
                  document.getElementById('student_name').value=data.student_rec.name;
                  document.getElementById('student_email').value = data.student_rec.email;
@@ -365,7 +366,7 @@ function show_student_record(id) {
                  document.getElementById('student_dob').value=data.student_rec.dob;
                  document.getElementById('student_address').value = data.student_rec.address;
                  document.getElementById('student_result').value=data.student_rec.result;
-
+                 console.log(data.student_rec.result)
 
 
 
